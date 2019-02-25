@@ -3,15 +3,21 @@ import './App.css';
 import PreLogin from './PreLogin';
 import LoginBox from './LoginBox';
 import PostLogin from './PostLogin';
+import Admin from './Admin';
 
 class App extends Component {
   render() {
     return (
       <div id="bod" >
-        <img src="./Resources/Asset1.svg" id = 'mainLogo'></img>
-        {/* <PreLogin /> */}
-        <PostLogin />
-        {/* <LoginBox /> */}
+        <div class = "row">
+          <div class = "col-sm-12">
+            {/* <PreLogin /> */}
+            {/* <PostLogin /> */}
+            {/* <LoginBox /> */}
+            <Admin/>
+          </div>
+        </div>
+        
     </div>
     );
   }

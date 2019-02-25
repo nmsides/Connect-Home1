@@ -1,10 +1,7 @@
-h1 {
-  color: #27aedb;
-  text-align: center;
-}
-
 #mainLogo{
-  width: 45%;
+  margin-top: 1em;
+  width: 100%;
+  margin-left: 2%;
 }
 
 #bod{
@@ -12,24 +9,7 @@ h1 {
 }
 
 html{
-  background-image: url("/src/pl.jpg");
-  background-size: cover;
-}
-
-html{
   height: 100%;
-}
-
-#nav{
-  float: right;
-  position: relative;
-  top: -10px;
-  right: -10px;
-  background-color: black;
-  color: white;
-  opacity: .75;
-  height: 900px;
-  width: 30%;
 }
 
 #logInButton{
@@ -79,6 +59,57 @@ html{
   width: 75%;
   margin: 0 auto;
   margin-top: 2em;
-  border: solid red;
+  border: solid gray;
   border-radius: .5em;
+}
+
+.btn{
+  width: 100%;
+}
+
+.btn:hover{
+  background-color: lightgray;
+}
+
+#AdminToolList{
+  width: 100%;
+  margin-left: 2%;
+}
+
+#blogText{
+  width: 90%;
+  height: 50%;
+  margin-right: 2%;
+  margin-top: 2em;
+  float: right;
+  border: solid gray;
+  border-radius: .5em;
+  text-overflow: clip;
+}
+
+#blogHeader{
+  text-align: center;
+}
+
+#blogBtn{
+  width: 20%;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 1%;
+}
+
+#calBtn {
+  width: 20%;
+  font-size: 2em;
+}
+
+#logoutBtn{
+  width: 20%;
+  font-size: 2em;
+  margin-left: 1em;
+}
+
+#adminCalLog{
+  text-align: center;
+  margin-top: 6%;
 }

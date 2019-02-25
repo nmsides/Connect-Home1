@@ -8,6 +8,11 @@ class PostLogin extends Component{
     render() {
         return (
            <div> 
+               <div class = "row">
+                    <div class = "col-sm-12">
+                        <img src="./Resources/Asset1.svg" id = 'mainLogo'></img>
+                    </div>
+                </div>
             <div>
                 <ul class="nav nav-pills nav-justified">
                     <li class="nav-item">

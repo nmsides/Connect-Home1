@@ -7,17 +7,24 @@ class PreLogin extends Component{
       }
     render() {
         return (
-            <ul class="nav nav-pills nav-justified">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#!">Active</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#!">Longer nav link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#!">Link</a>
-                </li>
-            </ul>
+            <div>
+                <div class = "row">
+                    <div class = "col-sm-12">
+                        <img src="./Resources/Asset1.svg" id = 'mainLogo'></img>
+                    </div>
+                </div>
+                <ul class="nav nav-pills nav-justified">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#!">Active</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!">Longer nav link</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#!">Link</a>
+                    </li>
+                </ul>
+            </div>
         );
     }
 }

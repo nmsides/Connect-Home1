@@ -8,6 +8,7 @@ class LoginBox extends Component{
       }
     render() {
         return (
+            
            <div id="loginBox">
                 <div class="input-group">
                     <input type="text"  placeholder="Username" aria-label="" aria-describedby="basic-addon1"/>
