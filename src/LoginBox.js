@@ -11,10 +11,13 @@ class LoginBox extends Component{
             
            <div id="loginBox">
                 <div class="input-group">
+                    <img src="stock-profile.jpg"/>
+                    <div class="spacing-div">
+                    </div>
                     <input type="text"  placeholder="Username" aria-label="" aria-describedby="basic-addon1"/>
                     <input type="text"  placeholder="Password" aria-label="" aria-describedby="basic-addon1"/>
                 </div>
-                <button type="button" class="btn btn-secondary">Left</button>
+                <button type="button" class="btn btn-secondary">Login</button>
             </div>
         );
     }

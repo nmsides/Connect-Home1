@@ -16,25 +16,25 @@ class PostLogin extends Component{
             <div>
                 <ul class="nav nav-pills nav-justified">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#!">Active</a>
+                        <a class="nav-link" href="#!">Contact Us</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#!">Longer nav link</a>
+                        <a class="nav-link" href="#!">Sponsors</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#!">Link</a>
+                        <a class="nav-link" href="#!">Publications</a>
                     </li>
                 </ul>
 
                 <ul class="nav nav-pills nav-justified">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#!">Active</a>
+                        <a class="nav-link" href="#!">Tools</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#!">Longer nav link</a>
+                        <a class="nav-link" href="#!">Calendar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#!">Link</a>
+                        <a class="nav-link" href="#!">QI Meetings</a>
                     </li>
                 </ul>
             </div>

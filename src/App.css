@@ -113,3 +113,15 @@ html{
   text-align: center;
   margin-top: 6%;
 }
+
+.nav-link:hover {
+    background-color: dodgerblue;
+}
+
+.input-group {
+    padding-left: 3.5em;
+}
+
+.spacing-div {
+    height: 3em;
+}
