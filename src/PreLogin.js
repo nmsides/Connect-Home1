@@ -8,22 +8,26 @@ class PreLogin extends Component{
     render() {
         return (
             <div>
-                <div class = "row">
+                <div class = "row" id="preLogLogo">
                     <div class = "col-sm-12">
                         <img src="./Resources/Asset1.svg" id = 'mainLogo'></img>
                     </div>
                 </div>
-                <ul class="nav nav-pills nav-justified">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#!">Contact Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#!">Sponsors</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#!">Publications</a>
-                    </li>
-                </ul>
+                <div class = "row">
+                <div class = "col-sm-12">
+                    <ul class="nav nav-pills nav-justified" id = "preNav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#!">Contact Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#!">Sponsors</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#!">Publications</a>
+                        </li>
+                    </ul>
+                </div>
+                </div>
             </div>
         );
     }

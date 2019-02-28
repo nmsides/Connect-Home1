@@ -10,8 +10,8 @@ class LoginBox extends Component{
         return (
             
            <div id="loginBox">
-                <div class="input-group">
-                    <img src="stock-profile.jpg"/>
+                <div class="input-group" id = "logInput">
+                    {/* <img src="stock-profile.jpg"/> */}
                     <div class="spacing-div">
                     </div>
                     <input type="text"  placeholder="Username" aria-label="" aria-describedby="basic-addon1"/>

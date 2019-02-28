@@ -11,10 +11,10 @@ class App extends Component {
       <div id="bod" >
         <div class = "row">
           <div class = "col-sm-12">
-            <PreLogin />
-      {/*    <PostLogin />*/}
-           <LoginBox />
-       {/*     <Admin/>*/}
+            {/* <PreLogin /> */}
+           {/* <LoginBox /> */}
+            <PostLogin />
+           {/* <Admin/> */}
           </div>
         </div>
         
