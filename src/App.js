@@ -12,7 +12,6 @@ class App extends Component {
         <div class = "row">
           <div class = "col-sm-12">
             {/* <PreLogin /> */}
-           {/* <LoginBox /> */}
             <PostLogin />
            {/* <Admin/> */}
           </div>
