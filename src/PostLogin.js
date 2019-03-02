@@ -9,8 +9,11 @@ class PostLogin extends Component{
         return (
            <div> 
                <div class = "row" id = "postLogoDiv">
-                    <div class = "col-sm-12">
+                    <div class = "col-sm-6">
                         <img src="./Resources/Asset1.svg" id = 'postMainLogo'></img>
+                    </div>
+                    <div class = "col-sm-6">
+                        <h2 id="postWelcome">Welcome, ________</h2>
                     </div>
                 </div>
             <div class = "row">
@@ -18,6 +21,7 @@ class PostLogin extends Component{
                     <div class = "row">
                         <div class = "col-sm-6">
                             <div class = "row">
+                            <div class = "col-sm-12">
                                 <ul class="nav nav-pills nav-justified" id="postTopNav">
                                     <li class="nav-item">
                                         <a class="nav-link" href="#!">Contact Us</a>
@@ -29,8 +33,10 @@ class PostLogin extends Component{
                                         <a class="nav-link" href="#!">Publications</a>
                                     </li>
                                 </ul>
+                                </div>
                             </div>
                             <div class = "row">
+                            <div class = "col-sm-12">
                                 <ul class="nav nav-pills nav-justified" id="postTopNav">
                                     <li class="nav-item">
                                         <a class="nav-link" href="#!">Tools</a>
@@ -42,6 +48,7 @@ class PostLogin extends Component{
                                         <a class="nav-link" href="#!">QI Meetings</a>
                                     </li>
                                 </ul>
+                            </div>
                             </div>
                         </div>
                         <div class = "col-sm-6">
