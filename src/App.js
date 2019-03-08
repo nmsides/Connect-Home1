@@ -11,8 +11,8 @@ class App extends Component {
       <div id="bod" >
         <div class = "row">
           <div class = "col-sm-12">
-            {/* <PreLogin /> */}
-            <PostLogin />
+            <PreLogin />
+            {/* <PostLogin /> */}
            {/* <Admin/> */}
           </div>
         </div>

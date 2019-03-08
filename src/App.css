@@ -1,18 +1,16 @@
 /* All */
 
-#mainLogo{
-  margin-top: 2em;
-  width: 100%;
-  margin-left: 12%;
-}
+
 
 #bod{
   height: 100%;
-  background-color: #dee4e9;
+  width: 100%;
+  /* background-color: #dee4e9; */
 }
 
 html{
   height: 100%;
+  width: 100%;
   background-color: #dee4e9;
 }
 
@@ -28,8 +26,48 @@ html{
   color: white;
 }
 
+.btn{
+  width: 100%;
+}
+
 
 /* Pre Login */
+.leftPrePic{
+  width: 75%;
+  box-shadow: 0 4px 2px 0px gray;
+  border-radius: 1em;
+  margin-left: 2%;
+}
+.rightPicDiv{
+  background-color: #acdfe6;
+  height: 100%;
+  border-top-left-radius: 1em;
+  border-bottom-left-radius: 1em;
+}
+
+
+.rightPrePic{
+  width: 75%;
+  box-shadow: 0 4px 2px 0px gray;
+  border-radius: 1em;
+  margin-top: 7%;
+  float: right;
+  margin-right: 2%;
+}
+.leftPicDiv{
+  background-color: #acdfe6;
+  height: 90%;
+  border-top-right-radius: 1em;
+  border-bottom-right-radius: 1em;
+  margin-top: 5%;
+}
+
+
+
+.rightPicDivTxt{
+  text-align: center;
+  padding-top: 10%;
+}
 
 .preNavItem {
   -webkit-transition: opacity .5s ease-in-out;
@@ -43,12 +81,12 @@ html{
   padding: 1em;
   /* padding-bottom: 5em; */
   background-color: #5282bc;
+  box-shadow: 0 4px 2px 0px gray;
 }
 
 .preNavItem:hover {
   opacity: 0.7;
   background-color: #c24747;
-  color: white;
 }
 
 #preNav{
@@ -60,7 +98,7 @@ html{
   transition: opacity .5s ease-in-out;
   opacity: 1;
 
-  
+  margin-bottom: 5%;
 }
 
 .preNav:hover {
@@ -71,28 +109,43 @@ html{
   color: white;
 }
 
-#preLogLogo{
-  height: 200px;
+
+.preLink:hover{
+  text-decoration: none;
+  color: white;
+}
+
+#preLogLogoDiv{
+  width: 100%;
+  padding-left: 5%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+#mainLogo{
+  width: 75%;
 }
 
 #loginBtn{
-  background-color: #5282bc;
+  background-color: #c24747;
   width: 70%;
   color: white;
   margin-top: 5%;
+  border-radius: .5em;
+  font-size: 25px;
 
-  -webkit-transition: opacity .5s ease-in-out;
-  -moz-transition: opacity .5s ease-in-out;
-  -ms-transition: opacity .5s ease-in-out;
-  -o-transition: opacity .5s ease-in-out;
-  transition: opacity .5s ease-in-out;
+  -webkit-transition: opacity .8s ease-in-out;
+  -moz-transition: opacity .8s ease-in-out;
+  -ms-transition: opacity .8s ease-in-out;
+  -o-transition: opacity .8s ease-in-out;
+  transition: opacity .8s ease-in-out;
   opacity: 1;
 }
 
 #loginBtn:hover{
   background-color: #c24747;
-
   opacity: 0.7;
+  border: solid lightgray;
 }
 
 #navItems{
@@ -130,8 +183,19 @@ html{
   border-radius: .5em;
 }
 
-.btn{
+#preInfoText{
   width: 100%;
+ padding-top: 5%;
+}
+
+.provLogo{
+  height: 50%;
+  background-color: #dee4e9;
+}
+
+#provDiv{
+  background-color: #dee4e9;
+  margin-top: 5%;
 }
 
 /* Admin */

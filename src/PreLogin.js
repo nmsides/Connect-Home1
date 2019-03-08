@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import LoginBox from "./LoginBox";
+import LoginButton from "./LoginButton"
 
 
 class PreLogin extends Component{
@@ -9,40 +10,97 @@ class PreLogin extends Component{
     render() {
         return (
             <div>
-                <div class = "row" id="preLogLogo">
-                    <div class = "col-sm-6">
-                        <img src="./Resources/Asset1.svg" id = 'mainLogo'></img>
+                <div class = "row" id="preLogLogoDiv">
+                    <div class = "col-sm-5">
+                        <img src="./Resources/Asset 2.svg" id = 'mainLogo'></img>
                     </div>
-                    <div class = "col-sm-6">
-                        <LoginBox />
+                    <div class = "col-sm-4">
+                        <div id="preInfoText">
+                            <p class="text-black-50">Information: "Lorem ipsum dolor sit amcitation ullamco laboris nisi uodo cepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                        </div>
+                    </div>
+                    <div class = "col-sm-3">
+                        <LoginButton />
                     </div>
                 </div>
                 <div class = "row">
                     <div class = "col-sm-12" id="preLinks">
                         <ul class="nav nav-pills nav-justified" id = "preNav">
-                            <li class="nav-item preNavItem">
-                                <a class="nav-link preLink" href="#!">About Mark</a>
-                            </li>
                             <li class="nav-item preNavItem" >
-                                <a class="nav-link preLink" href="#!">Contact Us</a>
+                                <a class="preLink" href="#!">Contact Us</a>
                             </li>
                             <li class="nav-item preNavItem">
-                                <a class="nav-link preLink" href="#!">Sponsors</a>
+                                <a class="preLink" href="#!">Sponsors</a>
                             </li>
                             <li class="nav-item preNavItem">
-                                <a class="nav-link preLink" href="#!">Publications</a>
+                                <a class="preLink" href="#!">Publications</a>
                             </li>
                         </ul>
                     </div>
                 </div>
+
                 <div class = "row">
-                    <div class = "col-sm-3"></div>
-                    <div class = "col-sm-6">
-                        <p class="text-body">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"</p>
+                    <div class = "col-sm-5">
+                        <img src = "./resources/stock1.jpg" class = "leftPrePic"></img>
                     </div>
-                    <div class = "col-sm-3">
+                    <div class = "col-sm-7">
+                        <div class = "rightPicDiv">
+                            <div >
+                                <div class = "rightPicDivTxt">
+                                    <h4 >Lorem Ipsum</h4>
+                                    <p >
+                                    Some quick example text to build on the card title
+                                    and make up the bulk of the card's content.
+                                    </p>
+                                    
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                
+                <div class = "row">
+                    <div class = "col-sm-7">
+                        <div class = "leftPicDiv">
+                            <div >
+                                <div class = "rightPicDivTxt">
+                                    <h4 >Lorem Ipsum</h4>
+                                    <p >
+                                    Some quick example text to build on the card title
+                                    and make up the bulk of the card's content.
+                                    </p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class = "col-sm-5">
+                        <img src = "./resources/stock1.jpg" class = "rightPrePic"></img>
+                    </div>
+                    
+                </div>
+              
+                <div class = "row" id="provDiv">
+               
+                    <div class = "col-sm-12">
+                       
+                        <h5>Accredited Providers</h5>
+                        <div>
+                            <ul class="nav nav-pills nav-justified">
+                                <li class="nav-item" >
+                                    <img src = "./resources/Asset 2.svg" class = "provLogo"></img>
+                                </li>
+                                <li class="nav-item" >
+                                    <img src = "./resources/Asset 2.svg" class = "provLogo"></img>
+                                </li>
+                                <li class="nav-item" >
+                                    <img src = "./resources/Asset 2.svg" class = "provLogo"></img>
+                                </li>
+                            </ul>
+                        </div>                        
+                    </div>
+                </div>
+
             </div>
         );
     }
