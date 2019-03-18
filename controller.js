@@ -18,14 +18,18 @@ try {
     const dbName = url.match(/\/([^\/]*)$/)[1];
     const client = await MongoClient.connect(url);
     const db = client.db(dbName);
-    const collection = db.collection("users"); 
-    const users = await collection.find().toArray();
+    
     
     const express = require('express')
     const app = express()
+    app.use(express.static('build'))
     const port = process.env.PORT || 5000
 
-    app.get('/', (req, res) => res.send(JSON.stringify(users)));
+    app.get('/api/users', async (req, res) => {
+        const collection = db.collection("users"); 
+        const users = await collection.find().toArray();
+        res.send(JSON.stringify(users))
+    });
 
     app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 }
