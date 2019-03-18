@@ -14,13 +14,18 @@ var url = process.env.MONGODB_URI;
 
 async function main() {
 try {
-  await MongoClient.connect(url);  
+    const url = process.env.MONGODB_URI; 
+    const dbName = url.match(/\/([^\/]*)$/)[1];
+    const client = await MongoClient.connect(url);
+    const db = client.db(dbName);
+    const collection = db.collection("users"); 
+    const users = await collection.find().toArray();
     
     const express = require('express')
     const app = express()
     const port = process.env.PORT || 5000
 
-    app.get('/', (req, res) => res.send('Hello World!'))
+    app.get('/', (req, res) => res.send(JSON.stringify(users)));
 
     app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 }
