@@ -10,7 +10,7 @@ class LoginButton extends Component{
         return (
             
            <div>
-                <button id="loginBtn">Partner Login</button>
+                <button id="loginBtn" >Partner Login</button>
             </div>
         );
     }

@@ -27,7 +27,7 @@ class PreLogin extends Component{
                     <div class = "col-sm-12" id="preLinks">
                         <ul class="nav nav-pills nav-justified" id = "preNav">
                             <li class="nav-item preNavItem" >
-                                <a class="preLink" href="#!">Contact Us</a>
+                                <a class="preLink" href="ContactUs.html">Contact Us</a>
                             </li>
                             <li class="nav-item preNavItem">
                                 <a class="preLink" href="#!">Sponsors</a>
