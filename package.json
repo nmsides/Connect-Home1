@@ -12,6 +12,7 @@
   },
   "scripts": {
     "start": "node controller.js",
+    "front-end": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
