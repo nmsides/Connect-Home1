@@ -24,66 +24,39 @@ class PreLogin extends Component{
                     </div>
                 </div>
                 <div class = "row">
-                    <div class = "col-sm-12" id="preLinks">
-                        <ul class="nav nav-pills nav-justified" id = "preNav">
-                            <li class="nav-item preNavItem" >
-                                <a class="preLink" href="ContactUs.html">Contact Us</a>
-                            </li>
-                            <li class="nav-item preNavItem">
-                                <a class="preLink" href="#!">Sponsors</a>
-                            </li>
-                            <li class="nav-item preNavItem">
-                                <a class="preLink" href="#!">Publications</a>
-                            </li>
+                    <div class = "mainFront" id="preLinks">
+                      <div class="innerPic">
+                        <img src = "./resources/stock1.jpg" class = "frontPagePic"></img>
+                        <p>This is where the carousel will go</p>
+                      </div>
+                      <div class="verticalNav">
+                        <ul class="nav flex-column">
+                          <li class="nav-item preNavItem">
+                            <a class="preLink" href="#">Understanding Connect Home</a>
+                          </li>
+                          <li class="nav-item preNavItem">
+                            <a class="preLink" href="#">Services and Supports</a>
+                          </li>
+                          <li class="nav-item preNavItem">
+                            <a class="preLink" href="#">News</a>
+                          </li>
+                          <li class="nav-item preNavItem">
+                            <a class="preLink" href="#">About Us</a>
+                          </li>
+                          <li class="nav-item preNavItem">
+                            <a class="preLink" href="#">Contact</a>
+                          </li>
                         </ul>
+                      </div>
                     </div>
                 </div>
 
-                <div class = "row">
-                    <div class = "col-sm-5">
-                        <img src = "./resources/stock1.jpg" class = "leftPrePic"></img>
-                    </div>
-                    <div class = "col-sm-7">
-                        <div class = "rightPicDiv">
-                            <div >
-                                <div class = "rightPicDivTxt">
-                                    <h4 >Lorem Ipsum</h4>
-                                    <p >
-                                    Some quick example text to build on the card title
-                                    and make up the bulk of the card's content.
-                                    </p>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class = "row">
-                    <div class = "col-sm-7">
-                        <div class = "leftPicDiv">
-                            <div >
-                                <div class = "rightPicDivTxt">
-                                    <h4 >Lorem Ipsum</h4>
-                                    <p >
-                                    Some quick example text to build on the card title
-                                    and make up the bulk of the card's content.
-                                    </p>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class = "col-sm-5">
-                        <img src = "./resources/stock1.jpg" class = "rightPrePic"></img>
-                    </div>
-                    
-                </div>
-              
+
+
                 <div class = "row" id="provDiv">
-               
+
                     <div class = "col-sm-12">
-                       
+
                         <h5>Accredited Providers</h5>
                         <div>
                             <ul class="nav nav-pills nav-justified">
@@ -97,9 +70,10 @@ class PreLogin extends Component{
                                     <img src = "./resources/Asset 2.svg" class = "provLogo"></img>
                                 </li>
                             </ul>
-                        </div>                        
+                        </div>
                     </div>
                 </div>
+
 
             </div>
         );

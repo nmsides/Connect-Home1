@@ -10,13 +10,16 @@ class Admin extends Component{
             <div>
                 <div class = "row">
                         <div class = "col-sm-6">
-                            <img src="./Resources/Asset1.svg" id = 'mainLogo'></img>
+                            <img src="./Resources/Asset 2.svg" id = 'mainLogo'></img>
                         </div>
                         <div class = "col-sm-6" id="adminCalLog">
                             <button class="btn" id="calBtn">Calendar</button>
                             <button class="btn" id="logoutBtn">Logout</button>
                         </div>
                 </div>
+                <div class="spacingDiv"></div>
+
+                <h1>Admin Page</h1>
                 <div class = "row">
                     <div class = "col-sm-5">
                         <ul class="list-group" id = "AdminToolList">

@@ -1,94 +1,82 @@
 import React, { Component } from "react";
-
+import LoginBox from "./LoginBox";
+import LoginButton from "./LoginButton"
 
 class PostLogin extends Component{
     constructor(props){
         super(props);
       }
-    render() {
-        return (
-           <div> 
-               <div class = "row" id = "postLogoDiv">
-                    <div class = "col-sm-6">
-                        <img src="./Resources/Asset1.svg" id = 'postMainLogo'></img>
-                    </div>
-                    <div class = "col-sm-6">
-                        <h2 id="postWelcome">Welcome, ________</h2>
-                    </div>
-                </div>
-            <div class = "row">
-                <div class = "col-sm-12">
-                    <div class = "row">
-                        <div class = "col-sm-6">
-                            <div class = "row">
-                            <div class = "col-sm-12">
-                                <ul class="nav nav-pills nav-justified" id="postTopNav">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#!">Contact Us</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#!">Sponsors</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#!">Publications</a>
-                                    </li>
-                                </ul>
-                                </div>
-                            </div>
-                            <div class = "row">
-                            <div class = "col-sm-12">
-                                <ul class="nav nav-pills nav-justified" id="postTopNav">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#!">Tools</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#!">Calendar</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#!">QI Meetings</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            </div>
+      render() {
+          return (
+              <div>
+                  <div class = "row" id="preLogLogoDiv">
+                      <div class = "col-sm-5">
+                          <img src="./Resources/Asset 2.svg" id = 'mainLogo'></img>
+                      </div>
+                      <div class = "col-sm-4">
+                          <div id="preInfoText">
+                              <p class="text-black-50">Information: "Lorem ipsum dolor sit amcitation ullamco laboris nisi uodo cepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                          </div>
+                      </div>
+                      <div class = "col-sm-3">
+                          <h1>Welcome, ________ !</h1>
+                      </div>
+                  </div>
+                  <div class = "row">
+                      <div class = "mainFront" id="preLinks">
+                        <div class="innerPic">
+                          <img src = "./resources/stock1.jpg" class = "frontPagePic"></img>
+                          <p>This is where the carousel will go</p>
                         </div>
-                        <div class = "col-sm-6">
-                            <div class="list-group">
-                                <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1">List group item heading</h5>
-                                    <small>3 days ago</small>
-                                    </div>
-                                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                    <small>Donec id elit non mi porta.</small>
-                                </a>
-                                <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1">List group item heading</h5>
-                                    <small class="text-muted">3 days ago</small>
-                                    </div>
-                                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                    <small class="text-muted">Donec id elit non mi porta.</small>
-                                </a>
-                                <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="d-flex w-100 justify-content-between">
-                                    <h5 class="mb-1">List group item heading</h5>
-                                    <small class="text-muted">3 days ago</small>
-                                    </div>
-                                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                    <small class="text-muted">Donec id elit non mi porta.</small>
-                                </a>
-                            </div>
+                        <div class="verticalNav">
+                          <ul class="nav flex-column">
+                            <li class="nav-item preNavItem">
+                              <a class="preLink" href="#">Overview</a>
+                            </li>
+                            <li class="nav-item preNavItem">
+                              <a class="preLink" href="#">Calendar</a>
+                            </li>
+                            <li class="nav-item preNavItem">
+                              <a class="preLink" href="#">Connect-Home Transitional Care Tools and Resources</a>
+                            </li>
+                            <li class="nav-item preNavItem">
+                              <a class="preLink" href="#">Quality Improvement Tools</a>
+                            </li>
+                            <li class="nav-item preNavItem">
+                              <a class="preLink" href="#">Contact Information</a>
+                            </li>
+                          </ul>
                         </div>
-                    </div>
-                </div>
-            </div>
-            
-            
+                      </div>
+                  </div>
 
-        </div>
-        
-        );
-    }
+
+
+                  <div class = "row" id="provDiv">
+
+                      <div class = "col-sm-12">
+
+                          <h5>Accredited Providers</h5>
+                          <div>
+                              <ul class="nav nav-pills nav-justified">
+                                  <li class="nav-item" >
+                                      <img src = "./resources/Asset 2.svg" class = "provLogo"></img>
+                                  </li>
+                                  <li class="nav-item" >
+                                      <img src = "./resources/Asset 2.svg" class = "provLogo"></img>
+                                  </li>
+                                  <li class="nav-item" >
+                                      <img src = "./resources/Asset 2.svg" class = "provLogo"></img>
+                                  </li>
+                              </ul>
+                          </div>
+                      </div>
+                  </div>
+
+
+              </div>
+          );
+      }
 }
 
 export default PostLogin;

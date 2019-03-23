@@ -11,7 +11,11 @@
 html{
   height: 100%;
   width: 100%;
-  background-color: #dee4e9;
+  /* background-color: #dee4e9; */
+}
+
+.spacingDiv {
+  height: 5em;
 }
 
 #logoutBtn{
@@ -19,7 +23,6 @@ html{
   font-size: 2em;
   margin-left: 1em;
 }
-
 
 .nav-link:hover{
   background-color: #c24747;
@@ -32,64 +35,15 @@ html{
 
 
 /* Pre Login */
-.leftPrePic{
-  width: 75%;
-  box-shadow: 0 4px 2px 0px gray;
-  border-radius: 1em;
-  margin-left: 2%;
-}
-.rightPicDiv{
-  background-color: #acdfe6;
-  height: 100%;
-  border-top-left-radius: 1em;
-  border-bottom-left-radius: 1em;
-}
 
 
-.rightPrePic{
-  width: 75%;
-  box-shadow: 0 4px 2px 0px gray;
-  border-radius: 1em;
-  margin-top: 7%;
-  float: right;
-  margin-right: 2%;
-}
-.leftPicDiv{
-  background-color: #acdfe6;
-  height: 90%;
-  border-top-right-radius: 1em;
-  border-bottom-right-radius: 1em;
-  margin-top: 5%;
-}
-
-
-
-.rightPicDivTxt{
-  text-align: center;
-  padding-top: 10%;
-}
-
-.preNavItem {
-  -webkit-transition: opacity .5s ease-in-out;
-  -moz-transition: opacity .5s ease-in-out;
-  -ms-transition: opacity .5s ease-in-out;
-  -o-transition: opacity .5s ease-in-out;
-  transition: opacity .5s ease-in-out;
-  opacity: 1;
-
-  /* border: solid #c24747; */
-  padding: 1em;
-  /* padding-bottom: 5em; */
-  background-color: #5282bc;
-  box-shadow: 0 4px 2px 0px gray;
-}
 
 .preNavItem:hover {
   opacity: 0.7;
   background-color: #c24747;
 }
 
-#preNav{
+/* #preNav{
   font-size: 25px;
   -webkit-transition: opacity .5s ease-in-out;
   -moz-transition: opacity .5s ease-in-out;
@@ -99,7 +53,7 @@ html{
   opacity: 1;
 
   margin-bottom: 5%;
-}
+} */
 
 .preNav:hover {
   opacity: 0.7;
@@ -148,16 +102,6 @@ html{
   border: solid lightgray;
 }
 
-#navItems{
-  background-color: #acdfe6;
-  width: 75%;
-  position: relative;
-  top: 10em;
-}
-.navItem{
-  display: block;
-  padding: 5em;
-}
 
 #loginBox{
   width: 75%;
@@ -167,13 +111,6 @@ html{
   border-radius: .5em;
 }
 
-.input-group{
-  padding: 1em;
-}
-
-.nav{
-  padding: 1em;
-}
 
 .list-group{
   width: 75%;
@@ -202,6 +139,10 @@ html{
 #AdminToolList{
   width: 100%;
   margin-left: 2%;
+}
+
+#preLinks {
+  float: left;
 }
 
 #blogText{
@@ -268,7 +209,52 @@ html{
   background-color: black;
 }
 
+.innerPic {
+  /* background-color: red; */
+  padding-right: 10em;
+  float: right;
+  height: 20em;
+  width: 60%;
+}
 
+.mainFront {
+  /* background-color: green; */
+  height: 50em;
+  width: 100%;
+  padding-top: 5em;
+  padding-left: 3em;
+}
+
+.frontPagePic {
+  border-radius: 2%;
+  border: solid grey 2px;
+  height: 30em;
+}
+
+.verticalNav {
+  padding-left: 2em;
+}
+
+.preNavItem {
+  -webkit-transition: opacity .5s ease-in-out;
+  -moz-transition: opacity .5s ease-in-out;
+  -ms-transition: opacity .5s ease-in-out;
+  -o-transition: opacity .5s ease-in-out;
+  transition: opacity .5s ease-in-out;
+  opacity: 1;
+
+  /* border: solid #c24747; */
+  padding: 1em;
+  /* padding-bottom: 5em; */
+  background-color: #5282bc;
+  box-shadow: 0 4px 2px 0px gray;
+  width: 15em;
+  text-align: left;
+  font-size: 28px;
+  border-radius: 2%;
+
+  /* border-top: solid black 2px; */
+}
 
 
 
@@ -277,7 +263,7 @@ html{
   border: solid #c24747;
   padding: 1em;
   padding-bottom: 5em;
-  
+
 }
 
 .preNavItem:hover{
@@ -292,7 +278,7 @@ html{
 
 #postMainLogo{
   width: 100%;
-  
+
 }
 
 #postLogoDiv{
