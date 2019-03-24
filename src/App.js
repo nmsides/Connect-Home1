@@ -9,11 +9,12 @@ class App extends Component {
   render() {
     return (
       <div id="bod" >
-        <div class = "row">
-          <div class = "col-sm-12">
+        <div className = "row">
+          <div className = "col-sm-12">
             {/* <PreLogin /> */}
-          {/*  <PostLogin /> */}
-            <Admin/>
+           {/* <PostLogin /> */}
+            {/* <Admin/> */}
+            <LoginBox/>
           </div>
         </div>
 
