@@ -35,13 +35,13 @@ class LoginBox extends Component{
       }
 
      getName = async () => {
-       let u = axios.get(proxyurl + "https://connect-home.herokuapp.com/api/users/")
+       let u = axios.get("https://connect-home.herokuapp.com/api/users/")
         .then(json => json.data[0].credentials.username);
         return u;
      }
 
      getNameById() {
-        return axios.get(proxyurl + "https://connect-home.herokuapp.com/api/users/")
+        return axios.get("https://connect-home.herokuapp.com/api/users/")
             .then(response => {
               this.response = response.data;
               this.setState({u: this.response[0].password})
