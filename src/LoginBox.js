@@ -55,7 +55,7 @@ class LoginBox extends Component{
       
 
      loadUsers() {
-        return axios.get("https://connect-home.herokuapp.com/api/users/")
+        return axios.get(proxyurl + "https://connect-home.herokuapp.com/api/users/")
             .then(response => {
               this.response = response.data;
             //   this.setState({u: this.response[0].username});
@@ -70,7 +70,7 @@ class LoginBox extends Component{
     getUserNames(){
             let userNameInput = document.getElementById("userNameInput").value;
             let passwordInput = document.getElementById("passwordInput").value;
-            return axios.get("https://connect-home.herokuapp.com/api/users/")
+            return axios.get(proxyurl + "https://connect-home.herokuapp.com/api/users/")
             .then(response => {
             this.response = response.data;
             for(let i = 0; i < response.data.length; i++){
@@ -80,11 +80,14 @@ class LoginBox extends Component{
                        console.log("password correct");
                        let successfulLogin = true;
                        this.setState({isLoggedIn: true})
+                       break;
                    }else{
                        console.log("password incorrect");
+                       break;
                    }
                }else{
                    console.log("username not found");
+                //    break;
                }
                 console.log(response.data)
                 console.log(this.state.all[i].password)

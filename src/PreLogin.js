@@ -1,50 +1,60 @@
 import React, { Component } from "react";
 import LoginBox from "./LoginBox";
 import LoginButton from "./LoginButton"
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
+// clickLogin(){
+
+// }
 
 class PreLogin extends Component{
     constructor(props){
         super(props);
+
       }
     render() {
         return (
             <div>
-                <div class = "row" id="preLogLogoDiv">
-                    <div class = "col-sm-5">
+                <div className = "row" id="preLogLogoDiv">
+                    <div className = "col-sm-5">
                         <img src="./Resources/Asset 2.svg" id = 'mainLogo'></img>
                     </div>
-                    <div class = "col-sm-4">
+                    <div className = "col-sm-4">
                         <div id="preInfoText">
-                            <p class="text-black-50">Information: "Lorem ipsum dolor sit amcitation ullamco laboris nisi uodo cepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                            <p className="text-black-50">Information: "Lorem ipsum dolor sit amcitation ullamco laboris nisi uodo cepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
                         </div>
                     </div>
-                    <div class = "col-sm-3">
-                        <LoginButton />
+                    <div className = "col-sm-3">
+                        <Router>
+                        <button id="loginBtn"  >Partner Login</button>
+                            <Link to="/LoginBox">Home</Link>
+                            <Route path="/LoginBox" exact component={LoginBox} />
+                        </Router>
+                        
                     </div>
                 </div>
-                <div class = "row">
-                    <div class = "mainFront" id="preLinks">
-                      <div class="innerPic">
+                <div className = "row">
+                    <div className = "mainFront" id="preLinks">
+                      <div className="innerPic">
                         <img src = "./resources/stock1.jpg" class = "frontPagePic"></img>
                         <p>This is where the carousel will go</p>
                       </div>
-                      <div class="verticalNav">
-                        <ul class="nav flex-column">
-                          <li class="nav-item preNavItem">
-                            <a class="preLink" href="#">Understanding Connect Home</a>
+                      <div className="verticalNav">
+                        <ul className="nav flex-column">
+                          <li className="nav-item preNavItem">
+                            <a className="preLink" href="#">Understanding Connect Home</a>
                           </li>
-                          <li class="nav-item preNavItem">
-                            <a class="preLink" href="#">Services and Supports</a>
+                          <li className="nav-item preNavItem">
+                            <a className="preLink" href="#">Services and Supports</a>
                           </li>
-                          <li class="nav-item preNavItem">
-                            <a class="preLink" href="#">News</a>
+                          <li className="nav-item preNavItem">
+                            <a className="preLink" href="#">News</a>
                           </li>
-                          <li class="nav-item preNavItem">
-                            <a class="preLink" href="#">About Us</a>
+                          <li className="nav-item preNavItem">
+                            <a className="preLink" href="#">About Us</a>
                           </li>
-                          <li class="nav-item preNavItem">
-                            <a class="preLink" href="#">Contact</a>
+                          <li className="nav-item preNavItem">
+                            <a className="preLink" href="#">Contact</a>
                           </li>
                         </ul>
                       </div>
@@ -53,20 +63,20 @@ class PreLogin extends Component{
 
 
 
-                <div class = "row" id="provDiv">
+                <div className = "row" id="provDiv">
 
-                    <div class = "col-sm-12">
+                    <div className = "col-sm-12">
 
                         <h5>Accredited Providers</h5>
                         <div>
-                            <ul class="nav nav-pills nav-justified">
-                                <li class="nav-item" >
+                            <ul className="nav nav-pills nav-justified">
+                                <li className="nav-item" >
                                     <img src = "./resources/Asset 2.svg" class = "provLogo"></img>
                                 </li>
-                                <li class="nav-item" >
+                                <li className="nav-item" >
                                     <img src = "./resources/Asset 2.svg" class = "provLogo"></img>
                                 </li>
-                                <li class="nav-item" >
+                                <li className="nav-item" >
                                     <img src = "./resources/Asset 2.svg" class = "provLogo"></img>
                                 </li>
                             </ul>

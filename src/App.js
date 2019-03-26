@@ -15,10 +15,10 @@ class App extends Component {
       <div id="bod" >
         <div className = "row">
           <div className = "col-sm-12">
-            {/* <PreLogin /> */}
+            <PreLogin />
            {/* <PostLogin /> */}
             {/* <Admin/> */}
-            <LoginBox/>
+            {/* <LoginBox/> */}
           </div>
         </div>
 
