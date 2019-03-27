@@ -8,20 +8,14 @@ let allUsers;
 let userNameInput;
 let successfulLogin;
 
-// const state = {
-//     u: "",
-//     p: "",
-//     all: "",
-//     isLoggedIn: false
-// }
 
-Array.prototype.contains = function(element){
-    return this.indexOf(element) > -1;
-};
+//Array.prototype.contains = function(element){
+//    return this.indexOf(element) > -1;
+//};
 
 class LoginBox extends Component{
 
-    constructor(props){
+    constructor(props){ //react standard
         super(props);
 
         this.state = {
@@ -31,26 +25,22 @@ class LoginBox extends Component{
             isLoggedIn: false
         }
 
-        this.checkUserName = this.checkUserName.bind(this);
-        // this.successLog = this.successLog.bind(this);
+        this.checkUserName = this.checkUserName.bind(this); //react must bind this
       }
 
       checkUserName(){
-        let userNameInput = document.getElementById("userNameInput").value;
+        //let userNameInput = document.getElementById("userNameInput").value;
         this.getUserNames();
-        // this.successLog();
         
       }
 
       componentDidMount() {
         console.log(this.state.isLoggedIn)
         this.loadUsers();
-        // this.successLog();
       }
 
       componentDidUpdate(){
           console.log('updated');
-        //   this.successLog();
       }
       
 
@@ -58,12 +48,9 @@ class LoginBox extends Component{
         return axios.get(proxyurl + "https://connect-home.herokuapp.com/api/users/")
             .then(response => {
               this.response = response.data;
-            //   this.setState({u: this.response[0].username});
-            //   this.setState({p: this.response[0].password})
               this.setState({all: this.response})
-            //   this.setState({isLoggedIn: false});
               let allUsers = this.state.all;
-              console.log(allUsers)
+              //console.log(allUsers)
               return this.response[0].username});
         }
 
@@ -80,7 +67,7 @@ class LoginBox extends Component{
                        console.log("password correct");
                        let successfulLogin = true;
                        this.setState({isLoggedIn: true})
-                       break;
+                       break; //listen to the state and then load new page 
                    }else{
                        console.log("password incorrect");
                        break;
@@ -89,22 +76,14 @@ class LoginBox extends Component{
                    console.log("username not found");
                 //    break;
                }
-                console.log(response.data)
+                //console.log(response.data)
                 console.log(this.state.all[i].password)
             }
            
-            
+            // store a variable from here and then get it in another page (props?)
             return this.response.data});
         }
 
-        // su
-
-        // onClick(){
-        //     {this.checkUserName()};
-        //     this.successLog()
-        //     this.handleLogin();
-        //     console.log(this.state.isLoggedIn)
-        // }
 
     render(){
         return (
