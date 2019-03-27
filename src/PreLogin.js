@@ -1,11 +1,18 @@
-import React, { Component } from "react";
-import LoginBox from "./LoginBox";
-import LoginButton from "./LoginButton"
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import React, { Component } from 'react';
+// import './App.css';
+import './test.css';
+import LoginBox from './LoginBox';
+import PostLogin from './PostLogin';
+import Admin from './Admin';
 
-// clickLogin(){
-
-// }
+import {
+  Route,
+  NavLink,
+  HashRouter
+} from "react-router-dom";
+import Home from "./Home";
+import Stuff from "./Stuff";
+import Contact from "./Contact";
 
 class PreLogin extends Component{
     constructor(props){
@@ -15,7 +22,7 @@ class PreLogin extends Component{
     render() {
         return (
             <div>
-                <div className = "row" id="preLogLogoDiv">
+                {/* <div className = "row" id="preLogLogoDiv">
                     <div className = "col-sm-5">
                         <img src="./Resources/Asset 2.svg" id = 'mainLogo'></img>
                     </div>
@@ -25,18 +32,14 @@ class PreLogin extends Component{
                         </div>
                     </div>
                     <div className = "col-sm-3">
-                        <Router>
-                        <button id="loginBtn"  >Partner Login</button>
-                            <Link to="/LoginBox">Home</Link>
-                            <Route path="/LoginBox" exact component={LoginBox} />
-                        </Router>
                         
                     </div>
-                </div>
+                 </div> */}
                 <div className = "row">
+                 
                     <div className = "mainFront" id="preLinks">
                       <div className="innerPic">
-                        <img src = "./resources/stock1.jpg" class = "frontPagePic"></img>
+                        <img src = "./resources/stock1.jpg" className = "frontPagePic"></img>
                         <p>This is where the carousel will go</p>
                       </div>
                       <div className="verticalNav">
@@ -71,13 +74,13 @@ class PreLogin extends Component{
                         <div>
                             <ul className="nav nav-pills nav-justified">
                                 <li className="nav-item" >
-                                    <img src = "./resources/Asset 2.svg" class = "provLogo"></img>
+                                    <img src = "./resources/Asset 2.svg" className = "provLogo"></img>
                                 </li>
                                 <li className="nav-item" >
-                                    <img src = "./resources/Asset 2.svg" class = "provLogo"></img>
+                                    <img src = "./resources/Asset 2.svg" className = "provLogo"></img>
                                 </li>
                                 <li className="nav-item" >
-                                    <img src = "./resources/Asset 2.svg" class = "provLogo"></img>
+                                    <img src = "./resources/Asset 2.svg" className = "provLogo"></img>
                                 </li>
                             </ul>
                         </div>
