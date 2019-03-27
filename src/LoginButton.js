@@ -1,6 +1,11 @@
 import React, { Component } from "react";
-
+import {
+    Route,
+    NavLink,
+    HashRouter
+  } from "react-router-dom";
 import "./App.css"
+import LoginBox from './LoginBox';
 
 class LoginButton extends Component{
     constructor(props){
@@ -10,8 +15,12 @@ class LoginButton extends Component{
         return (
             
            <div>
-                <button id="loginBtn" >Partner Login</button>
+                <button id="loginBtn" ><NavLink exact to="/LoginBox">Login</NavLink></button>
+                <div>
+                    <Route exact path="/LoginBox" component={LoginBox}/>
+                </div>
             </div>
+            
         );
     }
 }

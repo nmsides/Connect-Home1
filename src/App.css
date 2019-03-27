@@ -234,6 +234,8 @@ html{
 
 .verticalNav {
   padding-left: 2em;
+  background-color: #5282bc;
+  border-radius: 1em; 
 }
 
 .preNavItem {
@@ -243,37 +245,13 @@ html{
   -o-transition: opacity .5s ease-in-out;
   transition: opacity .5s ease-in-out;
   opacity: 1;
-
-  /* border: solid #c24747; */
-  padding: 1em;
-  /* padding-bottom: 5em; */
   background-color: #5282bc;
-  box-shadow: 0 4px 2px 0px gray;
-  width: 15em;
+  width: 100px;
   text-align: left;
-  font-size: 28px;
-  border-radius: 2%;
-
-  /* border-top: solid black 2px; */
-}
-
-
-
-
-/* .preNavItem{
-  border: solid #c24747;
-  padding: 1em;
-  padding-bottom: 5em;
-
-}
-
-.preNavItem:hover{
-  background-color: black;
-  fill-opacity: .5;
-} */
-
-
-
+  font-size: 28px; 
+  border-radius: 2%; 
+  padding: .1em;
+ } 
 
 /* Post Login */
 
