@@ -7,6 +7,7 @@ const proxyurl = "https://cors-anywhere.herokuapp.com/";
 let allUsers;
 let userNameInput;
 let successfulLogin;
+let thisUser; 
 
 
 //Array.prototype.contains = function(element){
@@ -37,10 +38,11 @@ class LoginBox extends Component{
       componentDidMount() {
         console.log(this.state.isLoggedIn)
         this.loadUsers();
+        this.getNews(); 
       }
 
       componentDidUpdate(){
-          console.log('updated');
+          //console.log('updated');
       }
       
 
@@ -61,12 +63,13 @@ class LoginBox extends Component{
             .then(response => {
             this.response = response.data;
             for(let i = 0; i < response.data.length; i++){
-               if(response.data[i].username == userNameInput){
+               if(response.data[i].username === userNameInput){
                    console.log("username in list")
-                   if(response.data[i].password == passwordInput){
+                   if(response.data[i].password === passwordInput){
                        console.log("password correct");
                        let successfulLogin = true;
                        this.setState({isLoggedIn: true})
+                       thisUser = response.data[i]._id; //Added to then pass to new page
                        break; //listen to the state and then load new page 
                    }else{
                        console.log("password incorrect");
@@ -77,14 +80,27 @@ class LoginBox extends Component{
                 //    break;
                }
                 //console.log(response.data)
-                console.log(this.state.all[i].password)
+                //console.log(this.state.all[i].password)
             }
            
             // store a variable from here and then get it in another page (props?)
             return this.response.data});
         }
+    
+    //my news function
+    getNews() {
+        console.log('running');
+        return axios.get("http://localhost:5000/api/news/")
+        .then(response => {
+            console.log('inside');
+            this.response = response.data; 
+            for(let i = 0; i < response.data.length; i++) {
+                console.log(response.data[i]); 
+            }
+        });
+    }
 
-
+// <Component username = {this.state.username} // or this.props.username
     render(){
         return (
             <div id="loginBox">

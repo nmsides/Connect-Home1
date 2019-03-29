@@ -16,7 +16,7 @@ async function main() {
 try {
     const url = process.env.MONGODB_URI; 
     const dbName = url.match(/\/([^\/]*)$/)[1];
-    const client = await MongoClient.connect(url);
+    const client = await MongoClient.connect(url, { useNewUrlParser: true });
     const db = client.db(dbName);
     
     
@@ -30,6 +30,17 @@ try {
         const users = await collection.find().toArray();
         res.send(JSON.stringify(users))
     });
+    
+    app.get('/api/news', async (req, res) => {
+        console.log('cont');
+       const collection = db.collection("news");
+        const news = await collection.find().toArray(); 
+        res.send(JSON.stringify(news))
+    });
+    
+    app.post('/api/admin/news', async (req, res) => {
+        
+    });
 
     app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 }
@@ -40,24 +51,4 @@ catch(error) {
 
 main();
 
-
-//// Use connect method to connect to the Server
-//  MongoClient.connect(url, function (err, db) {
-//  if (err) {
-//    console.log('Unable to connect to the mongoDB server. Error:', err);
-//  } else {
-//    console.log('Connection established to', url);
-//    // do some work here with the database.
-//    
-////      function getUsers(res) {
-////        mongodb.connect(url, function(err, db) {
-////            var collection = db.collection('users');
-////            console.log(collection);
-////    });
-// //   }
-//
-//    //Close connection
-//    db.close();
-//  }
-//});
 
