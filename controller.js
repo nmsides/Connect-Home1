@@ -38,9 +38,9 @@ try {
         res.send(JSON.stringify(news))
     });
     
-    app.post('/api/admin/news', async (req, res) => {
-        
-    });
+    //app.post('/api/admin/news', async (req, res) => {
+    //    
+    //});
 
     app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 }

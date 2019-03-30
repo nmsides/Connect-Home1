@@ -3,11 +3,12 @@ import axios from 'axios';
 import "./App.css"
 
 
-const proxyurl = "https://cors-anywhere.herokuapp.com/";
+//const proxyurl = "https://cors-anywhere.herokuapp.com/";
 let allUsers;
 let userNameInput;
 let successfulLogin;
 let thisUser; 
+let url; 
 
 
 //Array.prototype.contains = function(element){
@@ -15,9 +16,11 @@ let thisUser;
 //};
 
 class LoginBox extends Component{
-
     constructor(props){ //react standard
         super(props);
+        
+        if (process.env.REACT_APP_BACKEND_HOST) { url = process.env.REACT_APP_BACKEND_HOST; }
+    else { url = "http://localhost:5000"; }
 
         this.state = {
             u: "",
@@ -47,7 +50,7 @@ class LoginBox extends Component{
       
 
      loadUsers() {
-        return axios.get(proxyurl + "https://connect-home.herokuapp.com/api/users/")
+        return axios.get(url + "/api/users")
             .then(response => {
               this.response = response.data;
               this.setState({all: this.response})
@@ -59,7 +62,7 @@ class LoginBox extends Component{
     getUserNames(){
             let userNameInput = document.getElementById("userNameInput").value;
             let passwordInput = document.getElementById("passwordInput").value;
-            return axios.get(proxyurl + "https://connect-home.herokuapp.com/api/users/")
+            return axios.get(url + "/api/users")
             .then(response => {
             this.response = response.data;
             for(let i = 0; i < response.data.length; i++){
@@ -89,7 +92,7 @@ class LoginBox extends Component{
     //my news function
     getNews() {
         console.log('running');
-        return axios.get("http://localhost:5000/api/news/")
+        return axios.get("http://localhost:5000/api/news")
         .then(response => {
             console.log('inside');
             this.response = response.data; 
