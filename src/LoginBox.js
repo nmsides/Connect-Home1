@@ -79,7 +79,6 @@ class LoginBox extends Component{
                    console.log("username not found");
                 //    break;
                }
-
             }
            
             // store a variable from here and then get it in another page (props?)

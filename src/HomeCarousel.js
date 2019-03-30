@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Carousel from 'react-bootstrap/Carousel'
  
-class Home extends Component {
+class HomeCarousel extends Component {
   render() {
     return (
       <div>
@@ -36,4 +36,4 @@ class Home extends Component {
   }
 }
  
-export default Home;
+export default HomeCarousel;

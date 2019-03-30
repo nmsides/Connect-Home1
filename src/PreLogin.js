@@ -9,7 +9,7 @@ import {
   NavLink,
   HashRouter
 } from "react-router-dom";
-import Home from "./Home";
+import HomeCarousel from "./HomeCarousel";
 import Stuff from "./Stuff";
 import Contact from "./Contact";
 
