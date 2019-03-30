@@ -1,7 +1,7 @@
 //From App Lab
 
 const { ObjectId } = require('mongodb')
-var exports = module.exports = {};
+const exports = {}
 
 exports.isValid = (thing) =>
     typeof thing === 'object' &&
