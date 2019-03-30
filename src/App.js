@@ -4,7 +4,8 @@ import PreLogin from './PreLogin';
 import LoginBox from './LoginBox';
 import PostLogin from './PostLogin';
 import Admin from './Admin';
-
+import Users from './user'; 
+import News from './news';
 
 
 class App extends Component {
@@ -15,9 +16,9 @@ class App extends Component {
       <div id="bod" >
         <div className = "row">
           <div className = "col-sm-12">
-            <LoginBox/>
+        {/* <LoginBox/> */}
            {/* <PostLogin /> */}
-            {/* <Admin/> */}
+             <Admin/> 
             {/* <LoginBox/> */}
           </div>
         </div>

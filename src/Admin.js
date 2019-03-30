@@ -4,7 +4,14 @@ import React, { Component } from "react";
 class Admin extends Component{
     constructor(props){
         super(props);
+        
+        this.newblog = this.newblog.bind(this);
       }
+    
+    newblog() {
+        
+    }
+    
     render() {
         return (
             <div>
