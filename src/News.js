@@ -11,10 +11,10 @@ class News extends Component {
         alert('You clicked the third ListGroupItem');
       }
     return (
-      <div>
+      <div id="newsContainer">
         <h2>News</h2>
         
-        <ul>
+        <ul id='newsDiv'>
           <li className = 'newsBlurb'>
             <div>
                 Connect-Home Pilot (Paper 1+2)

@@ -14,6 +14,7 @@ import HomeCarousel from "./HomeCarousel";
 import Understand from "./Understand";
 import Contact from "./Contact";
 import Services from "./Services";
+import About from "./About";
 
 class PreLogin extends Component{
     constructor(props){
@@ -47,7 +48,7 @@ class PreLogin extends Component{
                         <li><NavLink className="nav-item preNavItem preLink" to="/Understand">Understanding Connect Home</NavLink></li>
                         <li><NavLink className="nav-item preNavItem preLink" to="/Services">Services and Supports</NavLink></li>
                         <li><NavLink className="nav-item preNavItem preLink" to="/News">News</NavLink></li>
-                        <li><NavLink className="nav-item preNavItem preLink" to="/contact">About Us</NavLink></li>
+                        <li><NavLink className="nav-item preNavItem preLink" to="/About">About Us</NavLink></li>
                         <li><NavLink className="nav-item preNavItem preLink" to="/contact">Contact</NavLink></li>
                       </ul>
                     </div>
@@ -58,7 +59,7 @@ class PreLogin extends Component{
                       <Route path="/Understand" component={Understand}/>
                       <Route path="/Services" component={Services}/>
                       <Route path="/News" component={News}/>
-                      <Route path="/contact" component={Contact}/>
+                      <Route path="/About" component={About}/>
                       <Route path="/contact" component={Contact}/>
                     </div>
                   </div>
