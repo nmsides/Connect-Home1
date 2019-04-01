@@ -1,7 +1,7 @@
 //From App Lab
 
 const { ObjectId } = require('mongodb')
-const exports = {}
+//var exports = {};
 
 exports.isValid = (thing) =>
     typeof thing === 'object' &&
@@ -29,3 +29,4 @@ exports.insert = async (db, news_post) => {
 
 exports.deleteAll = async (db) =>
   await news(db).deleteMany({})
+

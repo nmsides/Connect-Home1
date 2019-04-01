@@ -18,10 +18,11 @@ try {
     const dbName = url.match(/\/([^\/]*)$/)[1];
     const client = await MongoClient.connect(url, { useNewUrlParser: true });
     const db = client.db(dbName);
-    const users = require('./user.js') //added
-    const news = require('./news.js') //added
+    const got = require('got');
+    const users = require('./src/user.js') //added
+    const news = require('./src/news.js') //added
 
-    const got = require('got')
+   // const got = require('got')
     
     const express = require('express')
     const app = express()
@@ -45,6 +46,13 @@ try {
     
     app.post('/api/admin/news', async (req, res) => {
         if (!req.is('json') || !news.isValid(req.body)) { 
+      return res.status(400).end()
+    } else {
+      return res.status(200).json(await news.insert(db, req.body))
+    }
+  })
+     app.post('/api/admin/newuser', async (req, res) => {
+        if (!req.is('json') || !users.isValid(req.body)) { 
       return res.status(400).end()
     } else {
       return res.status(200).json(await news.insert(db, req.body))

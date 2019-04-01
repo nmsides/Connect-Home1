@@ -1,21 +1,22 @@
 //From App Lab
 
 const { ObjectId } = require('mongodb')
-const exports = {}
 
 exports.isValid = (thing) =>
     typeof thing === 'object' &&
     thing !== null &&
-    thing.hasOwnProperty('name') &&
+    thing.hasOwnProperty('name_first') &&
+    thing.hasOwnProperty('name_last') &&
     thing.hasOwnProperty('username') &&
     thing.hasOwnProperty('password') &&
     thing.hasOwnProperty('tools_auth') &&
     thing.hasOwnProperty('qi_auth') &&
-    typeof thing.name === 'string' &&
+    typeof thing.name_first === 'string' &&
+    typeof thing.name_last === 'string' &&
     typeof thing.username === 'string' &&
     typeof thing.password === 'string' &&
-    typeof thing.tools_auth === 'array' &&
-    typeof thing.qi_auth === 'array' 
+    typeof thing.tools_auth === 'object' &&
+    typeof thing.qi_auth === 'object' 
 
 const users = (db) => db.collection('users')
 

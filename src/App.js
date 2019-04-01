@@ -4,8 +4,8 @@ import PreLogin from './PreLogin';
 import LoginBox from './LoginBox';
 import PostLogin from './PostLogin';
 import Admin from './Admin';
-import Users from './user'; 
-import News from './news';
+//import Users from './user'; 
+//import News from './news';
 
 
 class App extends Component {

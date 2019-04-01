@@ -1,5 +1,8 @@
 import React, { Component } from "react";
+import axios from 'axios';
 
+const proxyurl = "http://localhost:5000";
+const got = require('got');
 
 class Admin extends Component{
     constructor(props){
@@ -7,9 +10,46 @@ class Admin extends Component{
         
         this.newblog = this.newblog.bind(this);
       }
-    
+
+    componentDidMount() {
+        console.log("hi")
+        this.newblog();
+      }
+
     newblog() {
-        
+        this.createblog(); 
+        this.createuser();
+    }
+
+    createblog() {
+        return axios.post(proxyurl + "/api/admin/news", {
+            date: '01-01-2020', //Must get current date when created
+            title: 'testBlog',
+            body: 'Hello, world!'
+        })
+        .then(function (response) {
+        console.log(response);
+        })
+        .catch(function (error) {
+        console.log(error);
+        })
+    }
+    
+    createuser() {
+         return axios.post(proxyurl + "/api/admin/newuser", {
+            name_first: 'Madison', 
+            name_last: 'Nosidam',
+            username: 'madison', 
+            password: 'madisonpw', 
+            tools_auth: ['MAD', 'ISO', 'N'],
+            qi_auth: ['NOS', 'IDAM']
+        })
+        .then(function (response) {
+        console.log(response);
+        })
+        .catch(function (error) {
+        console.log(error);
+        }) 
     }
     
     render() {
