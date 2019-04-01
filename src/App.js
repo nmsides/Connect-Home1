@@ -61,8 +61,9 @@ class App extends Component {
               </div>
           </HashRouter>
           {/* <PreLogin /> */}
+            {/* <LoginBox/> */}
            {/* <PostLogin /> */}
-            {/* <Admin/> */}
+             <Admin/> 
             {/* <LoginBox/> */}
           </div>
         </div>

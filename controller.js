@@ -18,12 +18,18 @@ try {
     const dbName = url.match(/\/([^\/]*)$/)[1];
     const client = await MongoClient.connect(url, { useNewUrlParser: true });
     const db = client.db(dbName);
-    
+    const got = require('got');
+    const users = require('./src/user.js') //added
+    const news = require('./src/news.js') //added
+
+   // const got = require('got')
     
     const express = require('express')
     const app = express()
     app.use(express.static('build'))
     const port = process.env.PORT || 5000
+    const bodyParser = require('body-parser')
+    app.use(bodyParser.json())
 
     app.get('/api/users', async (req, res) => {
         const collection = db.collection("users"); 
@@ -38,9 +44,20 @@ try {
         res.send(JSON.stringify(news))
     });
     
-    //app.post('/api/admin/news', async (req, res) => {
-    //    
-    //});
+    app.post('/api/admin/news', async (req, res) => {
+        if (!req.is('json') || !news.isValid(req.body)) { 
+      return res.status(400).end()
+    } else {
+      return res.status(200).json(await news.insert(db, req.body))
+    }
+  })
+     app.post('/api/admin/newuser', async (req, res) => {
+        if (!req.is('json') || !users.isValid(req.body)) { 
+      return res.status(400).end()
+    } else {
+      return res.status(200).json(await news.insert(db, req.body))
+    }
+  })
 
     app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 }
