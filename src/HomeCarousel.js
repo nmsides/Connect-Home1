@@ -13,8 +13,9 @@ class HomeCarousel extends Component {
                 alt="First slide"
                 />
                 <Carousel.Caption>
-                <h3>First slide label</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                
+                <p>Connect-Home transitional care prepares older adults and their caregivers 
+                  to manage the older adults' serious illnessess at home.</p>
                 </Carousel.Caption>
             </Carousel.Item>
             <Carousel.Item>
@@ -25,8 +26,8 @@ class HomeCarousel extends Component {
                 />
 
                 <Carousel.Caption>
-                <h3>Second slide label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                <p>Connect-Home develops nursing home staff and leadership capacity to 
+                  prepare older adults to return home safely, and avoid complications when they get there.</p>
                 </Carousel.Caption>
             </Carousel.Item>
             
