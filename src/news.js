@@ -1,32 +1,62 @@
-//From App Lab
+import React, { Component } from "react";
+import ListGroup from 'react-bootstrap/ListGroup';
+import './news.css';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+ 
+class News extends Component {
 
-const { ObjectId } = require('mongodb')
-//var exports = {};
+  render() {
+    function alertClicked() {
+        alert('You clicked the third ListGroupItem');
+      }
+    return (
+      <div id="newsContainer">
+        <h2>News</h2>
+        
+        <ul id='newsDiv'>
+          <li className = 'newsBlurb'>
+            <div>
+                Connect-Home Pilot (Paper 1+2)
+            </div>
+            <div>
+                Date
+            </div>
+            <button>Read More...</button>
+          </li>
+          <li className = 'newsBlurb'>Consultation - </li>
+          <li className = 'newsBlurb'>Consultation - </li>
+          <li className = 'newsBlurb'>Consultation - </li>
+          <li className = 'newsBlurb'>Consultation - </li>
+          <li className = 'newsBlurb'>Consultation - </li>
+        </ul>
+        
 
-exports.isValid = (thing) =>
-    typeof thing === 'object' &&
-    thing !== null &&
-    thing.hasOwnProperty('title') &&
-    thing.hasOwnProperty('body') &&
-    typeof thing.title === 'string' &&
-    typeof thing.body === 'string'
+        {/* <ListGroup variant = "flush">
+            <ListGroup.Item action href="#link1">
+            Link 1
+            </ListGroup.Item>
+            <ListGroup.Item action href="#link2" >
+            Link 2
+            </ListGroup.Item>
+            <ListGroup.Item action>This one is a button</ListGroup.Item>
+        </ListGroup>
 
-const news = (db) => db.collection('news')
+        <Card>
+            <Card.Header>Featured</Card.Header>
+            <Card.Body>
+                <Card.Title>Special title treatment</Card.Title>
+                <Card.Text>
+                With supporting text below as a natural lead-in to additional content.
+                </Card.Text>
+                <Button variant="primary">Go somewhere</Button>
+            </Card.Body>
+        </Card> */}
 
-exports.all = async (db) =>
-  await news(db).find().toArray()
-
-exports.findById = async (db, id) =>
-  await news(db).findOne(ObjectId(id))
-
-const addTimestamp = (news_post) => Object.assign({}, news_post, {date: Date.now()})
-
-exports.insert = async (db, news_post) => {
-  let newNews = addTimestamp(news_post)
-  await news(db).insertOne(newNews)
-  return newNews
+        
+      </div>
+    );
+  }
 }
-
-exports.deleteAll = async (db) =>
-  await news(db).deleteMany({})
-
+ 
+export default News;
