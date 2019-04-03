@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from 'axios';
 
 const proxyurl = "http://localhost:5000";
-const got = require('got');
+// const got = require('got');
 
 class Admin extends Component{
     constructor(props){

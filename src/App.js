@@ -10,7 +10,6 @@ import {
   HashRouter
 } from "react-router-dom";
 import HomeCarousel from "./HomeCarousel";
-import Stuff from "./Stuff";
 import Contact from "./Contact";
 import LoginButton from './LoginButton';
 

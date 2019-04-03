@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import './App.css';
+import './App.css';
 import LoginBox from './LoginBox';
 import PostLogin from './PostLogin';
 import Admin from './Admin';
@@ -11,23 +11,58 @@ import {
   HashRouter
 } from "react-router-dom";
 import HomeCarousel from "./HomeCarousel";
-import Stuff from "./Stuff";
 import Understand from "./Understand";
 import Contact from "./Contact";
 import Services from "./Services";
 import About from "./About";
+import Files from 'react-files'
+
+class FilesDemo extends Component{
+  constructor(props){
+    super(props);
+
+  }
+  onFilesChange(files) {
+    console.log(files)
+  }
+ 
+  onFilesError(error, file) {
+    console.log('error code ' + error.code + ': ' + error.message)
+  }
+ 
+  render() {
+    return (
+      <div className="files">
+        <Files
+          className='files-dropzone'
+          onChange={this.onFilesChange}
+          onError={this.onFilesError}
+          accepts={['image/png', '.pdf', 'audio/*']}
+          multiple
+          maxFiles={3}
+          maxFileSize={10000000}
+          minFileSize={0}
+          clickable
+        >
+          Drop files here or click to upload
+        </Files>
+      </div>
+    )
+  }
+};
 
 class PreLogin extends Component{
     constructor(props){
         super(props);
 
       }
+
     render() {
         return (
           <div id="bod" >
           <div className = "row">
             <div className = "col-sm-12">
-              
+            <FilesDemo/>
               <HashRouter>
                 <div>
                 <div className = "row" id="preLogLogoDiv">

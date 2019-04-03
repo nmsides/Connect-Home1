@@ -18,9 +18,9 @@ try {
     const dbName = url.match(/\/([^\/]*)$/)[1];
     const client = await MongoClient.connect(url, { useNewUrlParser: true });
     const db = client.db(dbName);
-    const got = require('got');
+    // const got = require('got');
     const users = require('./src/user.js') //added
-    const news = require('./src/news.js') //added
+    // const news = require('./src/news.js') //added
 
    // const got = require('got')
     

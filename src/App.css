@@ -36,7 +36,12 @@ html{
 
 /* Pre Login */
 
-
+.files{
+  border: solid black;
+  background-color: lightblue;
+  padding: 2em;
+  width: 25%;
+}
 
 .preNavItem:hover {
   opacity: 0.7;
