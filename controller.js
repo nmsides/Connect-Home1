@@ -19,8 +19,8 @@ try {
     const client = await MongoClient.connect(url, { useNewUrlParser: true });
     const db = client.db(dbName);
     // const got = require('got');
-    const users = require('./src/user.js') //added
-    // const news = require('./src/news.js') //added
+    const users = require('./src/user_bk.js') //added
+    const news = require('./src/news_bk.js') //added
 
    // const got = require('got')
     
@@ -55,7 +55,7 @@ try {
         if (!req.is('json') || !users.isValid(req.body)) { 
       return res.status(400).end()
     } else {
-      return res.status(200).json(await news.insert(db, req.body))
+      return res.status(200).json(await users.insert(db, req.body))
     }
   })
 
