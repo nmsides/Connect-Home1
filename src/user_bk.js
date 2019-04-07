@@ -18,6 +18,13 @@ exports.isValid = (thing) =>
     typeof thing.tools_auth === 'object' &&
     typeof thing.qi_auth === 'object' 
 
+exports.userValid = (thing) =>
+    typeof thing === 'object' &&
+    thing.hasOwnProperty('tools_auth') &&
+    thing.hasOwnProperty('qi_auth') &&
+    typeof thing.tools_auth === 'object' &&
+    typeof thing.qi_auth === 'object' 
+
 const users = (db) => db.collection('users')
 
 exports.all = async (db) =>
@@ -30,6 +37,12 @@ exports.findByUsername = async (db, username) =>
   await users(db).find({username: username}).toArray()
 
 //const addTimestamp = (tweet) => Object.assign({}, tweet, {timestamp: Date.now()})
+
+exports.insert = async (db, user) => {
+  //let newUser = addTimestamp(tweet)
+  await users(db).insertOne(user)
+  return user
+}
 
 exports.insert = async (db, user) => {
   //let newUser = addTimestamp(tweet)

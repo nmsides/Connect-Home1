@@ -18,8 +18,8 @@ try {
     const dbName = url.match(/\/([^\/]*)$/)[1];
     const client = await MongoClient.connect(url, { useNewUrlParser: true });
     const db = client.db(dbName);
-    const users = require('./src/user_bk.js') //added
-    const news = require('./src/news_bk.js') //added
+    const users = require('./src/user_bk.js')
+    const news = require('./src/news_bk.js')
     
     const express = require('express')
     const app = express()
@@ -53,6 +53,20 @@ try {
         res.send(JSON.stringify(qis)) //Returns array of all tools
   });
     
+//    //PUT
+//    app.put('/api/admin/user', async (req, res) => {
+//    const body = req.body
+//    if (!req.is('json') || !users.userValid(body)) {
+//      return res.status(400).end()
+//    } else if (!(await users.findById(db, body.id))) {
+//      return res.status(404).end()
+//    } else {
+//      await users.insert(db, body)
+//      return res.status(200).json(body)
+//    }
+//  })
+
+    
     app.post('/api/admin/news', async (req, res) => {
         if (!req.is('json') || !news.isValid(req.body)) { 
       return res.status(400).end()
@@ -60,6 +74,7 @@ try {
       return res.status(200).json(await news.insert(db, req.body))
     }
   })
+    
      app.post('/api/admin/newuser', async (req, res) => {
         if (!req.is('json') || !users.isValid(req.body)) { 
       return res.status(400).end()
