@@ -1,17 +1,19 @@
 import React, { Component } from "react";
 import axios from 'axios';
 
-//const proxyurl = "http://localhost:5000";
-// const got = require('got');
+let proxyurl;
+let user_tools; 
 
 class Admin extends Component{
+    
     constructor(props){
         super(props);
         
-    if (process.env.REACT_APP_BACKEND_HOST) { url = process.env.REACT_APP_BACKEND_HOST; }
-    else { url = "http://localhost:5000"; }
+    if (process.env.REACT_APP_BACKEND_HOST) { proxyurl = process.env.REACT_APP_BACKEND_HOST; }
+    else { proxyurl = "http://localhost:5000"; }
         
         this.newblog = this.newblog.bind(this);
+        
       }
 
     componentDidMount() {
@@ -20,8 +22,10 @@ class Admin extends Component{
       }
 
     newblog() {
-        this.createblog(); 
-        this.createuser();
+        //this.createblog(); 
+        //this.createuser();
+        this.getTools();
+        this.getQiTools();
     }
 
     createblog() {
@@ -49,10 +53,32 @@ class Admin extends Component{
         })
         .then(function (response) {
         console.log(response);
+        console.log("user's tools!: " + response.data.tools_auth);
+        user_tools = response.data.tools_auth; 
+             
         })
         .catch(function (error) {
         console.log(error);
         }) 
+    }
+    
+    getTools() { //This returns ALL tools keys
+        return axios.get(proxyurl + '/api/admin/tools')
+            .then(function(response) {
+                for(let i = 0; i < response.data.length; i++){
+                console.log(response.data[i].key)
+            }
+                
+        })
+    }
+    
+    getQiTools() { //This returns ALL qi tools keys
+        return axios.get(proxyurl + '/api/admin/qi')
+            .then(function(response) {
+                for(let i = 0; i < response.data.length; i++){
+                console.log(response.data[i].key)
+            }    
+        })
     }
     
     render() {
