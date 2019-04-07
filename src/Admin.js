@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import axios from 'axios';
 
-const proxyurl = "http://localhost:5000";
+//const proxyurl = "http://localhost:5000";
 // const got = require('got');
 
 class Admin extends Component{
     constructor(props){
         super(props);
+        
+    if (process.env.REACT_APP_BACKEND_HOST) { url = process.env.REACT_APP_BACKEND_HOST; }
+    else { url = "http://localhost:5000"; }
         
         this.newblog = this.newblog.bind(this);
       }
