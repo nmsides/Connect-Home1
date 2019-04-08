@@ -33,13 +33,6 @@ let allUsers;
 let userNameInput;
 let successfulLogin;
 
-// const state = {
-//     u: "",
-//     p: "",
-//     all: "",
-//     isLoggedIn: false
-// }
-
 Array.prototype.contains = function(element){
     return this.indexOf(element) > -1;
 };
@@ -69,7 +62,6 @@ class LoginBox extends Component{
         let userNameInput = document.getElementById("userNameInput").value;
         this.getUserNames();
         // this.successLog();
-        this.props.handler;
       }
 
       componentDidMount() {
@@ -147,8 +139,8 @@ class LoginBox extends Component{
                      {/* <img src="stock-profile.jpg"/> */}
                      
                      <div><input type="text"  id='userNameInput' placeholder="Email" /></div>
-                     <div><input type="text"  placeholder="Password" id='passwordInput'/></div>
-                     <button type="button" className="btn" id="loginBtn" onClick={this.checkUserName}>Login</button>
+                     <div><input type="text"  placeholder="Password" id='passwordInput' onChange={this.checkUserName}/></div>
+                     <button type="button" className="btn" id="loginBtn">Login</button>
  
                      </div>
                     {/* <this.successLog/> */}
@@ -193,17 +185,13 @@ class LoginBox extends Component{
       }
     };
     
-    
+     //End Login Box
     class PreLogin extends Component{
         constructor(props){
             super(props);
     
           }
-          handler(){
-            this.setState({
-              someVar: someValue
-            })
-          }
+          
         render() {
             return (
               <div id="bod" >
@@ -238,7 +226,7 @@ class LoginBox extends Component{
                       
                         <div className = 'col-sm-7'>
                           <Route exact path="/" component={HomeCarousel}/>
-                          <Route path="/LoginBox" component={<LoginBox {...this.handler} />}/>
+                          <Route path="/LoginBox" component={LoginBox}/>
                           <Route path="/Understand" component={Understand}/>
                           <Route path="/Services" component={Services}/>
                           <Route path="/News" component={News}/>
@@ -257,15 +245,11 @@ class LoginBox extends Component{
     }
     //End PreLogin
 
-    //End Login Box
+   
 class App extends Component {
 
   constructor(props){
     super(props);
-
-    this.state = {
-     a: ""
-  }
 
   this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
 
@@ -282,11 +266,7 @@ class App extends Component {
     
   //   this.successLog();
 }
-handler(){
-  this.setState({
-    a: "a"
-  })
-}
+
   render() {
     console.log(gState.isLoggedIn);
     if(gState.isLoggedIn){
@@ -294,7 +274,7 @@ handler(){
     }else{
       return(
       <div>
-        <PreLogin handler={this.handler}/>
+        <PreLogin/> 
         <button onClick= {this.forceUpdateHandler} >Proceed to Portal</button>
       </div>
       )
