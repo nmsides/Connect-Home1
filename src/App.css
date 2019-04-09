@@ -235,7 +235,7 @@ html{
 .verticalNav {
   padding-left: 2em;
   background-color: #5282bc;
-  border-radius: 1em; 
+  border-radius: 1em;
 }
 
 .preNavItem {
@@ -248,10 +248,10 @@ html{
   background-color: #5282bc;
   width: 100px;
   text-align: left;
-  font-size: 28px; 
-  border-radius: 2%; 
+  font-size: 28px;
+  border-radius: 2%;
   padding: .1em;
- } 
+ }
 
 /* Post Login */
 

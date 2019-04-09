@@ -3,7 +3,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 import './news.css';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
- 
+
 class News extends Component {
 
   render() {
@@ -13,7 +13,7 @@ class News extends Component {
     return (
       <div id="newsContainer">
         <h2>News</h2>
-        
+
         <ul id='newsDiv'>
           <li className = 'newsBlurb'>
             <div>
@@ -30,7 +30,7 @@ class News extends Component {
           <li className = 'newsBlurb'>Consultation - </li>
           <li className = 'newsBlurb'>Consultation - </li>
         </ul>
-        
+
 
         {/* <ListGroup variant = "flush">
             <ListGroup.Item action href="#link1">
@@ -53,10 +53,10 @@ class News extends Component {
             </Card.Body>
         </Card> */}
 
-        
+
       </div>
     );
   }
 }
- 
+
 export default News;

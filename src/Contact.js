@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
- 
+
 class Contact extends Component {
 
-  
-                
-          
+
+
+
   render() {
     return (
       <div>
@@ -54,5 +54,5 @@ class Contact extends Component {
     );
   }
 }
- 
+
 export default Contact;

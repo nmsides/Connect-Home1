@@ -31,7 +31,7 @@ class PostLogin extends Component{
                         <div class="verticalNav">
                           <ul class="nav flex-column">
                             <li class="nav-item preNavItem">
-                              <a class="preLink" href="#">Overview</a>C
+                              <a class="preLink" href="#">Overview</a>
                             </li>
                             <li class="nav-item preNavItem">
                               <a class="preLink" href="#">Calendar</a>

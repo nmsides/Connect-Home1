@@ -7,8 +7,8 @@ import "./App.css"
 let allUsers;
 let userNameInput;
 let successfulLogin;
-let thisUser; 
-let url; 
+let thisUser;
+let url;
 
 
 //Array.prototype.contains = function(element){
@@ -18,9 +18,12 @@ let url;
 class LoginBox extends Component{
     constructor(props){ //react standard
         super(props);
-        
-        if (process.env.REACT_APP_BACKEND_HOST) { url = process.env.REACT_APP_BACKEND_HOST; }
-    else { url = "http://localhost:5000"; }
+
+        if (process.env.REACT_APP_BACKEND_HOST) {
+          url = process.env.REACT_APP_BACKEND_HOST;
+        } else {
+          url = "http://localhost:5000";
+        }
 
         this.state = {
             u: "",
@@ -30,24 +33,25 @@ class LoginBox extends Component{
         }
 
         this.checkUserName = this.checkUserName.bind(this); //react must bind this
+        this.loadUsers = this.loadUsers.bind(this);
       }
 
       checkUserName(){
         //let userNameInput = document.getElementById("userNameInput").value;
         this.getUserNames();
-        
+
       }
 
       componentDidMount() {
         console.log(this.state.isLoggedIn)
         this.loadUsers();
-        this.getNews(); 
+        this.getNews();
       }
 
       componentDidUpdate(){
           //console.log('updated');
       }
-      
+
 
      loadUsers() {
         return axios.get(url + "/api/users")
@@ -73,7 +77,7 @@ class LoginBox extends Component{
                        let successfulLogin = true;
                        this.setState({isLoggedIn: true})
                        thisUser = response.data[i]._id; //Added to then pass to new page
-                       break; //listen to the state and then load new page 
+                       break; //listen to the state and then load new page
                    }else{
                        console.log("password incorrect");
                        break;
@@ -83,20 +87,20 @@ class LoginBox extends Component{
                 //    break;
                }
             }
-           
+
             // store a variable from here and then get it in another page (props?)
             return this.response.data});
         }
-    
+
     //my news function
     getNews() {
         console.log('running');
         return axios.get("http://localhost:5000/api/news")
         .then(response => {
             console.log('inside');
-            this.response = response.data; 
+            this.response = response.data;
             for(let i = 0; i < response.data.length; i++) {
-                console.log(response.data[i]); 
+                console.log(response.data[i]);
             }
         });
     }
@@ -107,11 +111,11 @@ class LoginBox extends Component{
             <div id="loginBox">
                  <div className="input-group" id = "logInput">
                      {/* <img src="stock-profile.jpg"/> */}
-                     
+
                      <div><input type="text"  id='userNameInput' placeholder="Email" /></div>
                      <div><input type="text"  placeholder="Password" id='passwordInput'/></div>
                      <button type="button" className="btn" id="loginBtn" onClick={this.checkUserName}>Login</button>
- 
+
                      </div>
                     {/* <this.successLog/> */}
                  </div>
@@ -119,7 +123,7 @@ class LoginBox extends Component{
     }
     }
 
-   
-    
+
+
 
 export default LoginBox;

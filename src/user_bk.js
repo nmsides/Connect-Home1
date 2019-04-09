@@ -16,14 +16,14 @@ exports.isValid = (thing) =>
     typeof thing.username === 'string' &&
     typeof thing.password === 'string' &&
     typeof thing.tools_auth === 'object' &&
-    typeof thing.qi_auth === 'object' 
+    typeof thing.qi_auth === 'object'
 
 exports.userValid = (thing) =>
     typeof thing === 'object' &&
     thing.hasOwnProperty('tools_auth') &&
     thing.hasOwnProperty('qi_auth') &&
     typeof thing.tools_auth === 'object' &&
-    typeof thing.qi_auth === 'object' 
+    typeof thing.qi_auth === 'object'
 
 const users = (db) => db.collection('users')
 
