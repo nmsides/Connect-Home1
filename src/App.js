@@ -48,6 +48,7 @@ class LoginBox extends Component{
         }
 
         this.checkUserName = this.checkUserName.bind(this);
+        this.getUserNames = this.getUserNames.bind(this);
         this.forceUpdateHandler = this.forceUpdateHandler.bind(this);
         // this.successLog = this.successLog.bind(this);
       }
@@ -137,7 +138,7 @@ class LoginBox extends Component{
                      {/* <img src="stock-profile.jpg"/> */}
                      
                      <div><input type="text"  id='userNameInput' placeholder="Email" /></div>
-                     <div><input type="text"  placeholder="Password" id='passwordInput' onChange={this.checkUserName}/></div>
+                     <div><input type="text"  placeholder="Password" id='passwordInput' onChange={this.getUserNames}/></div>
                      <button type="button" className="btn" id="loginBtn">Login</button>
  
                      </div>
