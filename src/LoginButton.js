@@ -13,14 +13,14 @@ class LoginButton extends Component{
       }
     render() {
         return (
-            
+
            <div>
                 <button id="loginBtn" ><NavLink exact to="/LoginBox">Login</NavLink></button>
                 <div>
                     <Route exact path="/LoginBox" component={LoginBox}/>
                 </div>
             </div>
-            
+
         );
     }
 }

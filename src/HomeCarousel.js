@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Carousel from 'react-bootstrap/Carousel'
- 
+
 class HomeCarousel extends Component {
   render() {
     return (
@@ -13,8 +13,8 @@ class HomeCarousel extends Component {
                 alt="First slide"
                 />
                 <Carousel.Caption>
-                
-                <p>Connect-Home transitional care prepares older adults and their caregivers 
+
+                <p>Connect-Home transitional care prepares older adults and their caregivers
                   to manage the older adults' serious illnessess at home.</p>
                 </Carousel.Caption>
             </Carousel.Item>
@@ -26,15 +26,15 @@ class HomeCarousel extends Component {
                 />
 
                 <Carousel.Caption>
-                <p>Connect-Home develops nursing home staff and leadership capacity to 
+                <p>Connect-Home develops nursing home staff and leadership capacity to
                   prepare older adults to return home safely, and avoid complications when they get there.</p>
                 </Carousel.Caption>
             </Carousel.Item>
-            
+
         </Carousel>
       </div>
     );
   }
 }
- 
+
 export default HomeCarousel;
