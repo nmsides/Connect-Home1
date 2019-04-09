@@ -27,7 +27,7 @@ try {
     const port = process.env.PORT || 5000
     const bodyParser = require('body-parser')
     app.use(bodyParser.json())
-
+    
     app.get('/api/users', async (req, res) => {
         const collection = db.collection("users"); 
         const users = await collection.find().toArray();
@@ -56,7 +56,8 @@ try {
 //    //PUT
 //    app.put('/api/admin/user', async (req, res) => {
 //    const body = req.body
-//    if (!req.is('json') || !users.userValid(body)) {
+//    console.log(req.body._id);
+//    if (!req.is('json')) {// || !users.userValid(body)) {
 //      return res.status(400).end()
 //    } else if (!(await users.findById(db, body.id))) {
 //      return res.status(404).end()
@@ -83,7 +84,7 @@ try {
     }
   })
 
-    app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+    app.listen(port, () => console.log(`Example app listening on port ${port}!`)) 
 }
 catch(error) {
     console.log('Unable to connect to the mongoDB server. Error:', error);
