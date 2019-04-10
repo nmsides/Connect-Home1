@@ -3,11 +3,10 @@ import axios from 'axios';
 
 let proxyurl;
 let user_tools;
-const updateMe = {
-    id: "5c801843e7179a3e36e2a7d3",
-    tools_auth: ["Y"],
-    qi_auth: ["Q"]
-}
+
+const my_id= "5c801843e7179a3e36e2a7d3";
+const tools_auth= ["Y", "Y"];
+const qi_auth= ["Q", "Q"];
 
 class Admin extends Component{
 
@@ -31,7 +30,7 @@ class Admin extends Component{
         //this.createuser();
         this.getTools();
         //this.getQiTools();
-        //this.updateArrays();
+        this.updateArrays();
     }
 
     createblog() {
@@ -88,12 +87,16 @@ class Admin extends Component{
     }
 
 
-//    updateArrays() {
-//        return axios.put(proxyurl + '/api/admin/user', {body: updateMe})
-//        .then(function(response) {
-//            console.log(response);
-//        })
-//    }
+    updateArrays() {
+        return axios.put(proxyurl + '/api/admin/user', {
+            _id: my_id, 
+            tools_auth: tools_auth, 
+            qi_auth: qi_auth 
+        })
+        .then(function(response) {
+            console.log(response);
+        })
+    }
 
 
     render() {

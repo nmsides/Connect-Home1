@@ -27,6 +27,7 @@ try {
     const port = process.env.PORT || 5000
     const bodyParser = require('body-parser')
     app.use(bodyParser.json())
+    //const usersdb = (db) => db.collection('users')
     
     app.get('/api/users', async (req, res) => {
         const collection = db.collection("users"); 
@@ -53,19 +54,24 @@ try {
         res.send(JSON.stringify(qis)) //Returns array of all tools
   });
     
-//    //PUT
-//    app.put('/api/admin/user', async (req, res) => {
-//    const body = req.body
-//    console.log(req.body._id);
-//    if (!req.is('json')) {// || !users.userValid(body)) {
-//      return res.status(400).end()
-//    } else if (!(await users.findById(db, body.id))) {
-//      return res.status(404).end()
-//    } else {
-//      await users.insert(db, body)
-//      return res.status(200).json(body)
-//    }
-//  })
+    //PUT USER TO STORE ARRAYS
+    app.put('/api/admin/user', async (req, res) => {
+    const body = req.body
+    
+    if (!req.is('json') || !users.userValid(body)) {
+      return res.status(400).end()
+    } else if (!(await users.findById(db, body._id))) {
+      return res.status(404).end()
+    } else {
+        var myquery = { _id: mongodb.ObjectID(body._id) };
+        var newvalues = { $set: { tools_auth: body.tools_auth, qi_auth: body.qi_auth } };
+      await db.collection("users").updateOne(myquery, newvalues, function(err, res) {
+        if (err) throw err;
+        console.log("1 document updated");
+    })
+        return res.status(200).json(body)
+    }
+  })
 
     
     app.post('/api/admin/news', async (req, res) => {
