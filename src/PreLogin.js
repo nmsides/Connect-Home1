@@ -172,7 +172,9 @@ class PreLogin extends Component{
                       </div>
                       <div className = "col-sm-4">
                           <div id="preInfoText">
-                              <p className="text-black-50">Information: "Lorem ipsum dolor sit amcitation ullamco laboris nisi uodo cepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+                              <p className="text-black-50">Information: "Lorem ipsum dolor sit amcitation ullamco laboris 
+                              nisi uodo cepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+                              deserunt mollit anim id est laborum."</p>
                           </div>
                       </div>
                       {/* <LoginButton/> */}
