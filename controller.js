@@ -27,7 +27,7 @@ try {
     const port = process.env.PORT || 5000
     const bodyParser = require('body-parser')
     app.use(bodyParser.json())
-    //const usersdb = (db) => db.collection('users')
+
     
     app.get('/api/users', async (req, res) => {
         const collection = db.collection("users"); 
@@ -73,6 +73,24 @@ try {
     }
   })
 
+    //PUT NEWS TO UPDATE BODY TEXT
+    app.put('/api/admin/updateNews', async (req, res) => {
+    const body = req.body
+    console.log(body);
+    if (!req.is('json') || !news.updateValid(body)) {
+      return res.status(400).end()
+    } else if (!(await news.findById(db, body._id))) {
+      return res.status(404).end()
+    } else {
+        var myquery = { _id: mongodb.ObjectID(body._id) };
+        var newvalues = { $set: { body: body.body } };
+      await db.collection("news").updateOne(myquery, newvalues, function(err, res) {
+        if (err) throw err;
+        console.log("1 news doc updated");
+    })
+        return res.status(200).json(body)
+    }
+  })
     
     app.post('/api/admin/news', async (req, res) => {
         if (!req.is('json') || !news.isValid(req.body)) { 
@@ -90,6 +108,22 @@ try {
     }
   })
 
+//Deleting blog posts (This is a post but it does DELETE!)    
+    app.post('/api/admin/deleteNews', async(req, res) => {
+        const body = req.body
+        console.log(body);
+        await db.collection("news").deleteOne({
+            _id: mongodb.ObjectID(body._id) 
+            }, function(err){
+                if (err) {
+                    console.log(err)
+            }
+            else {
+                return res.status(200).json(body)
+            }
+        });    
+    })
+    
     app.listen(port, () => console.log(`Example app listening on port ${port}!`)) 
 }
 catch(error) {

@@ -11,6 +11,11 @@ exports.isValid = (thing) =>
     typeof thing.title === 'string' &&
     typeof thing.body === 'string'
 
+exports.updateValid = (thing) =>
+    typeof thing === 'object' &&
+    thing.hasOwnProperty('body') &&
+    typeof thing.body === 'string'
+
 const news = (db) => db.collection('news')
 
 exports.all = async (db) =>

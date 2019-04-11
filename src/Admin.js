@@ -4,9 +4,14 @@ import axios from 'axios';
 let proxyurl;
 let user_tools;
 
+//User Test Info for PUT
 const my_id= "5c801843e7179a3e36e2a7d3";
 const tools_auth= ["Y", "Y"];
 const qi_auth= ["Q", "Q"];
+
+//News Test Info for PUT
+const news_id= "5cae5aeee7179a36ac343158";
+const news_body= "This is the updated text!";
 
 class Admin extends Component{
 
@@ -30,7 +35,9 @@ class Admin extends Component{
         //this.createuser();
         this.getTools();
         //this.getQiTools();
-        this.updateArrays();
+        //this.updateArrays();
+        //this.updateNewsPost();
+        this.deleteNewsPost();
     }
 
     createblog() {
@@ -92,6 +99,25 @@ class Admin extends Component{
             _id: my_id, 
             tools_auth: tools_auth, 
             qi_auth: qi_auth 
+        })
+        .then(function(response) {
+            console.log(response);
+        })
+    }
+    
+    updateNewsPost() {
+        return axios.put(proxyurl + '/api/admin/updateNews', {
+            _id: news_id, 
+            body: news_body
+        })
+        .then(function(response) {
+            console.log(response);
+        })
+    }
+    
+    deleteNewsPost(thisid) {
+        return axios.post(proxyurl + '/api/admin/deleteNews', {
+            _id: news_id
         })
         .then(function(response) {
             console.log(response);
