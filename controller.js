@@ -93,6 +93,7 @@ try {
   })
     
     app.post('/api/admin/news', async (req, res) => {
+        //console.log(req.body);
         if (!req.is('json') || !news.isValid(req.body)) { 
       return res.status(400).end()
     } else {

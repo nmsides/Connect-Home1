@@ -6,12 +6,23 @@ let user_tools;
 
 //User Test Info for PUT
 const my_id= "5c801843e7179a3e36e2a7d3";
-const tools_auth= ["Y", "Y"];
-const qi_auth= ["Q", "Q"];
+const tools_auth= ["M", "B"];
+const qi_auth= ["M", "B"];
 
 //News Test Info for PUT
-const news_id= "5cae5aeee7179a36ac343158";
-const news_body= "This is the updated text!";
+const news_id= "5cb25457e7179a36ac35c113";
+const news_title = "Test title 13";
+const news_body= "Testing updating feature";
+var today = new Date();
+const date = today.getMonth()+1 + '-' + today.getDate() + '-' + today.getFullYear();
+
+//User Test Info for POST
+const my_first = "Fred";
+const my_last = "Rogers";
+const my_user = "mrrogers";
+const my_pass = "neighbor";
+const my_tools = ["MRR", "OGE"];
+const my_qi = ["HEL", "LLO"];
 
 class Admin extends Component{
 
@@ -31,20 +42,21 @@ class Admin extends Component{
       }
 
     newblog() {
-        //this.createblog();
-        //this.createuser();
-        this.getTools();
+        //this.createNews(news_title, news_body);
+        //this.createuser(my_first, my_last, my_user, my_pass, my_tools, my_qi);
+        //this.getTools();
         //this.getQiTools();
-        //this.updateArrays();
-        //this.updateNewsPost();
-        this.deleteNewsPost();
+        //this.updateArrays(my_id, tools_auth, qi_auth);
+        //this.updateNewsPost(news_id, news_body);
+        //this.deleteNewsPost(news_id);
     }
 
-    createblog() {
+    createNews(news_title, news_body) {
+        //console.log(date);
         return axios.post(proxyurl + "/api/admin/news", {
-            date: '01-01-2020', //Must get current date when created
-            title: 'testBlog',
-            body: 'Hello, world!'
+            date: new Date(),
+            title: news_title,
+            body: news_body
         })
         .then(function (response) {
         console.log(response);
@@ -54,14 +66,14 @@ class Admin extends Component{
         })
     }
 
-    createuser() {
+    createuser(first, last, user, pass, tools, qi) {
          return axios.post(proxyurl + "/api/admin/newuser", {
-            name_first: 'Madison',
-            name_last: 'Nosidam',
-            username: 'madison',
-            password: 'madisonpw',
-            tools_auth: ['MAD', 'ISO', 'N'],
-            qi_auth: ['NOS', 'IDAM']
+            name_first: first,
+            name_last: last,
+            username: user,
+            password: pass,
+            tools_auth: tools,
+            qi_auth: qi
         })
         .then(function (response) {
         console.log(response);
@@ -94,21 +106,21 @@ class Admin extends Component{
     }
 
 
-    updateArrays() {
+    updateArrays(id, tools, qis) {
         return axios.put(proxyurl + '/api/admin/user', {
-            _id: my_id, 
-            tools_auth: tools_auth, 
-            qi_auth: qi_auth 
+            _id: id, 
+            tools_auth: tools, 
+            qi_auth: qis 
         })
         .then(function(response) {
             console.log(response);
         })
     }
     
-    updateNewsPost() {
+    updateNewsPost(id, body) {
         return axios.put(proxyurl + '/api/admin/updateNews', {
-            _id: news_id, 
-            body: news_body
+            _id: id, 
+            body: body
         })
         .then(function(response) {
             console.log(response);
@@ -117,7 +129,7 @@ class Admin extends Component{
     
     deleteNewsPost(thisid) {
         return axios.post(proxyurl + '/api/admin/deleteNews', {
-            _id: news_id
+            _id: thisid
         })
         .then(function(response) {
             console.log(response);
