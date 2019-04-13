@@ -42,7 +42,7 @@ class App extends Component {
         );
       } else {
         return (
-          <Admin /> //For testing
+          <PostLogin /> 
         );
       }
   }
