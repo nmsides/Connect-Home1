@@ -86,21 +86,21 @@ class Admin extends Component{
         })
     }
 
-    getTools() { //This returns ALL tools keys
+    getTools() { //This returns ALL tools name + keys
         return axios.get(proxyurl + '/api/admin/tools')
             .then(function(response) {
                 for(let i = 0; i < response.data.length; i++){
-                console.log(response.data[i].key)
+                console.log(response.data[i].name + ' ' + response.data[i].key)
             }
 
         })
     }
 
-    getQiTools() { //This returns ALL qi tools keys
+    getQiTools() { //This returns ALL qi tools name + keys
         return axios.get(proxyurl + '/api/admin/qi')
             .then(function(response) {
                 for(let i = 0; i < response.data.length; i++){
-                console.log(response.data[i].key)
+                console.log(response.data[i].name + ' ' + response.data[i].key)
             }
         })
     }
