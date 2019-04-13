@@ -146,13 +146,11 @@ class PreLogin extends Component{
 
   //my news function
   getNews() {
-      console.log('running');
       return axios.get("http://localhost:5000/api/news")
       .then(response => {
-          console.log('inside');
           this.response = response.data;
-          for(let i = 0; i < response.data.length; i++) {
-              console.log(response.data[i]);
+          for(let i = response.data.length - 1; i > -1; i--) {
+              console.log(response.data[i]); //Getting news in order by most current
           }
       });
   }
