@@ -1,5 +1,15 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import {
+  Route,
+  NavLink,
+  HashRouter
+} from "react-router-dom";
+import AddUser from "./AddUser";
+import BlogPost from "./BlogPost";
+import HomeCarousel from "./HomeCarousel";
+import ConfigureUsers from "./ConfigureUsers";
+import OldPosts from "./OldPosts";
 
 let proxyurl;
 let user_tools;
@@ -108,25 +118,25 @@ class Admin extends Component{
 
     updateArrays(id, tools, qis) {
         return axios.put(proxyurl + '/api/admin/user', {
-            _id: id, 
-            tools_auth: tools, 
-            qi_auth: qis 
+            _id: id,
+            tools_auth: tools,
+            qi_auth: qis
         })
         .then(function(response) {
             console.log(response);
         })
     }
-    
+
     updateNewsPost(id, body) {
         return axios.put(proxyurl + '/api/admin/updateNews', {
-            _id: id, 
+            _id: id,
             body: body
         })
         .then(function(response) {
             console.log(response);
         })
     }
-    
+
     deleteNewsPost(thisid) {
         return axios.post(proxyurl + '/api/admin/deleteNews', {
             _id: thisid
@@ -152,22 +162,32 @@ class Admin extends Component{
                 <div className="spacingDiv"></div>
 
                 <h1>Admin Page</h1>
-                <div className = "row">
-                    <div className = "col-sm-5">
-                        <ul className="list-group" id = "AdminToolList">
-                            <li className="list-group-item"><button className = "btn">Edit Contact Info</button></li>
-                            <li className="list-group-item"><button className = "btn">Edit Research Publications</button></li>
-                            <li className="list-group-item"><button className = "btn">Post Videos</button></li>
-                            <li className="list-group-item"><button className = "btn">Edit Tools</button></li>
-                            <li className="list-group-item"><button className = "btn">View QI Meetings</button></li>
-                            <li className="list-group-item"><button className = "btn">Edit Sponsors</button></li>
-                        </ul>
+                <div>
+                  <HashRouter>
+                    <div>
+                      <div className = 'row'>
+                        <div className = 'col-sm-5 preLinks'>
+                          <ul className="verticalNav nav flex-column">
+                            <li><NavLink className="nav-item preNavItem preLink" exact to="/">Home</NavLink></li>
+                            <li><NavLink className="nav-item preNavItem preLink" to="/AddUser">Add User</NavLink></li>
+                            <li><NavLink className="nav-item preNavItem preLink" to="/BlogPost">Update Blog</NavLink></li>
+
+                            <li><NavLink className="nav-item preNavItem preLink" to="/ConfigureUsers">Configure Users</NavLink></li>
+                          </ul>
+                        </div>
+
+                        <div className = 'col-sm-7'>
+                          <Route exact path="/" component={HomeCarousel}/>
+                          <Route path="/AddUser" component={AddUser}/>
+                          <Route path="/BlogPost" component={BlogPost}/>
+                          <Route path="/ConfigureUsers" component={ConfigureUsers}/>
+                        
+                        </div>
+
+                      </div>
                     </div>
-                    <div className = "col-sm-7">
-                        <textarea placeholder = "Blog Here!" id = "blogText"></textarea>
-                        <h4 id="blogHeader"><button className="btn" id="blogBtn">Post Blog</button></h4>
-                    </div>
-                </div>
+                </HashRouter>
+            </div>
             </div>
         );
     }

@@ -123,9 +123,11 @@ class PreLogin extends Component{
                if(response.data[i].username === userNameInput){
                    console.log("username in list")
                    if(response.data[i].password === passwordInput){
+                     // somewhere in here need to verify that it is the admin who is logged in
                        console.log("password correct");
                        let successfulLogin = true;
                        // this.setState({isLoggedIn: true});
+                       // this.props.onAdminLogin();
                        this.props.onLogin();
                        thisUser = response.data[i]._id; //Added to then pass to new page
                        break; //listen to the state and then load new page
@@ -170,8 +172,8 @@ class PreLogin extends Component{
                       </div>
                       <div className = "col-sm-4">
                           <div id="preInfoText">
-                              <p className="text-black-50">Information: "Lorem ipsum dolor sit amcitation ullamco laboris 
-                              nisi uodo cepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+                              <p className="text-black-50">Information: "Lorem ipsum dolor sit amcitation ullamco laboris
+                              nisi uodo cepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
                               deserunt mollit anim id est laborum."</p>
                           </div>
                       </div>
