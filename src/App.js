@@ -23,7 +23,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isLoggedIn: false
+      isLoggedIn: false,
+        user: null
     }
 
     if (process.env.REACT_APP_BACKEND_HOST) {
@@ -34,8 +35,9 @@ class App extends Component {
   }
 
   render() {
-    const onLogin = () => this.setState({isLoggedIn: true});
+    const onLogin = (userID) => this.setState({isLoggedIn: true, user: userID});
     console.log("isLoggedIn: " + this.state.isLoggedIn);
+      console.log("userID: " + this.state.user);
       if(this.state.isLoggedIn == false) {
         return (
           <PreLogin onLogin = {onLogin}/>
