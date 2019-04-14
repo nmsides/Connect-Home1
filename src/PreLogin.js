@@ -128,8 +128,9 @@ class PreLogin extends Component{
                        let successfulLogin = true;
                        // this.setState({isLoggedIn: true});
                        // this.props.onAdminLogin();
-                       this.props.onLogin();
+
                        thisUser = response.data[i]._id; //Added to then pass to new page
+                       this.props.onLogin(thisUser);
                        break; //listen to the state and then load new page
                    }else{
                        console.log("password incorrect");
