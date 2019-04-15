@@ -164,6 +164,11 @@ class PreLogin extends Component{
 
 
   render() {
+
+    const loginAttempt = () =>  {
+        this.getUserNames();
+    }
+
         return (
           <div id="bod" >
           <div className = "row">
@@ -198,9 +203,9 @@ class PreLogin extends Component{
                     </div>
 
                     <div className = 'col-sm-7'>
-                      <button type="button" onClick={this.getUserNames}>Press Me</button>
+                      {/* <button type="button" onClick={this.getUserNames}>Press Me</button> */}
                       <Route exact path="/" component={HomeCarousel}/>
-                      <Route path="/LoginBox" component={LoginBox}/>
+                      <Route path="/LoginBox" render={(props) => <LoginBox {...props} loginAttempt={loginAttempt}/>}/>
                       <Route path="/Understand" component={Understand}/>
                       <Route path="/Services" component={Services}/>
                       <Route path="/News" component={News}/>

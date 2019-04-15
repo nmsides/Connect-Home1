@@ -64,6 +64,7 @@ class LoginBox extends Component{
         }
 
     getUserNames(){
+        
             let userNameInput = document.getElementById("userNameInput").value;
             let passwordInput = document.getElementById("passwordInput").value;
             return axios.get(url + "/api/users")
@@ -76,6 +77,7 @@ class LoginBox extends Component{
                        console.log("password correct");
                        let successfulLogin = true;
                        this.setState({isLoggedIn: true})
+                       this.props.loginAttempt();
                        thisUser = response.data[i]._id; //Added to then pass to new page
                        break; //listen to the state and then load new page
                    }else{
