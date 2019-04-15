@@ -92,7 +92,6 @@ class PreLogin extends Component{
     componentDidMount() {
       console.log(this.state.isLoggedIn)
       this.loadUsers();
-      this.getNews();
     }
 
     componentDidUpdate(){
@@ -151,16 +150,7 @@ class PreLogin extends Component{
         });
       }
 
-  //my news function
-  getNews() {
-      return axios.get("http://localhost:5000/api/news")
-      .then(response => {
-          this.response = response.data;
-          for(let i = response.data.length - 1; i > -1; i--) {
-              console.log(response.data[i]); //Getting news in order by most current
-          }
-      });
-  }
+ 
 
 
   render() {
