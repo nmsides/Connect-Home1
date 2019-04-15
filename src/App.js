@@ -25,7 +25,9 @@ class App extends Component {
     this.state = {
       isLoggedIn: false,
       isAdmin: false,
-      user: null
+      user: null,
+      username: null,
+      name: null
     }
 
     if (process.env.REACT_APP_BACKEND_HOST) {
@@ -36,20 +38,28 @@ class App extends Component {
   }
 
   render() {
-    const onLogin = (userID) => this.setState({isLoggedIn: true, user:userID});
+    const onLogin = (userID, usernameInput, nameInput) => this.setState({
+      isLoggedIn: true, 
+      user:userID,
+      username: usernameInput,
+      name: nameInput
+    });
 
     const onAdminLogin = () => this.setState({isAdmin: true});
 
+
     console.log("isLoggedIn: " + this.state.isLoggedIn);
+    console.log("isAdmin" + this.state.isAdmin);
     console.log("userID: " + this.state.user);
       if(this.state.isLoggedIn == false && this.state.isAdmin == false) {
         return (
           // <PreLogin onLogin = {onLogin} isAdmin = {onAdminLogin}/>
-          <PreLogin onLogin = {onLogin}/>
+          <PreLogin onLogin = {onLogin} onAdminLogin = {onAdminLogin}/>
         );
-      } else if(this.state.isLogged == true && this.state.isAdmin == false) {
+      } else if(this.state.isLoggedIn == true && this.state.isAdmin == false) {
         return (
-          <PostLogin />
+          
+          <PostLogin user = {this.state.user} username = {this.state.username} name = {this.state.name}/>
         );
       }
       return (
