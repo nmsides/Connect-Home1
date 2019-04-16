@@ -13,6 +13,13 @@ class News extends Component {
   constructor(props){
     super(props);
 
+    if (process.env.REACT_APP_BACKEND_HOST) {
+      url = process.env.REACT_APP_BACKEND_HOST;
+    } else {
+      url = "http://localhost:5000";
+    }
+
+
     this.state = {
       news: [{title: "",
               body: "",
@@ -33,7 +40,7 @@ class News extends Component {
   
  //my news function
  getNews() {
-  return axios.get("http://localhost:5000/api/news")
+  return axios.get(url + "/api/news")
   .then(response => {
       this.response = response.data;
       for(let i = response.data.length - 1; i > -1; i--) {
