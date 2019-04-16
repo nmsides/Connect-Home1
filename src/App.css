@@ -1,6 +1,9 @@
 /* All */
 
-
+#testPDF{
+  width: 75%;
+  height: 600px;
+}
 
 #bod{
   height: 100%;
@@ -44,7 +47,6 @@ html{
 }
 
 .preNavItem:hover {
-  opacity: 0.7;
   background-color: #c24747;
 }
 
@@ -55,7 +57,7 @@ html{
 
 .preLink{
   color: white;
-  margin: 10px;
+  margin: 1px;
 }
 
 

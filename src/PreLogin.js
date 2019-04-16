@@ -17,12 +17,16 @@ import Services from "./Services";
 import About from "./About";
 import Files from 'react-files'
 import axios from 'axios';
+// const base64 = require('base64topdf');
 
 let allUsers;
 let userNameInput;
 let successfulLogin;
 let thisUser;
 let url;
+
+// let testFile;
+// let decodedBase64;
 
 class FilesDemo extends Component{
   constructor(props){
@@ -83,25 +87,26 @@ class PreLogin extends Component{
               date: ""}]
       }
 
-      this.checkUserName = this.checkUserName.bind(this); //react must bind this
       this.getUserNames = this.getUserNames.bind(this);
+      // this.testLoadPDF = this.testLoadPDF.bind(this)
     }
 
-    checkUserName(){
-      //let userNameInput = document.getElementById("userNameInput").value;
-      this.getUserNames();
 
-    }
 
     componentDidMount() {
       console.log(this.state.isLoggedIn)
       this.loadUsers();
+      // this.testLoadPDF();
     }
 
-    componentDidUpdate(){
-        //console.log('updated');
-    }
-
+    // testLoadPDF(){
+    //   return axios.get(url + "/api/admin/qi")
+    //       .then(response => {
+    //         this.response = response.data;
+    //         let testFile = this.response[3].base64;
+    //         // decodedBase64 = base64.base64Decode(testFile, 'testPDF');
+    //         return this.response});
+    // }
 
    loadUsers() {
       return axios.get(url + "/api/users")
@@ -167,6 +172,12 @@ class PreLogin extends Component{
 
         return (
           <div id="bod" >
+
+            {/* <iframe id = "testPDF" href={testFile} download="file.pdf">
+              <p>Your browser does not support iframes.</p>
+            </iframe>
+            <a href = {testFile} download="file.pdf">asdf</a>  */}
+
           <div className = "row">
             <div className = "col-sm-12">
             {/* <FilesDemo/> */}

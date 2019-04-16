@@ -10,6 +10,7 @@ let ids = [];
 let dates = [];
 
 let url;
+let newsArray = [];
 
 class News extends Component {
   constructor(props){
@@ -45,13 +46,17 @@ class News extends Component {
   return axios.get(url + "/api/news")
   .then(response => {
       this.response = response.data;
-      for(let i = 1; i < response.data.length; i++) {
+      for(let i = 0; i < response.data.length-1; i++) {
            //Getting news in order by most current
            console.log(response.data[i])
-           this.state.news[i] = {title: response.data[i].title, body: response.data[i].body, id: response.data[i]._id, date: response.data[i].date};
-         
+          newsArray[i] = {title: response.data[i].title, body: response.data[i].body, id: response.data[i]._id, date: response.data[i].date};
+          //  this.setState(news[i][{title: response.data[i].title, body: response.data[i].body, id: response.data[i]._id, date: response.data[i].date}]  )
+          
       }
+      console.log(newsArray)
+      this.setState({news: newsArray});
   });
+  
 }
 
 
@@ -59,9 +64,9 @@ class News extends Component {
 componentDidMount(){
   this.getNews();
 }
-componentDidUpdate(){
-  this.getNews();
-}
+// componentDidUpdate(){
+//   this.getNews();
+// }
 
   render() {
 
@@ -80,6 +85,8 @@ componentDidUpdate(){
             </li> 
           ))}
         </ul>
+
+        
 
       </div>
     );
