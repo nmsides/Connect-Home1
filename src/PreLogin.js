@@ -169,7 +169,7 @@ class PreLogin extends Component{
           <div id="bod" >
           <div className = "row">
             <div className = "col-sm-12">
-            <FilesDemo/>
+            {/* <FilesDemo/> */}
               <HashRouter>
                 <div>
                 <div className = "row" id="preLogLogoDiv">

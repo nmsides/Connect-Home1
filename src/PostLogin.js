@@ -1,14 +1,11 @@
 import React, { Component } from "react";
-import LoginBox from "./LoginBox";
-import LoginButton from "./LoginButton"
-import PreLogin from "./PreLogin";
-import Button from "react-bootstrap/Button";
 import {
   Route,
   NavLink,
   HashRouter
 } from "react-router-dom";
 import Nav from 'react-bootstrap/Nav'
+import Overview from "./Overview";
 
 class PostLogin extends Component{
     constructor(props){
@@ -55,13 +52,13 @@ class PostLogin extends Component{
                   </Nav>
                   
                     <div className = 'col-sm-12'>
-                       <Route exact path="/" component={LoginBox}/>
-                       <Route path="/LoginBox" component={LoginBox}/>
-                       <Route path="/Understand" component={LoginBox}/>
-                       <Route path="/Services" component={LoginBox}/>
-                       <Route path="/News" component={LoginBox}/>
-                       <Route path="/About" component={LoginBox}/>
-                       <Route path="/contact" component={LoginBox}/>
+                       <Route exact path="/" component={Overview}/>
+                       <Route path="/LoginBox" component={Overview}/>
+                       <Route path="/Understand" component={Overview}/>
+                       <Route path="/Services" component={Overview}/>
+                       <Route path="/News" component={Overview}/>
+                       <Route path="/About" component={Overview}/>
+                       <Route path="/contact" component={Overview}/>
                      </div>
 </HashRouter>
 
