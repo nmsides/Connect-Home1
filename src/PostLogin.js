@@ -6,12 +6,17 @@ import {
 } from "react-router-dom";
 import Nav from 'react-bootstrap/Nav'
 import Overview from "./Overview";
+import ContactInformation from "./ContactInformation";
+import ToolsAndResources from "./ToolsAndResources"
+import QITools from "./QITools"
+import Calendar from "./Calendar"
+import HomeCarousel from "./HomeCarousel"
 
 class PostLogin extends Component{
     constructor(props){
         super(props);
       }
-      
+
       componentWillMount(){
         console.log("loaded post login");
         console.log(this.props.user);
@@ -32,35 +37,32 @@ class PostLogin extends Component{
                           <h1>Welcome, {this.props.name} !</h1>
                       </div>
                   </div>
-            <HashRouter>
-                    <Nav fill variant="tabs" defaultActiveKey="/home">
-                      <Nav.Item>
-                        <Nav.Link exact to="/">Overview</Nav.Link>
-                      </Nav.Item>
-                      <Nav.Item>
-                        <Nav.Link to="/LoginBox">Calendar</Nav.Link>
-                      </Nav.Item>
-                      <Nav.Item>
-                        <Nav.Link to="link-1">Tools/Resources</Nav.Link>
-                      </Nav.Item>
-                      <Nav.Item>
-                        <Nav.Link to="link-1">QI Tools</Nav.Link>
-                      </Nav.Item>
-                      <Nav.Item>
-                        <Nav.Link to="link-1">Contact Information</Nav.Link>
-                      </Nav.Item>
-                  </Nav>
-                  
-                    <div className = 'col-sm-12'>
-                       <Route exact path="/" component={Overview}/>
-                       <Route path="/LoginBox" component={Overview}/>
-                       <Route path="/Understand" component={Overview}/>
-                       <Route path="/Services" component={Overview}/>
-                       <Route path="/News" component={Overview}/>
-                       <Route path="/About" component={Overview}/>
-                       <Route path="/contact" component={Overview}/>
+                  <HashRouter>
+                     <div className = 'row'>
+                         <div className = 'col-sm-5 preLinks'>
+                           <ul className="verticalNav nav flex-column">
+                             <li><NavLink className="nav-item preNavItem preLink" exact to="/">Home</NavLink></li>
+                             <li><NavLink className="nav-item preNavItem preLink" to="/Overview">Overview</NavLink></li>
+                             <li><NavLink className="nav-item preNavItem preLink" to="/Calendar">Calendar</NavLink></li>
+                             <li><NavLink className="nav-item preNavItem preLink" to="/ToolsAndResources">Tools and Resources</NavLink></li>
+                             <li><NavLink className="nav-item preNavItem preLink" to="/QITools">QI Tools</NavLink></li>
+                             <li><NavLink className="nav-item preNavItem preLink" to="/ContactInformation">Contact Information</NavLink></li>
+
+                           </ul>
+                         </div>
+
+                         <div className = 'col-sm-12'>
+                            <Route exact path="/" component={Overview}/>
+                            <Route path="/Overview" component={Overview}/>
+                            <Route path="/Calendar" component={Calendar}/>
+                            <Route path="/ToolsAndResources" component={ToolsAndResources}/>
+                            <Route path="/QITools" component={QITools}/>
+                            <Route path="/ContactInformation" component={ContactInformation}/>
+
+                          </div>
                      </div>
-</HashRouter>
+
+                     </HashRouter>
 
                   <div class = "row" id="provDiv">
 
