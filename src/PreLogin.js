@@ -76,7 +76,11 @@ class PreLogin extends Component{
           u: "",
           p: "",
           all: "",
-          isLoggedIn: false
+          isLoggedIn: false,
+          news: [{title: "",
+              body: "",
+              id: "",
+              date: ""}]
       }
 
       this.checkUserName = this.checkUserName.bind(this); //react must bind this
@@ -150,14 +154,16 @@ class PreLogin extends Component{
         });
       }
 
- 
+     
 
+ 
 
   render() {
 
     const loginAttempt = () =>  {
         this.getUserNames();
     }
+  
 
         return (
           <div id="bod" >
@@ -198,7 +204,7 @@ class PreLogin extends Component{
                       <Route path="/LoginBox" render={(props) => <LoginBox {...props} loginAttempt={loginAttempt}/>}/>
                       <Route path="/Understand" component={Understand}/>
                       <Route path="/Services" component={Services}/>
-                      <Route path="/News" component={News}/>
+                      <Route path="/News" component={News} />
                       <Route path="/About" component={About}/>
                       <Route path="/contact" component={Contact}/>
                     </div>
