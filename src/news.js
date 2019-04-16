@@ -9,6 +9,8 @@ let bodies = [];
 let ids = [];
 let dates = [];
 
+let url;
+
 class News extends Component {
   constructor(props){
     super(props);
