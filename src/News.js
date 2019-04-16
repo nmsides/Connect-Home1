@@ -45,10 +45,11 @@ class News extends Component {
   return axios.get(url + "/api/news")
   .then(response => {
       this.response = response.data;
-      for(let i = response.data.length - 1; i > -1; i--) {
+      for(let i = 1; i < response.data.length; i++) {
            //Getting news in order by most current
+           console.log(response.data[i])
            this.state.news[i] = {title: response.data[i].title, body: response.data[i].body, id: response.data[i]._id, date: response.data[i].date};
-      
+         
       }
   });
 }
@@ -70,7 +71,7 @@ componentDidUpdate(){
 
         <ul>
          
-          {this.state.news.map(item => (
+          {this.state.news.reverse().map(item => (
             <li id={item}>
             <h5>{item.title}</h5>
             <p>{item.body}</p>
@@ -79,16 +80,6 @@ componentDidUpdate(){
             </li> 
           ))}
         </ul>
-
-          
-          {/* <li className = 'newsBlurb'>Consultation - </li>
-          <li className = 'newsBlurb'>Consultation - </li>
-          <li className = 'newsBlurb'>Consultation - </li>
-          <li className = 'newsBlurb'>Consultation - </li>
-          <li className = 'newsBlurb'>Consultation - </li> */}
-        
-
-
 
       </div>
     );
