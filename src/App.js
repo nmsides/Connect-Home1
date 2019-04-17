@@ -13,6 +13,7 @@ import HomeCarousel from "./HomeCarousel";
 import Contact from "./Contact";
 import LoginButton from './LoginButton';
 import axios from 'axios';
+import helpFooter from './helpFooter';
 
 let thisUser;
 let url;
@@ -54,7 +55,9 @@ class App extends Component {
       if(this.state.isLoggedIn == false && this.state.isAdmin == false) {
         return (
           // <PreLogin onLogin = {onLogin} isAdmin = {onAdminLogin}/>
-          <PreLogin onLogin = {onLogin} onAdminLogin = {onAdminLogin}/>
+          <div><PreLogin onLogin = {onLogin} onAdminLogin = {onAdminLogin}/>
+          </div>
+          
         );
       } else if(this.state.isLoggedIn == true && this.state.isAdmin == false) {
         return (

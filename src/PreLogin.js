@@ -4,6 +4,10 @@ import LoginBox from './LoginBox';
 import PostLogin from './PostLogin';
 import Admin from './Admin';
 import News from './news';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Popover from 'react-bootstrap/Popover'
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
+import Button from 'react-bootstrap/Button'
 
 import {
   Route,
@@ -27,6 +31,7 @@ let url;
 
 // let testFile;
 // let decodedBase64;
+
 
 class FilesDemo extends Component{
   constructor(props){
@@ -207,6 +212,27 @@ class PreLogin extends Component{
                         <li><NavLink className="nav-item preNavItem preLink" to="/About">About Us</NavLink></li>
                         <li><NavLink className="nav-item preNavItem preLink" to="/contact">Contact</NavLink></li>
                       </ul>
+                      <ButtonToolbar>
+                    {['top'].map(placement => (
+                      <OverlayTrigger
+                        trigger="click"
+                        key={placement}
+                        placement={placement}
+                        overlay={
+                          <Popover
+                            id={`popover-positioned-${placement}`}
+                            title={`Help`}
+                          >
+                          <p>If additional help is needed to navigate the site, contact Mark Toles at #. </p>
+                          <p> - Select the Understanding Connect-Home, Services and Support, News, and About Us menu links to view more information about the Connect-Home experience.</p>
+                          <p> - Contact Us page: fill in the required fields and press Submit to send your information to Connect-Home. </p>
+                          </Popover>
+                        }
+                      >
+                        <Button variant="secondary" id = 'popButtonPre'>Need Help?</Button>
+                      </OverlayTrigger>
+                    ))}
+                  </ButtonToolbar>
                     </div>
 
                     <div className = 'col-sm-7'>
@@ -219,12 +245,15 @@ class PreLogin extends Component{
                       <Route path="/About" component={About}/>
                       <Route path="/contact" component={Contact}/>
                     </div>
+                    
                   </div>
+                  
+                 
                 </div>
             </HashRouter>
             </div>
           </div>
-
+         
       </div>
         );
     }

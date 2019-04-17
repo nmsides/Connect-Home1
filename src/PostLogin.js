@@ -11,6 +11,10 @@ import ToolsAndResources from "./ToolsAndResources"
 import QITools from "./QITools"
 import Calendar from "./Calendar"
 import HomeCarousel from "./HomeCarousel"
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Popover from 'react-bootstrap/Popover'
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
+import Button from 'react-bootstrap/Button'
 
 class PostLogin extends Component{
     constructor(props){
@@ -28,32 +32,69 @@ class PostLogin extends Component{
                       <div class = "col-sm-5">
                           <img src="./Resources/Asset 2.svg" id = 'mainLogo'></img>
                       </div>
-                      <div class = "col-sm-4">
-                          <div id="preInfoText">
-                              <p class="text-black-50">Information: "Lorem ipsum dolor sit amcitation ullamco laboris nisi uodo cepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                          </div>
-                      </div>
-                      <div className = "col-sm-3">
+                      
+                      <div className = "col-sm-5">
                           <h1>Welcome, {this.props.name} !</h1>
+                      </div>
+                      <div class = "col-sm-2">
+                          <div >
+                            <ButtonToolbar>
+                                {['bottom'].map(placement => (
+                                <OverlayTrigger
+                                    trigger="click"
+                                    key={placement}
+                                    placement={placement}
+                                    overlay={
+                                    <Popover
+                                        id={`popover-positioned-${placement}`}
+                                        title={`Help`}
+                                    >
+                                    <p>If additional help is needed to navigate the site, contact Mark Toles at #. </p>
+                                    <p> - Select the Overview, Calendar, and Contact menu links to view more information 
+                                        about the Connect-Home experience. </p>
+                                    <p> - The <strong>Connect-Home Transitional Care Tools</strong> page and the 
+                                        <strong>Quality Improvement 
+                                        Tools</strong> page display documents and tools specific to your portal account. 
+                                        Select ___ to display each document, and ___ to download. </p>
+                                    </Popover>
+                                    }
+                                >
+                                    <Button variant="secondary" id = 'popButtonPost'>Need Help?</Button>
+                                </OverlayTrigger>
+                                  ))}
+                        </ButtonToolbar>
+                          </div>
                       </div>
                   </div>
                   <HashRouter>
                      <div className = 'row'>
-                         <div className = 'col-sm-5 preLinks'>
-                           <ul className="verticalNav nav flex-column">
-                             <li><NavLink className="nav-item preNavItem preLink" exact to="/">Home</NavLink></li>
-                             <li><NavLink className="nav-item preNavItem preLink" to="/Overview">Overview</NavLink></li>
-                             <li><NavLink className="nav-item preNavItem preLink" to="/Calendar">Calendar</NavLink></li>
-                             <li><NavLink className="nav-item preNavItem preLink" to="/ToolsAndResources">Tools and Resources</NavLink></li>
-                             <li><NavLink className="nav-item preNavItem preLink" to="/QITools">QI Tools</NavLink></li>
-                             <li><NavLink className="nav-item preNavItem preLink" to="/ContactInformation">Contact Information</NavLink></li>
-
-                           </ul>
+                         <div className = 'col-sm-12 preLinks'>
+                           {/* <ul className="verticalNav nav flex-column"> */}
+                           <Nav justify variant="tabs" defaultActiveKey="/Overview">
+                               
+                                <Nav.Item>
+                                    <NavLink exact to="/Overview">Overview</NavLink>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <NavLink to="/Calendar">Calendar</NavLink>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <NavLink to="/ToolsAndResources">
+                                    Tools and Resources
+                                    </NavLink>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <NavLink to="/QITools">QI Tools </NavLink>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <NavLink to="/ContactInformation">Contact Information</NavLink>
+                               </Nav.Item>
+                            </Nav>
+                             
                          </div>
 
                          <div className = 'col-sm-12'>
                             <Route exact path="/" component={Overview}/>
-                            <Route path="/Overview" component={Overview}/>
                             <Route path="/Calendar" component={Calendar}/>
                             <Route path="/ToolsAndResources" component={ToolsAndResources}/>
                             <Route path="/QITools" component={QITools}/>
