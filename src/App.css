@@ -86,24 +86,25 @@ html{
 }
 
 #loginBtn{
-  background-color: #c24747;
+  background-color: white;
   width: 50%;
-  color: white;
+  color: #c24747;
   margin-top: 4%;
   border-radius: .5em;
   font-size: 20px;
-
+  border: solid thin #c24747;
 }
 
 #loginBtn:hover{
   background-color: #c24747;
-  border: solid lightgray;
+  border: solid thin #c24747;
+  color: white;
 }
 
 
 #loginBox{
   width: 50%;
-  border: solid #5282bc;
+  border: solid thin #5282bc;
   margin: 0 auto;
   border-radius: .5em;
   height: 100%;
@@ -111,7 +112,7 @@ html{
 
 #loginBoxInfo{
   margin-top: 2em;
-
+  padding: 1em;
 }
 
 #logInput{

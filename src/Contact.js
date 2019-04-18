@@ -4,16 +4,13 @@ import Button from 'react-bootstrap/Button';
 
 class Contact extends Component {
 
-
-
-
   render() {
     return (
       <div>
         <h2>Contact Us</h2>
         <p>Dr. Mark Toles
         </p>
-        <a href={"mailto:" + "mtoles@email.unc.edu"}>mtoles@email.unc.edu</a>
+        
         <br></br>
         <Form>
         <Form.Group >
