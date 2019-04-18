@@ -143,7 +143,7 @@ class PreLogin extends Component{
                        // this.props.onAdminLogin();
 
                        thisUser = response.data[i]._id; //Added to then pass to new page
-                       this.props.onLogin(thisUser, userNameInput, response.data[i].name_first);
+                       this.props.onLogin(thisUser, userNameInput, response.data[i].name);
                        if(userNameInput === "toles" && passwordInput === "tolespw"){
                          console.log("is Admin")
                          this.props.onAdminLogin();

@@ -53,10 +53,9 @@ class Admin extends Component{
         })
     }
 
-    createuser(first, last, user, pass, tools, qi) {
+    createuser(name, user, pass, tools, qi) {
          return axios.post(proxyurl + "/api/admin/newuser", {
-            name_first: first,
-            name_last: last,
+            name: name,
             username: user,
             password: pass,
             tools_auth: tools,
