@@ -72,6 +72,25 @@ try {
         return res.status(200).json(body)
     }
   })
+    
+    //PUT USER TO UPDATE USER/PASS
+    app.put('/api/admin/userLog', async (req, res) => {
+    const body = req.body
+    
+    if (!req.is('json') || !users.userCredValid(body)) {
+      return res.status(400).end()
+    } else if (!(await users.findById(db, body._id))) {
+      return res.status(404).end()
+    } else {
+        var myquery = { _id: mongodb.ObjectID(body._id) };
+        var newvalues = { $set: { username: body.username, password: body.password } };
+      await db.collection("users").updateOne(myquery, newvalues, function(err, res) {
+        if (err) throw err;
+        console.log("1 document updated");
+    })
+        return res.status(200).json(body)
+    }
+  })
 
     //PUT NEWS TO UPDATE BODY TEXT
     app.put('/api/admin/updateNews', async (req, res) => {

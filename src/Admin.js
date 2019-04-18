@@ -12,27 +12,12 @@ import ConfigureUsers from "./ConfigureUsers";
 import OldPosts from "./OldPosts";
 
 let proxyurl;
-let user_tools;
 
 //User Test Info for PUT
-const my_id= "5c801843e7179a3e36e2a7d3";
-const tools_auth= ["M", "B"];
-const qi_auth= ["M", "B"];
+//const my_id= "5c801843e7179a3e36e2a7d3";
 
-//News Test Info for PUT
-const news_id= "5cb25457e7179a36ac35c113";
-const news_title = "Test title 13";
-const news_body= "Testing updating feature";
 var today = new Date();
 const date = today.getMonth()+1 + '-' + today.getDate() + '-' + today.getFullYear();
-
-//User Test Info for POST
-const my_first = "Fred";
-const my_last = "Rogers";
-const my_user = "mrrogers";
-const my_pass = "neighbor";
-const my_tools = ["MRR", "OGE"];
-const my_qi = ["HEL", "LLO"];
 
 class Admin extends Component{
 
@@ -41,30 +26,22 @@ class Admin extends Component{
 
     if (process.env.REACT_APP_BACKEND_HOST) { proxyurl = process.env.REACT_APP_BACKEND_HOST; }
     else { proxyurl = "http://localhost:5000"; }
-
-        this.newblog = this.newblog.bind(this);
+        
+        //this.updateUserConfig = this.updateUserConfig.bind(this);
 
       }
-
-    componentDidMount() {
-        //console.log("hi")
-        this.newblog();
-      }
-
-    newblog() {
-        //this.createNews(news_title, news_body);
-        //this.createuser(my_first, my_last, my_user, my_pass, my_tools, my_qi);
-        //this.getTools();
-        //this.getQiTools();
-        //this.updateArrays(my_id, tools_auth, qi_auth);
-        //this.updateNewsPost(news_id, news_body);
-        //this.deleteNewsPost(news_id);
-    }
+    
+//    componentWillMount(){
+//        //this.updateUserConfig(my_id, "madisontest", "madisonpw");
+//      }
 
     createNews(news_title, news_body) {
         //console.log(date);
+        let today = new Date();
+        let date = (today.getDate()).valueOf().toString() + ' ' + (today.getFullYear()).valueOf().toString();
+        console.log(date);
         return axios.post(proxyurl + "/api/admin/news", {
-            date: new Date(),
+            date: date,
             title: news_title,
             body: news_body
         })
@@ -87,9 +64,6 @@ class Admin extends Component{
         })
         .then(function (response) {
         console.log(response);
-        //console.log("user's tools!: " + response.data.tools_auth);
-        //user_tools = response.data.tools_auth;
-
         })
         .catch(function (error) {
         console.log(error);
@@ -121,6 +95,17 @@ class Admin extends Component{
             _id: id,
             tools_auth: tools,
             qi_auth: qis
+        })
+        .then(function(response) {
+            console.log(response);
+        })
+    }
+    
+    updateUserConfig(id, user, pass) {
+        return axios.put(proxyurl + '/api/admin/userLog', {
+            _id: id,
+            username: user,
+            password: pass
         })
         .then(function(response) {
             console.log(response);

@@ -25,6 +25,13 @@ exports.userValid = (thing) =>
     typeof thing.tools_auth === 'object' &&
     typeof thing.qi_auth === 'object'
 
+exports.userCredValid = (thing) =>
+    typeof thing === 'object' &&
+    thing.hasOwnProperty('username') &&
+    thing.hasOwnProperty('password') &&
+    typeof thing.username === 'string' &&
+    typeof thing.password === 'string'
+
 const users = (db) => db.collection('users')
 
 exports.all = async (db) =>
