@@ -75,32 +75,18 @@ class PostLogin extends Component{
                   </div>
                   <HashRouter>
                      <div className = 'row'>
-                         <div className = 'col-sm-12 preLinks'>
-                           {/* <ul className="verticalNav nav flex-column"> */}
-                           <Nav justify variant="tabs" defaultActiveKey="/Overview">
-                               
-                                <Nav.Item>
-                                    <NavLink exact to="/">Overview</NavLink>
-                                </Nav.Item>
-                                <Nav.Item>
-                                    <NavLink to="/Calendar">Calendar</NavLink>
-                                </Nav.Item>
-                                <Nav.Item>
-                                    <NavLink to="/ToolsAndResources">
-                                    Tools and Resources
-                                    </NavLink>
-                                </Nav.Item>
-                                <Nav.Item>
-                                    <NavLink to="/QITools">QI Tools </NavLink>
-                                </Nav.Item>
-                                <Nav.Item>
-                                    <NavLink to="/ContactInformation">Contact Information</NavLink>
-                               </Nav.Item>
-                            </Nav>
-                             
-                         </div>
-
-                         <div className = 'col-sm-12'>
+                     <div className = 'col-sm-5 preLinks'>
+                      <ul className="verticalNav nav flex-column">
+                        <li><NavLink className="nav-item preNavItem preLink" exact to="/">Overview</NavLink></li>
+                        <li><NavLink className="nav-item preNavItem preLink" to="/Calendar">Calendar</NavLink></li>
+                        <li><NavLink className="nav-item preNavItem preLink" to="/ToolsAndResources">ToolsAndResources</NavLink></li>
+                        <li><NavLink className="nav-item preNavItem preLink" to="/QITools">QITools</NavLink></li>
+                        <li><NavLink className="nav-item preNavItem preLink" to="/ContactInformation">ContactInformation</NavLink></li>
+                        
+                      </ul>
+                     
+                    </div>
+                         <div className = 'col-sm-6'>
                             <Route exact path="/" component={Overview}/>
                             <Route path="/Calendar" component={Calendar}/>
                             <Route path="/ToolsAndResources" component={ToolsAndResources}/>
