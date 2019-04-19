@@ -1,6 +1,6 @@
 {
   "name": "my-app",
-  "homepage" : "http://transitional.care",
+  "homepage": "http://transitional.care",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

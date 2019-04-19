@@ -50,7 +50,7 @@ try {
   });
     
     app.get('/api/admin/qi', async (req, res) => {
-        const collection = db.collection("qi_tools"); 
+        const collection = db.collection("qi"); 
         const qis = await collection.find().toArray();
         res.send(JSON.stringify(qis)) //Returns array of all tools
   });
