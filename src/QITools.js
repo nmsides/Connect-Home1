@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import './App.css'
+
 const base64 = require('base64topdf');
 let decodedBase64;
 let a;
@@ -20,7 +21,8 @@ class QITools extends Component {
        size: "",
        key: "",
        base64: "",
-      }]
+      }],
+      // item: this.props.item
 
     }
 
@@ -36,10 +38,6 @@ else { proxyurl = "http://localhost:5000"; }
   getTools() { //This returns ALL tools name + keys
     return axios.get(proxyurl + '/api/admin/qi')
         .then(response => {
-          // a = response.data[0].base64;
-          // b = response.data[0].name;
-          // console.log(response.data)
-          //console.log(b)
          this.response = response.data
             for(let i = 0; i < response.data.length -1; i++){
               qiarray[i] = {name: response.data[i].name, type: response.data[i].type, size: response.data[i].size , key: response.data[i].key, base64: response.data[i].base64}
@@ -49,23 +47,19 @@ else { proxyurl = "http://localhost:5000"; }
         //decodedBase64 = base64.base64Decode(a, b);
         this.setState({qi: qiarray})
         console.log(qiarray)
+        console.log(this.props.item)
     })
 }
   componentDidMount(){
    
     this.getTools();
-    // console.log(this.b);
-    // console.log(qiarray[0].base64)
-    
-   // decodedBase64 = base64.base64Decode(this.a, this.b);
   }
   
 
   render() {
     return (
       <div>
-        <iframe id="qiiframe" src={this.state.qi[0].base64} title="pdf" target="_top"></iframe>
-        <a href={this.state.qi[0].base64} target = "_blank">Link</a>
+        <iframe id="qiiframe" src={this.state.qi[this.props.item].base64} title="pdf" target="_top"></iframe>
         <h1>QI Tools Go Here{this.props.username}</h1>
       </div>
     );

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactDOM from "react";
 import {
   Route,
   NavLink,
@@ -15,23 +16,82 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
 import Popover from 'react-bootstrap/Popover'
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
 import Button from 'react-bootstrap/Button'
+import Dropdown from 'react-bootstrap/Dropdown'
+import DropdownButton from 'react-bootstrap/DropdownButton'
+import axios from 'axios'
+
+let url;
+let varAuthArray = [];
+let itemCount = -1;
+let itemID;
 
 class PostLogin extends Component{
     constructor(props){
         super(props);
 
         this.state={
-            username: this.props.username
+            username: this.props.username,
+            userAuth: [],
+            currentItem: null
         }
 
+        if (process.env.REACT_APP_BACKEND_HOST) {
+            url = process.env.REACT_APP_BACKEND_HOST;
+          } else {
+            url = "http://localhost:5000";
+          }
+
+        this.loadUsers = this.loadUsers.bind(this);
+        this.renderList = this.renderList.bind(this)
+          this.newItemCount = this.newItemCount.bind(this)
       }
 
-     
+      loadUsers() {
+        return axios.get(url + "/api/users")
+            .then(response => {
+              this.response = response.data;
+              for(let i = 0; i < response.data.length -1; i++){
+                  console.log(response.data[i].qi_auth)
+                  if(this.state.username === response.data[i].username){
+                      varAuthArray = response.data[i].qi_auth
+                  }
+                  
+              }
+              console.log(varAuthArray)
+              this.setState({userAuth: varAuthArray})
+              return null});
+        }
 
       componentWillMount(){
         console.log("loaded post login");
         console.log(this.props.user);
       }
+      componentDidMount(){
+          this.loadUsers();
+      }
+
+      handleClick(r, e){
+          itemID = r;
+          console.log(itemID)
+          console.log(r)
+          this.setState({currentItem: r});
+          itemCount = -1;
+          return r;
+      }
+      newItemCount(){
+          console.log(itemCount)
+          itemCount++
+          return itemCount;
+      }
+      renderList(){ 
+       let val = varAuthArray.map(item => (
+            <Dropdown.Item><NavLink to="/QITools" id={this.newItemCount()} onClick={this.handleClick.bind(this, itemCount)}>{item}</NavLink></Dropdown.Item>
+         ))
+        console.log(itemCount)
+        console.log(itemID)
+        return val;
+      }
+
       render() {
           return (
               <div>
@@ -75,22 +135,29 @@ class PostLogin extends Component{
                   </div>
                   <HashRouter>
                      <div className = 'row'>
-                     <div className = 'col-sm-5 preLinks'>
+                     <div className = 'col-sm-4 preLinks'>
                       <ul className="verticalNav nav flex-column">
                         <li><NavLink className="nav-item preNavItem preLink" exact to="/">Overview</NavLink></li>
                         <li><NavLink className="nav-item preNavItem preLink" to="/Calendar">Calendar</NavLink></li>
                         <li><NavLink className="nav-item preNavItem preLink" to="/ToolsAndResources">ToolsAndResources</NavLink></li>
-                        <li><NavLink className="nav-item preNavItem preLink" to="/QITools">QITools</NavLink></li>
+                        <li><DropdownButton className="nav-item preNavItem preLink" id="dropdown-basic-button" title="QI Tools"> 
+                               {/* {varAuthArray.map(item => (
+                                    <Dropdown.Item><NavLink to="/QITools" id={itemCount}>{item}</NavLink></Dropdown.Item>
+                                 ))
+                                 } */}
+                                 {this.renderList()}
+                            </DropdownButton ></li>
+                        
                         <li><NavLink className="nav-item preNavItem preLink" to="/ContactInformation">ContactInformation</NavLink></li>
                         
                       </ul>
                      
                     </div>
-                         <div className = 'col-sm-6'>
+                         <div className = 'col-sm-8'>
                             <Route exact path="/" component={Overview}/>
                             <Route path="/Calendar" component={Calendar}/>
                             <Route path="/ToolsAndResources" component={ToolsAndResources}/>
-                            <Route path="/QITools" render={(props) => <QITools {...this.state} />}/>
+                            <Route path="/QITools" render={(props) => <QITools {...this.state} item = {document.getElementById(this.state.currentItem).id}/>}/>
                             <Route path="/ContactInformation" component={ContactInformation}/>
 
                           </div>
@@ -98,26 +165,6 @@ class PostLogin extends Component{
 
                      </HashRouter>
 
-                  {/* <div class = "row" id="provDiv">
-
-                      <div class = "col-sm-12">
-
-                          <h5>Accredited Providers</h5>
-                          <div>
-                              <ul class="nav nav-pills nav-justified">
-                                  <li class="nav-item" >
-                                      <img src = "./resources/Asset 2.svg" class = "provLogo"></img>
-                                  </li>
-                                  <li class="nav-item" >
-                                      <img src = "./resources/Asset 2.svg" class = "provLogo"></img>
-                                  </li>
-                                  <li class="nav-item" >
-                                      <img src = "./resources/Asset 2.svg" class = "provLogo"></img>
-                                  </li>
-                              </ul>
-                          </div>
-                      </div>
-                  </div> */}
 
 
               </div>

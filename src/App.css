@@ -308,3 +308,9 @@ html{
   height: 500px;
 
 }
+
+
+#newsContainer{
+  max-height: 500px;
+  overflow: scroll;
+}
