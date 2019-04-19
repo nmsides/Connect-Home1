@@ -20,6 +20,7 @@ try {
     const db = client.db(dbName);
     const users = require('./src/user_bk.js')
     const news = require('./src/news_bk.js')
+    const qi_tools = require('./src/qi_bk.js')
     
     const express = require('express')
     const app = express()
@@ -127,6 +128,16 @@ try {
       return res.status(200).json(await users.insert(db, req.body))
     }
   })
+
+  app.post('/api/admin/qi', async (req, res) => {
+    //console.log(req.body);
+//     if (!req.is('json') || !news.isValid(req.body)) { 
+//   return res.status(400).end()
+// } else {
+  return res.status(200).json(await qi_tools.insert(db, req.body))
+//}
+})
+
 
 //Deleting blog posts (This is a post but it does DELETE!)    
     app.post('/api/admin/deleteNews', async(req, res) => {
