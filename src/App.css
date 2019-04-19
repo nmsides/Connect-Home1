@@ -37,6 +37,19 @@ html{
 }
 
 
+/*Carousel*/
+
+#firstSlideCaption{
+  background-color: white;
+}
+
+.d-block{
+  background-color: white;
+}
+
+
+
+
 /* Pre Login */
 
 .files{
