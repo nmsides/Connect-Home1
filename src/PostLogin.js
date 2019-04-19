@@ -19,7 +19,14 @@ import Button from 'react-bootstrap/Button'
 class PostLogin extends Component{
     constructor(props){
         super(props);
+
+        this.state={
+            username: this.props.username
+        }
+
       }
+
+     
 
       componentWillMount(){
         console.log("loaded post login");
@@ -73,7 +80,7 @@ class PostLogin extends Component{
                            <Nav justify variant="tabs" defaultActiveKey="/Overview">
                                
                                 <Nav.Item>
-                                    <NavLink exact to="/Overview">Overview</NavLink>
+                                    <NavLink exact to="/">Overview</NavLink>
                                 </Nav.Item>
                                 <Nav.Item>
                                     <NavLink to="/Calendar">Calendar</NavLink>
@@ -97,7 +104,7 @@ class PostLogin extends Component{
                             <Route exact path="/" component={Overview}/>
                             <Route path="/Calendar" component={Calendar}/>
                             <Route path="/ToolsAndResources" component={ToolsAndResources}/>
-                            <Route path="/QITools" component={QITools}/>
+                            <Route path="/QITools" render={(props) => <QITools {...this.state} />}/>
                             <Route path="/ContactInformation" component={ContactInformation}/>
 
                           </div>
@@ -105,7 +112,7 @@ class PostLogin extends Component{
 
                      </HashRouter>
 
-                  <div class = "row" id="provDiv">
+                  {/* <div class = "row" id="provDiv">
 
                       <div class = "col-sm-12">
 
@@ -124,7 +131,7 @@ class PostLogin extends Component{
                               </ul>
                           </div>
                       </div>
-                  </div>
+                  </div> */}
 
 
               </div>
