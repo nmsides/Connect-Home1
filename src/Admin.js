@@ -11,7 +11,8 @@ import HomeCarousel from "./HomeCarousel";
 import ConfigureUsers from "./ConfigureUsers";
 import OldPosts from "./OldPosts";
 import Newqi from "./Newqi";
-import Newcal from "./Newcal"
+import Newcal from "./Newcal";
+import Newtools from "./Newtools"
 
 let proxyurl;
 
@@ -161,6 +162,7 @@ class Admin extends Component{
                             <li><NavLink className="nav-item preNavItem preLink" to="/ConfigureUsers">Configure Users</NavLink></li>
                             <li><NavLink className="nav-item preNavItem preLink" to="/NewQi">New Qi tools</NavLink></li>
                             <li><NavLink className="nav-item preNavItem preLink" to="/Newcal">Calendar</NavLink></li>
+                            <li><NavLink className="nav-item preNavItem preLink" to="/Newtools">Tools</NavLink></li>
                           </ul>
                         </div>
 
@@ -171,6 +173,7 @@ class Admin extends Component{
                           <Route path="/ConfigureUsers" component={ConfigureUsers}/>
                           <Route path="/NewQi" component={Newqi}/>
                           <Route path="/Newcal" component={Newcal}/>
+                          <Route path="/Newtools" component={Newtools}/>
                         
                         </div>
 

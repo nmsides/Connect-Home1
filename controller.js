@@ -22,6 +22,7 @@ try {
     const news = require('./src/news_bk.js')
     const qi_tools = require('./src/qi_bk.js')
     const cal = require('./src/Calendar_bk.js')
+    const tools = require('./src/Tools_bk.js')
     
     const express = require('express')
     const app = express()
@@ -55,6 +56,8 @@ try {
         const qis = await collection.find().toArray();
         res.send(JSON.stringify(qis)) //Returns array of all tools
   });
+
+  
 
   app.get('/api/admin/calendar',
 async (req,
@@ -141,19 +144,18 @@ res.send(JSON.stringify(calendar))
 async (req,
 res) => {
 
-//console.log(req.body);
-
-// if (!req.is('json') || !news.isValid(req.body)) {
-
-// return res.status(400).end()
-
-// } else {
 
 return res.status(200).json(await
 cal.insert(db,
 req.body))
 
 //}
+
+})
+
+app.post('/api/admin/tools', async (req, res) => {
+  
+return res.status(200).json(await tools.insert(db, req.body))
 
 })
     
