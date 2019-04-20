@@ -71,7 +71,7 @@ class PostLogin extends Component{
 
       handleClick(r, e){
           console.log(r)
-           itemCount = 0;
+           itemCount = -1;
            console.log(itemCount)
           this.setState({currentItem: r});
          
