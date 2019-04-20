@@ -54,8 +54,7 @@ componentDidMount(){
   render() {
     return (
       <div>
-        <iframe id="califrame" src={this.state.cal[0].base64} title="pdf" target="_top"></iframe>
-        <h1>This is where Calendar Will Go</h1>
+        <iframe id="califrame" src={this.state.cal[0].base64} title={this.state.cal[0].name} target="_top"></iframe>
       </div>
     );
   }

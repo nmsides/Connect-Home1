@@ -21,6 +21,7 @@ try {
     const users = require('./src/user_bk.js')
     const news = require('./src/news_bk.js')
     const qi_tools = require('./src/qi_bk.js')
+    const cal = require('./src/Calendar_bk.js')
     
     const express = require('express')
     const app = express()
@@ -54,6 +55,21 @@ try {
         const qis = await collection.find().toArray();
         res.send(JSON.stringify(qis)) //Returns array of all tools
   });
+
+  app.get('/api/admin/calendar',
+async (req,
+res) => {
+
+const collection =
+db.collection("calendar");
+
+const calendar =
+await collection.find().toArray();
+
+res.send(JSON.stringify(calendar))
+//Returns array of all tools
+
+});
     
     //PUT USER TO STORE ARRAYS
     app.put('/api/admin/user', async (req, res) => {
@@ -120,6 +136,26 @@ try {
       return res.status(200).json(await news.insert(db, req.body))
     }
   })
+
+  app.post('/api/admin/calendar',
+async (req,
+res) => {
+
+//console.log(req.body);
+
+// if (!req.is('json') || !news.isValid(req.body)) {
+
+// return res.status(400).end()
+
+// } else {
+
+return res.status(200).json(await
+cal.insert(db,
+req.body))
+
+//}
+
+})
     
      app.post('/api/admin/newuser', async (req, res) => {
         if (!req.is('json') || !users.isValid(req.body)) { 
