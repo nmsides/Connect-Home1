@@ -19,9 +19,7 @@ class About extends Component {
             <p>School of Nursing</p>
             <p>jcov@email.unc.edu</p>
         
-        <h4>Collaborators</h4>
-        <h6>Funders:</h6>
-        <h6>Healthcare Organization:</h6>
+    
       </div>
     );
   }

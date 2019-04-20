@@ -153,7 +153,7 @@ class Admin extends Component{
                       <div className = 'row'>
                         <div className = 'col-sm-5 preLinks'>
                           <ul className="verticalNav nav flex-column">
-                            <li><NavLink className="nav-item preNavItem preLink" exact to="/">Home</NavLink></li>
+                           
                             <li><NavLink className="nav-item preNavItem preLink" to="/AddUser">Add User</NavLink></li>
                             <li><NavLink className="nav-item preNavItem preLink" to="/BlogPost">Update Blog</NavLink></li>
 
@@ -163,7 +163,7 @@ class Admin extends Component{
                         </div>
 
                         <div className = 'col-sm-7'>
-                          <Route exact path="/" component={HomeCarousel}/>
+                         
                           <Route path="/AddUser" component={AddUser}/>
                           <Route path="/BlogPost" component={BlogPost}/>
                           <Route path="/ConfigureUsers" component={ConfigureUsers}/>
