@@ -86,7 +86,7 @@ class PostLogin extends Component{
             <Dropdown.Item><NavLink to="/QITools" id={this.newItemCount()} onClick={this.handleClick.bind(this, itemCount)}>{item}</NavLink></Dropdown.Item>
          ))
          console.log(document.getElementById(this.state.currentItem))
-        return <li><DropdownButton className="nav-item " id="dropdown-basic-button" title="QI Tools">{val}</DropdownButton ></li>
+        return <li><DropdownButton className="nav-item " id="dropdown-basic-button" title="QI Tools"> {val}</DropdownButton ></li>
       }
 
       render() {
