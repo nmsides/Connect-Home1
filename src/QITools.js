@@ -41,7 +41,7 @@ else { proxyurl = "http://localhost:5000"; }
          this.response = response.data
             for(let i = 0; i < response.data.length -1; i++){
               qiarray[i] = {name: response.data[i].name, type: response.data[i].type, size: response.data[i].size , key: response.data[i].key, base64: response.data[i].base64}
-            console.log(qiarray)
+          
 
         }
         //decodedBase64 = base64.base64Decode(a, b);

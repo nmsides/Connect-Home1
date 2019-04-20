@@ -23,7 +23,6 @@ import axios from 'axios'
 let url;
 let varAuthArray = [];
 let itemCount = -1;
-let itemID;
 
 class PostLogin extends Component{
     constructor(props){
@@ -32,7 +31,7 @@ class PostLogin extends Component{
         this.state={
             username: this.props.username,
             userAuth: [],
-            currentItem: null
+            currentItem: 0
         }
 
         if (process.env.REACT_APP_BACKEND_HOST) {
@@ -71,15 +70,14 @@ class PostLogin extends Component{
       }
 
       handleClick(r, e){
-          itemID = r;
-          console.log(itemID)
           console.log(r)
+           itemCount = 0;
+           console.log(itemCount)
           this.setState({currentItem: r});
-          itemCount = -1;
+         
           return r;
       }
       newItemCount(){
-          console.log(itemCount)
           itemCount++
           return itemCount;
       }
@@ -87,8 +85,6 @@ class PostLogin extends Component{
        let val = varAuthArray.map(item => (
             <Dropdown.Item><NavLink to="/QITools" id={this.newItemCount()} onClick={this.handleClick.bind(this, itemCount)}>{item}</NavLink></Dropdown.Item>
          ))
-        console.log(itemCount)
-        console.log(itemID)
         return val;
       }
 
