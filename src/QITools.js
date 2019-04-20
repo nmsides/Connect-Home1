@@ -60,7 +60,7 @@ else { proxyurl = "http://localhost:5000"; }
     return (
       <div>
         <iframe id="qiiframe" src={this.state.qi[this.props.item].base64} title="pdf" target="_top"></iframe>
-        <h1>QI Tools Go Here{this.props.username}</h1>
+        
       </div>
     );
   }

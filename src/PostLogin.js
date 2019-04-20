@@ -86,7 +86,7 @@ class PostLogin extends Component{
             <Dropdown.Item><NavLink to="/QITools" id={this.newItemCount()} onClick={this.handleClick.bind(this, itemCount)}>{item}</NavLink></Dropdown.Item>
          ))
          console.log(document.getElementById(this.state.currentItem))
-        return val;
+        return <li><DropdownButton className="nav-item " id="dropdown-basic-button" title="QI Tools">{val}</DropdownButton ></li>
       }
 
       render() {
@@ -137,13 +137,13 @@ class PostLogin extends Component{
                         <li><NavLink className="nav-item preNavItem preLink" exact to="/">Overview</NavLink></li>
                         <li><NavLink className="nav-item preNavItem preLink" to="/Calendar">Calendar</NavLink></li>
                         <li><NavLink className="nav-item preNavItem preLink" to="/ToolsAndResources">ToolsAndResources</NavLink></li>
-                        <li><DropdownButton className="nav-item preNavItem preLink" id="dropdown-basic-button" title="QI Tools"> 
+                        
                                {/* {varAuthArray.map(item => (
                                     <Dropdown.Item><NavLink to="/QITools" id={itemCount}>{item}</NavLink></Dropdown.Item>
                                  ))
                                  } */}
                                  {this.renderList()}
-                            </DropdownButton ></li>
+                            
                         
                         <li><NavLink className="nav-item preNavItem preLink" to="/ContactInformation">ContactInformation</NavLink></li>
                         
