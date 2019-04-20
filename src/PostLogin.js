@@ -50,13 +50,11 @@ class PostLogin extends Component{
             .then(response => {
               this.response = response.data;
               for(let i = 0; i < response.data.length -1; i++){
-                  console.log(response.data[i].qi_auth)
                   if(this.state.username === response.data[i].username){
                       varAuthArray = response.data[i].qi_auth
                   }
                   
               }
-              console.log(varAuthArray)
               this.setState({userAuth: varAuthArray})
               return null});
         }
@@ -67,6 +65,7 @@ class PostLogin extends Component{
       }
       componentDidMount(){
           this.loadUsers();
+         
       }
 
       handleClick(r, e){
@@ -82,9 +81,11 @@ class PostLogin extends Component{
           return itemCount;
       }
       renderList(){ 
+          console.log(this.state.currentItem)
        let val = varAuthArray.map(item => (
             <Dropdown.Item><NavLink to="/QITools" id={this.newItemCount()} onClick={this.handleClick.bind(this, itemCount)}>{item}</NavLink></Dropdown.Item>
          ))
+         console.log(document.getElementById(this.state.currentItem))
         return val;
       }
 
