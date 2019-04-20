@@ -22,7 +22,9 @@ import axios from 'axios'
 
 let url;
 let varAuthArray = [];
-let itemCount = -1;
+let toolsArray = [];
+let QICount = -1;
+let toolsCount = -1;
 
 class PostLogin extends Component{
     constructor(props){
@@ -31,7 +33,9 @@ class PostLogin extends Component{
         this.state={
             username: this.props.username,
             userAuth: [],
-            currentItem: 1
+            QItem: 0,
+            toolsAuth: [],
+            toolsItem: 0,
         }
 
         if (process.env.REACT_APP_BACKEND_HOST) {
@@ -41,8 +45,10 @@ class PostLogin extends Component{
           }
 
         this.loadUsers = this.loadUsers.bind(this);
-        this.renderList = this.renderList.bind(this)
-          this.newItemCount = this.newItemCount.bind(this)
+        this.renderQIList = this.renderQIList.bind(this)
+          this.newQICount = this.newQICount.bind(this)
+          this.renderToolsList = this.renderToolsList.bind(this)
+          this.newToolsCount = this.newToolsCount.bind(this);
       }
 
       loadUsers() {
@@ -52,12 +58,15 @@ class PostLogin extends Component{
               for(let i = 0; i < response.data.length; i++){
                   if(this.state.username === response.data[i].username){
                       varAuthArray = response.data[i].qi_auth
+                      toolsArray = response.data[i].tools_auth
                   }
                   
               }
-              this.setState({userAuth: varAuthArray})
+              this.setState({userAuth: varAuthArray, toolsAuth: toolsArray})
               return null});
         }
+
+        
 
       componentWillMount(){
         console.log("loaded post login");
@@ -67,26 +76,37 @@ class PostLogin extends Component{
           this.loadUsers();
       }
 
-      handleClick(r, e){
-          console.log(r)
-           itemCount = -1;
-           console.log(itemCount)
-          this.setState({currentItem: r});
-         
+      handleQIClick(r, e){
+           QICount = -1;
+          this.setState({QItem: r});
+          toolsCount = -1;
           return r;
       }
-      newItemCount(){
-          itemCount++
-          return itemCount;
+      handleToolClick(r, e){
+         toolsCount = -1;
+        this.setState({toolsItem: r});
+        QICount = -1;
+        return r;
+    }
+      newQICount(){
+          QICount++
+          return QICount;
       }
-      renderList(){ 
-
-          console.log(this.state.currentItem)
+      newToolsCount(){
+          toolsCount++
+          return toolsCount;
+      }
+      renderQIList(){ 
        let val = varAuthArray.map(item => (
-            <Dropdown.Item><NavLink to="/QITools" id={this.newItemCount()} onClick={this.handleClick.bind(this, itemCount)}>{item}</NavLink></Dropdown.Item>
+            <Dropdown.Item><NavLink to="/QITools" id={this.newQICount()} onClick={this.handleQIClick.bind(this, QICount)}>{item}</NavLink></Dropdown.Item>
          ))
-         console.log(document.getElementById(this.state.currentItem))
         return <li><DropdownButton className="nav-item " id="dropdown-basic-button" title="QI Tools">{val}</DropdownButton ></li>
+      }
+      renderToolsList(){
+        let val = toolsArray.map(item => (
+            <Dropdown.Item><NavLink to="/ToolsAndResources" id={this.newToolsCount()} onClick={this.handleToolClick.bind(this, toolsCount)}>{item}</NavLink></Dropdown.Item>
+         ))
+        return <li><DropdownButton className="nav-item " id="dropdown-basic-button" title="Tools/Resources">{val}</DropdownButton ></li>
       }
 
       render() {
@@ -136,15 +156,9 @@ class PostLogin extends Component{
                       <ul className="verticalNav nav flex-column">
                         <li><NavLink className="nav-item preNavItem preLink" exact to="/">Overview</NavLink></li>
                         <li><NavLink className="nav-item preNavItem preLink" to="/Calendar">Calendar</NavLink></li>
-                        <li><NavLink className="nav-item preNavItem preLink" to="/ToolsAndResources">ToolsAndResources</NavLink></li>
-                        
-                               {/* {varAuthArray.map(item => (
-                                    <Dropdown.Item><NavLink to="/QITools" id={itemCount}>{item}</NavLink></Dropdown.Item>
-                                 ))
-                                 } */}
-                                 {this.renderList()}
-                            
-                        
+                        {this.renderToolsList()}
+                        {/* <li><NavLink className="nav-item preNavItem preLink" to="/ToolsAndResources">ToolsAndResources</NavLink></li> */}
+                        {this.renderQIList()}
                         <li><NavLink className="nav-item preNavItem preLink" to="/ContactInformation">ContactInformation</NavLink></li>
                         
                       </ul>
@@ -153,8 +167,8 @@ class PostLogin extends Component{
                          <div className = 'col-sm-8'>
                             <Route exact path="/" component={Overview}/>
                             <Route path="/Calendar" component={Calendar}/>
-                            <Route path="/ToolsAndResources" component={ToolsAndResources}/>
-                            <Route path="/QITools" render={(props) => <QITools {...this.state} item = {document.getElementById(this.state.currentItem).id}/>}/>
+                            <Route path="/ToolsAndResources" render={(props) => <ToolsAndResources {...this.state} item = {document.getElementById(this.state.toolsItem).id}/>}/>
+                            <Route path="/QITools" render={(props) => <QITools {...this.state} item = {document.getElementById(this.state.QItem).id}/>}/>
                             <Route path="/ContactInformation" component={ContactInformation}/>
 
                           </div>

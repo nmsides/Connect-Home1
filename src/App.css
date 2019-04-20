@@ -47,6 +47,13 @@ html{
   color: white;
 }
 
+#dropdown-basic-button{
+  width: 50%;
+  background-color: #5282bc;
+  border: white;
+  font-size: 24px;
+}
+
 /*Carousel*/
 
 #firstSlideCaption{

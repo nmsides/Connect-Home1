@@ -62,6 +62,7 @@ else { proxyurl = "http://localhost:5000"; }
     console.log(this.props.item)
   }
   
+  
 
   render() {
     return (
