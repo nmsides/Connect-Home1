@@ -36,6 +36,16 @@ html{
   width: 100%;
 }
 
+.btn-default{
+  width: 50%;
+  border: solid #c24747;
+  color: #c24747;
+}
+
+.btn-default:hover{
+  background-color: #c24747;
+  color: white;
+}
 
 /*Carousel*/
 
