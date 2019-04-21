@@ -47,6 +47,11 @@ class App extends Component {
     });
 
     const onAdminLogin = () => this.setState({isAdmin: true});
+    const onLogout = () => this.setState({isLoggedIn: false});
+    const onAdminLogout = () => this.setState({
+      isLoggedIn: false,
+      isAdmin: false
+    });
 
 
     console.log("isLoggedIn: " + this.state.isLoggedIn);
@@ -62,11 +67,11 @@ class App extends Component {
       } else if(this.state.isLoggedIn == true && this.state.isAdmin == false) {
         return (
           
-          <PostLogin user = {this.state.user} username = {this.state.username} name = {this.state.name}/>
+          <PostLogin onLogout = {onLogout} user = {this.state.user} username = {this.state.username} name = {this.state.name}/>
         );
       }
       return (
-        <Admin />
+        <Admin onAdminLogout = {onAdminLogout} />
       )
   }
 

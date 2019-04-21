@@ -49,6 +49,7 @@ class PostLogin extends Component{
           this.newQICount = this.newQICount.bind(this)
           this.renderToolsList = this.renderToolsList.bind(this)
           this.newToolsCount = this.newToolsCount.bind(this);
+          this.logout = this.logout.bind(this);
       }
 
       loadUsers() {
@@ -109,6 +110,10 @@ class PostLogin extends Component{
         return <li><DropdownButton className="nav-item " id="dropdown-basic-button" title="Tools/Resources">{val}</DropdownButton ></li>
       }
 
+      logout() {
+          this.props.onLogout();
+      }
+
       render() {
           return (
               <div>
@@ -119,6 +124,10 @@ class PostLogin extends Component{
                       
                       <div className = "col-sm-5">
                           <h1>Welcome, {this.props.name} !</h1>
+                      </div>
+                      <div id="logoutButton">
+                         <button type="button" className="btn" id="logOut" onClick={this.logout}>Logout</button>
+                      
                       </div>
                       <div class = "col-sm-2">
                           <div >

@@ -32,6 +32,8 @@ class Admin extends Component{
         
         //this.updateUserConfig = this.updateUserConfig.bind(this);
 
+    this.logout = this.logout.bind(this);
+
       }
     
 //    componentWillMount(){
@@ -80,6 +82,10 @@ class Admin extends Component{
             }
 
         })
+    }
+
+    logout() {
+        this.props.onAdminLogout();
     }
 
     getQiTools() { //This returns ALL qi tools name + keys
@@ -143,7 +149,11 @@ class Admin extends Component{
                         </div>
                         <div className = "col-sm-6" id="adminCalLog">
                             <button className="btn" id="calBtn">Calendar</button>
-                            <button className="btn" id="logoutBtn">Logout</button>
+                        </div>
+
+                        <div id="logoutButton">
+                      <button type="button" className="btn" id="logOut" onClick={this.logout}>Logout</button>
+                      
                         </div>
                 </div>
                 <div className="spacingDiv"></div>
