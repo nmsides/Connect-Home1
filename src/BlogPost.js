@@ -64,6 +64,8 @@ class BlogPost extends Component {
         <div class="form-group">
             <label for="title">Post Title:</label>
             <input type="text" class="form-control" id="blogTitle"/>
+            <label for="date">Post Date:</label>
+            <input type="text" class="form-control" id="blogDate"/>
             <textarea placeholder = "Blog Here!" id = "blogText"></textarea>
         </div>
         <button type="submit" onClick = {this.handleClick} class="btn btn-default">Submit</button>
