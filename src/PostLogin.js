@@ -130,10 +130,7 @@ class PostLogin extends Component{
                       <div className = "col-sm-5">
                           <h1>Welcome, {this.props.name} !</h1>
                       </div>
-                      <div id="logoutButton">
-                         <button type="button" className="btn" id="logOut" onClick={this.logout}>Logout</button>
-                      
-                      </div>
+                     
                       <div class = "col-sm-2">
                           <div >
                             <ButtonToolbar>
@@ -191,7 +188,10 @@ class PostLogin extends Component{
                      </HashRouter>
 
 
-
+                                     {/* <div id="logoutButton"> */}
+                         <button type="button" className="btn" id="logOut" onClick={this.logout}>Logout</button>
+                      
+                      {/* </div> */}
               </div>
           );
       }

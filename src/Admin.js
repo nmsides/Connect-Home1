@@ -151,10 +151,7 @@ class Admin extends Component{
                             <button className="btn" id="calBtn">Calendar</button>
                         </div>
 
-                        <div id="logoutButton">
-                      <button type="button" className="btn" id="logOut" onClick={this.logout}>Logout</button>
                       
-                        </div>
                 </div>
                 <div className="spacingDiv"></div>
 
@@ -191,6 +188,12 @@ class Admin extends Component{
                     </div>
                 </HashRouter>
             </div>
+
+            {/* <div id="logoutButton"> */}
+                      <button type="button" className="btn" id="logOut" onClick={this.logout}>Logout</button>
+                      
+                        {/* </div> */}
+
             </div>
         );
     }

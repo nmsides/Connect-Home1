@@ -21,10 +21,17 @@ html{
   height: 5em;
 }
 
-#logoutBtn{
+#logOut{
   width: 20%;
   font-size: 2em;
-  margin-left: 1em;
+  /* margin-left: 1em; */
+  color: #c24747;
+  border: thin #c24747;
+}
+
+#logOut:hover{
+  color: white;
+  background-color: #c24747;
 }
 
 .nav-link:hover{
