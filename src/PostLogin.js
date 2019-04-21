@@ -63,6 +63,8 @@ class PostLogin extends Component{
                   }
                   
               }
+              QICount = -1;
+              toolsCount = -1;
               this.setState({userAuth: varAuthArray, toolsAuth: toolsArray})
               return null});
         }
