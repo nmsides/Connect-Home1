@@ -111,6 +111,9 @@ class PostLogin extends Component{
       }
 
       logout() {
+        //   toolsCount = -1;
+        //   QICount = -1;
+        //   console.log(toolsCount, QICount)
           this.props.onLogout();
       }
 
