@@ -154,12 +154,12 @@ class Admin extends Component{
                           <ul className="verticalNav nav flex-column">
                            
                             <li><NavLink className="nav-item preNavItem preLink" to="/AddUser">Add User</NavLink></li>
-                            <li><NavLink className="nav-item preNavItem preLink" to="/BlogPost">Update Blog</NavLink></li>
+                            <li><NavLink className="nav-item preNavItem preLink" to="/BlogPost">Update News Page</NavLink></li>
 
                             <li><NavLink className="nav-item preNavItem preLink" to="/ConfigureUsers">Configure Users</NavLink></li>
-                            <li><NavLink className="nav-item preNavItem preLink" to="/NewQi">New Qi tools</NavLink></li>
+                            <li><NavLink className="nav-item preNavItem preLink" to="/NewQi">QI Tools</NavLink></li>
                             <li><NavLink className="nav-item preNavItem preLink" to="/Newcal">Calendar</NavLink></li>
-                            <li><NavLink className="nav-item preNavItem preLink" to="/Newtools">Tools</NavLink></li>
+                            <li><NavLink className="nav-item preNavItem preLink" to="/Newtools">Connect-Home Tools</NavLink></li>
                           </ul>
                         </div>
 
