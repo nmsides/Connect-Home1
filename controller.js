@@ -59,19 +59,10 @@ try {
 
   
 
-  app.get('/api/admin/calendar',
-async (req,
-res) => {
-
-const collection =
-db.collection("calendar");
-
-const calendar =
-await collection.find().toArray();
-
-res.send(JSON.stringify(calendar))
-//Returns array of all tools
-
+  app.get('/api/admin/calendar', async (req, res) => {
+  const collection = db.collection("calendar");
+  const calendar = await collection.find().toArray();
+  res.send(JSON.stringify(calendar))
 });
     
     //PUT USER TO STORE ARRAYS

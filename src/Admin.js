@@ -16,12 +16,6 @@ import Newtools from "./Newtools"
 
 let proxyurl;
 
-//User Test Info for PUT
-//const my_id= "5c801843e7179a3e36e2a7d3";
-
-var today = new Date();
-const date = today.getMonth()+1 + '-' + today.getDate() + '-' + today.getFullYear();
-
 class Admin extends Component{
 
     constructor(props){
@@ -40,13 +34,9 @@ class Admin extends Component{
 //        //this.updateUserConfig(my_id, "madisontest", "madisonpw");
 //      }
 
-    createNews(news_title, news_body) {
-        //console.log(date);
-        let today = new Date();
-        let date = (today.getDate()).valueOf().toString() + ' ' + (today.getFullYear()).valueOf().toString();
-        console.log(date);
+    createNews(news_title, news_body, news_date) {
         return axios.post(proxyurl + "/api/admin/news", {
-            date: date,
+            date: news_date,
             title: news_title,
             body: news_body
         })

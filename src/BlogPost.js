@@ -19,14 +19,14 @@ class BlogPost extends Component {
       handleClick(event) {
         var title = document.getElementById("blogTitle").value;
         var post = document.getElementById("blogText").value;
+        var date = document.getElementById("blogDate").value; 
 
-        this.createNews(title, post);
+        this.createNews(title, post, date);
       }
 
-      createNews(news_title, news_body) {
-          //console.log(date);
+      createNews(news_title, news_body, news_date) {
           return axios.post(proxyurl + "/api/admin/news", {
-              date: new Date(),
+              date: news_date,
               title: news_title,
               body: news_body
           })

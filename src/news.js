@@ -46,7 +46,7 @@ class News extends Component {
   return axios.get(url + "/api/news")
   .then(response => {
       this.response = response.data;
-      for(let i = 0; i < response.data.length-1; i++) {
+      for(let i = 0; i < response.data.length; i++) {
            //Getting news in order by most current
            console.log(response.data[i])
           newsArray[i] = {title: response.data[i].title, body: response.data[i].body, id: response.data[i]._id, date: response.data[i].date};
