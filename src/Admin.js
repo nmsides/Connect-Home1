@@ -137,9 +137,9 @@ class Admin extends Component{
                         <div className = "col-sm-6">
                             <img src="./Resources/Asset 2.svg" id = 'mainLogo'></img>
                         </div>
-                        <div className = "col-sm-6" id="adminCalLog">
+                        {/* <div className = "col-sm-6" id="adminCalLog">
                             <button className="btn" id="calBtn">Calendar</button>
-                        </div>
+                        </div> */}
 
                       
                 </div>
