@@ -18,18 +18,16 @@ class AddUser extends Component {
 
       handleClick(event) {
         var fN = document.getElementById("firstName").value;
-        var lN = document.getElementById("lastName").value;
         var email = document.getElementById("email").value;
         var pwd = document.getElementById("pwd").value;
 
 
-        this.createUser(fN, lN, email, pwd, [], []);
+        this.createUser(fN, email, pwd, [], []);
       }
 
-      createUser(first, last, user, pass, tools, qi) {
+      createUser(first, user, pass, tools, qi) {
            return axios.post(proxyurl + "/api/admin/newuser", {
-              name_first: first,
-              name_last: last,
+              name: first,
               username: user,
               password: pass,
               tools_auth: tools,
@@ -50,10 +48,8 @@ class AddUser extends Component {
     return (
       <form>
         <div className="form-group">
-            <label>First Name:</label>
+            <label>Client Name:</label>
             <input type="text" className="form-control" id="firstName"/>
-            <label>Last Name:</label>
-            <input type="text" className="form-control" id="lastName"/>
             <label>User Name:</label>
             <input type="email" className="form-control" id="email"/>
             <label>Password:</label>
