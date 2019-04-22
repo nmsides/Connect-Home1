@@ -137,9 +137,9 @@ class Admin extends Component{
                         <div className = "col-sm-6">
                             <img src="./Resources/Asset 2.svg" id = 'mainLogo'></img>
                         </div>
-                        <div className = "col-sm-6" id="adminCalLog">
+                        {/* <div className = "col-sm-6" id="adminCalLog">
                             <button className="btn" id="calBtn">Calendar</button>
-                        </div>
+                        </div> */}
 
                       
                 </div>
@@ -173,14 +173,14 @@ class Admin extends Component{
                           <Route path="/Newtools" component={Newtools}/>
                         
                         </div>
-
+<button type="button" className="btn" id="logOut" onClick={this.logout}>Logout</button>
                       </div>
                     </div>
                 </HashRouter>
             </div>
 
             {/* <div id="logoutButton"> */}
-                      <button type="button" className="btn" id="logOut" onClick={this.logout}>Logout</button>
+                      
                       
                         {/* </div> */}
 
