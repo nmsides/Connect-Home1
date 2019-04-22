@@ -183,13 +183,14 @@ class PostLogin extends Component{
                             <Route path="/ContactInformation" component={ContactInformation}/>
 
                           </div>
+                          <button type="button" className="btn" id="logOut" onClick={this.logout}>Logout</button>
                      </div>
 
                      </HashRouter>
 
 
                                      {/* <div id="logoutButton"> */}
-                         <button type="button" className="btn" id="logOut" onClick={this.logout}>Logout</button>
+                         
                       
                       {/* </div> */}
               </div>

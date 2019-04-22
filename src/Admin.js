@@ -173,14 +173,14 @@ class Admin extends Component{
                           <Route path="/Newtools" component={Newtools}/>
                         
                         </div>
-
+<button type="button" className="btn" id="logOut" onClick={this.logout}>Logout</button>
                       </div>
                     </div>
                 </HashRouter>
             </div>
 
             {/* <div id="logoutButton"> */}
-                      <button type="button" className="btn" id="logOut" onClick={this.logout}>Logout</button>
+                      
                       
                         {/* </div> */}
 
