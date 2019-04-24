@@ -40,7 +40,6 @@ try {
     });
     
     app.get('/api/news', async (req, res) => {
-        console.log('cont');
        const collection = db.collection("news");
         const news = await collection.find().toArray(); 
         res.send(JSON.stringify(news))
