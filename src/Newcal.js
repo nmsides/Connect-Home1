@@ -146,6 +146,7 @@ postCal() {
  })
  .then(function (response) {
  console.log(response);
+ window.alert("Calendar Has Been Updated")
  
  })
  .catch(function (error) {
