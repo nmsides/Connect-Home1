@@ -73,6 +73,7 @@ componentDidMount(){
     return (
       <div id="newsContainer">
         <h2>News</h2>
+        <hr></hr>
 
         <ul>
          
