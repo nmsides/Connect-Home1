@@ -29,6 +29,7 @@ try {
     app.use(express.static('build'))
     const port = process.env.PORT || 5000
     const bodyParser = require('body-parser')
+    app.use(bodyParser({limit: '15mb'}))
     app.use(bodyParser.json())
 
     
@@ -172,6 +173,21 @@ try {
             }
         });    
     })
+
+    app.post('/api/admin/deleteCalendar', async(req, res) => {
+      const body = req.body
+      console.log(body);
+      await db.collection("calendar").deleteOne({
+          _id: mongodb.ObjectID(body._id) 
+          }, function(err){
+              if (err) {
+                  console.log(err)
+          }
+          else {
+              return res.status(200).json(body)
+          }
+      });    
+  })
     
     app.listen(port, () => console.log(`Example app listening on port ${port}!`)) 
 }

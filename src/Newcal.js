@@ -9,6 +9,7 @@ let calfile1;
 let calfile2;
 let calfile3;
 let calfile4;
+let id ;
 
 class FileBase64 extends React.Component {
 
@@ -84,7 +85,9 @@ class Newcal extends Component {
     this.state = {
       files: []
     }
-   // this.getfiles() = this.getfiles().bind(this);
+   this.getcalid = this.getcalid.bind(this);
+   this.postCal = this.postCal.bind(this);
+   this.deleteCal = this.deleteCal.bind(this);
 
     if (process.env.REACT_APP_BACKEND_HOST) {
         proxyurl = process.env.REACT_APP_BACKEND_HOST; }
@@ -96,24 +99,61 @@ class Newcal extends Component {
     this.setState({ files: files })
   }
   
-  postCal() {
-    return axios.post(proxyurl + "/api/admin/calendar/", {
-       name: calfile1,
-       type: calfile2,
-       size: calfile3,
-       base64: calfile4,
-       
-       
+
+getcalid(){
+
+  return axios.get(proxyurl + '/api/admin/calendar')
+        .then(response => {
+          
+         this.response = response.data
+        id = response.data[0]._id
+        console.log(id)
+        this.deleteCal()
+        
+    })
+    
+
+}
+
+
+  deleteCal() {
+    this.postCal();
+    return axios.post(proxyurl + '/api/admin/deleteCalendar', {
+      _id:  id,
+      
+      
    })
- 
    .then(function (response) {
    console.log(response);
-   
+  
    })
    .catch(function (error) {
    console.log(error);
    })
+
+   
   
+}
+
+postCal() {
+  return axios.post(proxyurl + '/api/admin/calendar', {
+    
+    
+     name: calfile1,
+     type: calfile2,
+     size: calfile3,
+     base64: calfile4,
+ })
+ .then(function (response) {
+ console.log(response);
+ 
+ })
+ .catch(function (error) {
+ console.log(error);
+ })
+
+ 
+
 }
   render() {
     return (
@@ -132,7 +172,7 @@ class Newcal extends Component {
              calfile4 = file.base64
              return null
           }) }
-          <button className="load" onClick={this.postCal}>load files</button>
+          <button className="load" onClick={this.getcalid}>Update Calendar</button>
         </div>
       </div>
     )
