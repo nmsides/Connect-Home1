@@ -1,58 +1,92 @@
 import React, { Component } from "react";
 import ListGroup from 'react-bootstrap/ListGroup';
 import './news.css';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+import axios from 'axios';
+
+
+let titles = [];
+let bodies = [];
+let ids = [];
+let dates = [];
+
+let url;
+let newsArray = [];
 
 class News extends Component {
+  constructor(props){
+    super(props);
+
+    if (process.env.REACT_APP_BACKEND_HOST) {
+      url = process.env.REACT_APP_BACKEND_HOST;
+    } else {
+      url = "http://localhost:5000";
+    }
+
+
+    this.state = {
+      news: [{title: "",
+              body: "",
+              id: "",
+              date: "",
+    }]
+      // value: "",
+      // newsItems: [],
+      // newsBodies: [],
+      // newsTitles: [],
+      // newsIDs: [],
+      // newsDates: []
+    }
+
+    this.getNews = this.getNews.bind(this);
+  }
+
+  
+ //my news function
+ getNews() {
+  return axios.get(url + "/api/news")
+  .then(response => {
+      this.response = response.data;
+      for(let i = 0; i < response.data.length; i++) {
+           //Getting news in order by most current
+           console.log(response.data[i])
+          newsArray[i] = {title: response.data[i].title, body: response.data[i].body, id: response.data[i]._id, date: response.data[i].date};
+          //  this.setState(news[i][{title: response.data[i].title, body: response.data[i].body, id: response.data[i]._id, date: response.data[i].date}]  )
+          
+      }
+      console.log(newsArray)
+      this.setState({news: newsArray});
+  });
+  
+}
+
+
+
+componentDidMount(){
+  this.getNews();
+}
+// componentDidUpdate(){
+//   this.getNews();
+// }
 
   render() {
-    function alertClicked() {
-        alert('You clicked the third ListGroupItem');
-      }
+
     return (
       <div id="newsContainer">
         <h2>News</h2>
 
-        <ul id='newsDiv'>
-          <li className = 'newsBlurb'>
-            <div>
-                Connect-Home Pilot (Paper 1+2)
-            </div>
-            <div>
-                Date
-            </div>
-            <button>Read More...</button>
-          </li>
-          <li className = 'newsBlurb'>Consultation - </li>
-          <li className = 'newsBlurb'>Consultation - </li>
-          <li className = 'newsBlurb'>Consultation - </li>
-          <li className = 'newsBlurb'>Consultation - </li>
-          <li className = 'newsBlurb'>Consultation - </li>
+        <ul>
+         
+          {this.state.news.reverse().map(item => (
+            <li id={item}>
+            <h5>{item.title}</h5>
+            <p>{item.body}</p>
+            <p>{item.date}</p>
+            <hr></hr>
+            </li> 
+          ))}
         </ul>
 
-
-        {/* <ListGroup variant = "flush">
-            <ListGroup.Item action href="#link1">
-            Link 1
-            </ListGroup.Item>
-            <ListGroup.Item action href="#link2" >
-            Link 2
-            </ListGroup.Item>
-            <ListGroup.Item action>This one is a button</ListGroup.Item>
-        </ListGroup>
-
-        <Card>
-            <Card.Header>Featured</Card.Header>
-            <Card.Body>
-                <Card.Title>Special title treatment</Card.Title>
-                <Card.Text>
-                With supporting text below as a natural lead-in to additional content.
-                </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
-            </Card.Body>
-        </Card> */}
-
+        
 
       </div>
     );

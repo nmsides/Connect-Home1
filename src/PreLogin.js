@@ -4,6 +4,10 @@ import LoginBox from './LoginBox';
 import PostLogin from './PostLogin';
 import Admin from './Admin';
 import News from './news';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Popover from 'react-bootstrap/Popover'
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
+import Button from 'react-bootstrap/Button'
 
 import {
   Route,
@@ -17,12 +21,17 @@ import Services from "./Services";
 import About from "./About";
 import Files from 'react-files'
 import axios from 'axios';
+// const base64 = require('base64topdf');
 
 let allUsers;
 let userNameInput;
 let successfulLogin;
 let thisUser;
 let url;
+
+// let testFile;
+// let decodedBase64;
+
 
 class FilesDemo extends Component{
   constructor(props){
@@ -76,29 +85,33 @@ class PreLogin extends Component{
           u: "",
           p: "",
           all: "",
-          isLoggedIn: false
+          isLoggedIn: false,
+          news: [{title: "",
+              body: "",
+              id: "",
+              date: ""}]
       }
 
-      this.checkUserName = this.checkUserName.bind(this); //react must bind this
       this.getUserNames = this.getUserNames.bind(this);
+      // this.testLoadPDF = this.testLoadPDF.bind(this)
     }
 
-    checkUserName(){
-      //let userNameInput = document.getElementById("userNameInput").value;
-      this.getUserNames();
 
-    }
 
     componentDidMount() {
       console.log(this.state.isLoggedIn)
       this.loadUsers();
-      this.getNews();
+      // this.testLoadPDF();
     }
 
-    componentDidUpdate(){
-        //console.log('updated');
-    }
-
+    // testLoadPDF(){
+    //   return axios.get(url + "/api/admin/qi")
+    //       .then(response => {
+    //         this.response = response.data;
+    //         let testFile = this.response[3].base64;
+    //         // decodedBase64 = base64.base64Decode(testFile, 'testPDF');
+    //         return this.response});
+    // }
 
    loadUsers() {
       return axios.get(url + "/api/users")
@@ -123,12 +136,18 @@ class PreLogin extends Component{
                if(response.data[i].username === userNameInput){
                    console.log("username in list")
                    if(response.data[i].password === passwordInput){
+                     // somewhere in here need to verify that it is the admin who is logged in
                        console.log("password correct");
                        let successfulLogin = true;
                        // this.setState({isLoggedIn: true});
-                       
+                       // this.props.onAdminLogin();
+
                        thisUser = response.data[i]._id; //Added to then pass to new page
-                       this.props.onLogin(thisUser);
+                       this.props.onLogin(thisUser, userNameInput, response.data[i].name);
+                       if(userNameInput === "toles" && passwordInput === "tolespw"){
+                         console.log("is Admin")
+                         this.props.onAdminLogin();
+                       }
                        break; //listen to the state and then load new page
                    }else{
                        console.log("password incorrect");
@@ -145,24 +164,28 @@ class PreLogin extends Component{
         });
       }
 
-  //my news function
-  getNews() {
-      return axios.get("http://localhost:5000/api/news")
-      .then(response => {
-          this.response = response.data;
-          for(let i = response.data.length - 1; i > -1; i--) {
-              console.log(response.data[i]); //Getting news in order by most current
-          }
-      });
-  }
+     
 
+ 
 
   render() {
+
+    const loginAttempt = () =>  {
+        this.getUserNames();
+    }
+  
+
         return (
           <div id="bod" >
+
+            {/* <iframe id = "testPDF" href={testFile} download="file.pdf">
+              <p>Your browser does not support iframes.</p>
+            </iframe>
+            <a href = {testFile} download="file.pdf">asdf</a>  */}
+
           <div className = "row">
             <div className = "col-sm-12">
-            <FilesDemo/>
+            {/* <FilesDemo/> */}
               <HashRouter>
                 <div>
                 <div className = "row" id="preLogLogoDiv">
@@ -171,8 +194,8 @@ class PreLogin extends Component{
                       </div>
                       <div className = "col-sm-4">
                           <div id="preInfoText">
-                              <p className="text-black-50">Information: "Lorem ipsum dolor sit amcitation ullamco laboris 
-                              nisi uodo cepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
+                              <p className="text-black-50">Information: "Lorem ipsum dolor sit amcitation ullamco laboris
+                              nisi uodo cepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
                               deserunt mollit anim id est laborum."</p>
                           </div>
                       </div>
@@ -189,27 +212,52 @@ class PreLogin extends Component{
                         <li><NavLink className="nav-item preNavItem preLink" to="/About">About Us</NavLink></li>
                         <li><NavLink className="nav-item preNavItem preLink" to="/contact">Contact</NavLink></li>
                       </ul>
+                      <ButtonToolbar>
+                    {['top'].map(placement => (
+                      <OverlayTrigger
+                        trigger="click"
+                        key={placement}
+                        placement={placement}
+                        overlay={
+                          <Popover
+                            id={`popover-positioned-${placement}`}
+                            title={`Help`}
+                          >
+                          <p>If additional help is needed to navigate the site, contact Mark Toles at #. </p>
+                          <p> - Select the Understanding Connect-Home, Services and Support, News, and About Us menu links to view more information about the Connect-Home experience.</p>
+                          <p> - Contact Us page: fill in the required fields and press Submit to send your information to Connect-Home. </p>
+                          </Popover>
+                        }
+                      >
+                        <Button variant="secondary" id = 'popButtonPre'>Need Help?</Button>
+                      </OverlayTrigger>
+                    ))}
+                  </ButtonToolbar>
                     </div>
 
                     <div className = 'col-sm-7'>
-                      <button type="button" onClick={this.getUserNames}>Press Me</button>
+                      {/* <button type="button" onClick={this.getUserNames}>Press Me</button> */}
                       <Route exact path="/" component={HomeCarousel}/>
-                      <Route path="/LoginBox" component={LoginBox}/>
+                      <Route path="/LoginBox" render={(props) => <LoginBox {...props} loginAttempt={loginAttempt}/>}/>
                       <Route path="/Understand" component={Understand}/>
                       <Route path="/Services" component={Services}/>
-                      <Route path="/News" component={News}/>
+                      <Route path="/News" component={News} />
                       <Route path="/About" component={About}/>
                       <Route path="/contact" component={Contact}/>
                     </div>
+                    
                   </div>
+                  
+                 
                 </div>
             </HashRouter>
             </div>
           </div>
-
+         
       </div>
         );
     }
 }
+
 
 export default PreLogin;

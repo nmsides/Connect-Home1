@@ -64,6 +64,7 @@ class LoginBox extends Component{
         }
 
     getUserNames(){
+        
             let userNameInput = document.getElementById("userNameInput").value;
             let passwordInput = document.getElementById("passwordInput").value;
             return axios.get(url + "/api/users")
@@ -76,6 +77,7 @@ class LoginBox extends Component{
                        console.log("password correct");
                        let successfulLogin = true;
                        this.setState({isLoggedIn: true})
+                       this.props.loginAttempt();
                        thisUser = response.data[i]._id; //Added to then pass to new page
                        break; //listen to the state and then load new page
                    }else{
@@ -112,11 +114,15 @@ class LoginBox extends Component{
                  <div className="input-group" id = "logInput">
                      {/* <img src="stock-profile.jpg"/> */}
 
-                     <div><input type="text"  id='userNameInput' placeholder="Email" /></div>
+                     <div><input type="text"  id='userNameInput' placeholder="Email" /></div><br></br>
                      <div><input type="text"  placeholder="Password" id='passwordInput'/></div>
                      <button type="button" className="btn" id="loginBtn" onClick={this.checkUserName}>Login</button>
 
                      </div>
+                     <p className = 'text-black-50' id="loginBoxInfo">Provide your personal username and password provided by Connect-Home to access the client portal. 
+                         If you need assistance logging in or have forgotten your username or password, please contact
+                          Mark Toles at #. 
+                    </p>
                     {/* <this.successLog/> */}
                  </div>
          );

@@ -8,8 +8,10 @@ exports.isValid = (thing) =>
     thing !== null &&
     thing.hasOwnProperty('title') &&
     thing.hasOwnProperty('body') &&
+    thing.hasOwnProperty('date') &&
     typeof thing.title === 'string' &&
-    typeof thing.body === 'string'
+    typeof thing.body === 'string' &&
+    typeof thing.date === 'string'
 
 exports.updateValid = (thing) =>
     typeof thing === 'object' &&
@@ -24,12 +26,9 @@ exports.all = async (db) =>
 exports.findById = async (db, id) =>
   await news(db).findOne(ObjectId(id))
 
-const addTimestamp = (news_post) => Object.assign({}, news_post, {date: Date.now()})
-
 exports.insert = async (db, news_post) => {
-  let newNews = addTimestamp(news_post)
-  await news(db).insertOne(newNews)
-  return newNews
+  await news(db).insertOne(news_post)
+  return news_post
 }
 
 exports.deleteAll = async (db) =>

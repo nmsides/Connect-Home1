@@ -5,18 +5,20 @@ const { ObjectId } = require('mongodb')
 exports.isValid = (thing) =>
     typeof thing === 'object' &&
     thing !== null &&
-    thing.hasOwnProperty('name_first') &&
-    thing.hasOwnProperty('name_last') &&
+    thing.hasOwnProperty('name') &&
     thing.hasOwnProperty('username') &&
     thing.hasOwnProperty('password') &&
     thing.hasOwnProperty('tools_auth') &&
     thing.hasOwnProperty('qi_auth') &&
-    typeof thing.name_first === 'string' &&
-    typeof thing.name_last === 'string' &&
+    thing.hasOwnProperty('goal') &&
+    thing.hasOwnProperty('participants') &&
+    typeof thing.name === 'string' &&
     typeof thing.username === 'string' &&
     typeof thing.password === 'string' &&
     typeof thing.tools_auth === 'object' &&
-    typeof thing.qi_auth === 'object'
+    typeof thing.qi_auth === 'object' &&
+    typeof thing.goal === 'string' &&
+    typeof thing.participants === 'string'
 
 exports.userValid = (thing) =>
     typeof thing === 'object' &&
@@ -24,6 +26,13 @@ exports.userValid = (thing) =>
     thing.hasOwnProperty('qi_auth') &&
     typeof thing.tools_auth === 'object' &&
     typeof thing.qi_auth === 'object'
+
+exports.userCredValid = (thing) =>
+    typeof thing === 'object' &&
+    thing.hasOwnProperty('username') &&
+    thing.hasOwnProperty('password') &&
+    typeof thing.username === 'string' &&
+    typeof thing.password === 'string'
 
 const users = (db) => db.collection('users')
 

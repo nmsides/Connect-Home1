@@ -1,6 +1,9 @@
 /* All */
 
-
+#testPDF{
+  width: 75%;
+  height: 600px;
+}
 
 #bod{
   height: 100%;
@@ -18,10 +21,17 @@ html{
   height: 5em;
 }
 
-#logoutBtn{
+#logOut{
   width: 20%;
   font-size: 2em;
-  margin-left: 1em;
+  /* margin-left: 1em; */
+  color: #c24747;
+  border: thin #c24747;
+}
+
+#logOut:hover{
+  color: white;
+  background-color: #c24747;
 }
 
 .nav-link:hover{
@@ -32,6 +42,36 @@ html{
 .btn{
   width: 100%;
 }
+
+.btn-default{
+  width: 50%;
+  border: thin #c24747;
+  color: #c24747;
+}
+
+.btn-default:hover{
+  background-color: #c24747;
+  color: white;
+}
+
+#dropdown-basic-button{
+  width: 50%;
+  background-color: #5282bc;
+  border: white;
+  font-size: 24px;
+}
+
+/*Carousel*/
+
+#firstSlideCaption{
+  background-color: white;
+}
+
+.d-block{
+  background-color: white;
+}
+
+
 
 
 /* Pre Login */
@@ -44,10 +84,17 @@ html{
 }
 
 .preNavItem:hover {
-  opacity: 0.7;
   background-color: #c24747;
 }
 
+#popButtonPre{
+  width: 20%;
+  margin-top: 4em;
+}
+
+#popButtonPost{
+  width: 100%;
+}
 
 .preNav:hover {
   opacity: 0.7;
@@ -55,7 +102,7 @@ html{
 
 .preLink{
   color: white;
-  margin: 10px;
+  margin: 1px;
 }
 
 
@@ -76,27 +123,33 @@ html{
 }
 
 #loginBtn{
-  background-color: #c24747;
+  background-color: white;
   width: 50%;
-  color: white;
+  color: #c24747;
   margin-top: 4%;
   border-radius: .5em;
   font-size: 20px;
-
+  border: solid thin #c24747;
 }
 
 #loginBtn:hover{
   background-color: #c24747;
-  border: solid lightgray;
+  border: solid thin #c24747;
+  color: white;
 }
 
 
 #loginBox{
   width: 50%;
-  border: solid #5282bc;
+  border: solid thin #5282bc;
   margin: 0 auto;
   border-radius: .5em;
   height: 100%;
+}
+
+#loginBoxInfo{
+  margin-top: 2em;
+  padding: 1em;
 }
 
 #logInput{
@@ -124,6 +177,10 @@ html{
 #preInfoText{
   width: 100%;
  padding-top: 5%;
+}
+
+#loginBoxInfo{
+  margin-top: 2em;
 }
 
 .provLogo{
@@ -245,7 +302,7 @@ html{
   -o-transition: opacity .5s ease-in-out;
   transition: opacity .5s ease-in-out;
   opacity: 1;
-  background-color: #5282bc;
+  
   width: 100px;
   text-align: left;
   font-size: 28px;
@@ -268,4 +325,16 @@ html{
 #postWelcome{
   margin-left: 25%;
   margin-top: 10%;
+}
+
+#qiiframe{
+  width: 100%;
+  height: 500px;
+
+}
+
+#califrame{
+  width: 100%;
+  height: 650px;
+
 }

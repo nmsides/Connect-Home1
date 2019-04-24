@@ -1,28 +1,20 @@
 import React, { Component } from "react";
 import axios from 'axios';
+import {
+  Route,
+  NavLink,
+  HashRouter
+} from "react-router-dom";
+import AddUser from "./AddUser";
+import BlogPost from "./BlogPost";
+import HomeCarousel from "./HomeCarousel";
+import ConfigureUsers from "./ConfigureUsers";
+import OldPosts from "./OldPosts";
+import Newqi from "./Newqi";
+import Newcal from "./Newcal";
+import Newtools from "./Newtools"
 
 let proxyurl;
-let user_tools;
-
-//User Test Info for PUT
-const my_id= "5c801843e7179a3e36e2a7d3";
-const tools_auth= ["M", "B"];
-const qi_auth= ["M", "B"];
-
-//News Test Info for PUT
-const news_id= "5cb25457e7179a36ac35c113";
-const news_title = "Test title 13";
-const news_body= "Testing updating feature";
-var today = new Date();
-const date = today.getMonth()+1 + '-' + today.getDate() + '-' + today.getFullYear();
-
-//User Test Info for POST
-const my_first = "Fred";
-const my_last = "Rogers";
-const my_user = "mrrogers";
-const my_pass = "neighbor";
-const my_tools = ["MRR", "OGE"];
-const my_qi = ["HEL", "LLO"];
 
 class Admin extends Component{
 
@@ -31,30 +23,20 @@ class Admin extends Component{
 
     if (process.env.REACT_APP_BACKEND_HOST) { proxyurl = process.env.REACT_APP_BACKEND_HOST; }
     else { proxyurl = "http://localhost:5000"; }
+        
+        //this.updateUserConfig = this.updateUserConfig.bind(this);
 
-        this.newblog = this.newblog.bind(this);
+    this.logout = this.logout.bind(this);
 
       }
+    
+//    componentWillMount(){
+//        //this.updateUserConfig(my_id, "madisontest", "madisonpw");
+//      }
 
-    componentDidMount() {
-        //console.log("hi")
-        this.newblog();
-      }
-
-    newblog() {
-        //this.createNews(news_title, news_body);
-        //this.createuser(my_first, my_last, my_user, my_pass, my_tools, my_qi);
-        //this.getTools();
-        //this.getQiTools();
-        //this.updateArrays(my_id, tools_auth, qi_auth);
-        //this.updateNewsPost(news_id, news_body);
-        //this.deleteNewsPost(news_id);
-    }
-
-    createNews(news_title, news_body) {
-        //console.log(date);
+    createNews(news_title, news_body, news_date) {
         return axios.post(proxyurl + "/api/admin/news", {
-            date: new Date(),
+            date: news_date,
             title: news_title,
             body: news_body
         })
@@ -66,20 +48,18 @@ class Admin extends Component{
         })
     }
 
-    createuser(first, last, user, pass, tools, qi) {
+    createuser(name, user, pass, tools, qi, goal, participants) {
          return axios.post(proxyurl + "/api/admin/newuser", {
-            name_first: first,
-            name_last: last,
+            name: name,
             username: user,
             password: pass,
             tools_auth: tools,
-            qi_auth: qi
+            qi_auth: qi, 
+            goal: goal, 
+            participants: participants
         })
         .then(function (response) {
         console.log(response);
-        //console.log("user's tools!: " + response.data.tools_auth);
-        //user_tools = response.data.tools_auth;
-
         })
         .catch(function (error) {
         console.log(error);
@@ -96,6 +76,10 @@ class Admin extends Component{
         })
     }
 
+    logout() {
+        this.props.onAdminLogout();
+    }
+
     getQiTools() { //This returns ALL qi tools name + keys
         return axios.get(proxyurl + '/api/admin/qi')
             .then(function(response) {
@@ -108,25 +92,36 @@ class Admin extends Component{
 
     updateArrays(id, tools, qis) {
         return axios.put(proxyurl + '/api/admin/user', {
-            _id: id, 
-            tools_auth: tools, 
-            qi_auth: qis 
+            _id: id,
+            tools_auth: tools,
+            qi_auth: qis
         })
         .then(function(response) {
             console.log(response);
         })
     }
     
+    updateUserConfig(id, user, pass) {
+        return axios.put(proxyurl + '/api/admin/userLog', {
+            _id: id,
+            username: user,
+            password: pass
+        })
+        .then(function(response) {
+            console.log(response);
+        })
+    }
+
     updateNewsPost(id, body) {
         return axios.put(proxyurl + '/api/admin/updateNews', {
-            _id: id, 
+            _id: id,
             body: body
         })
         .then(function(response) {
             console.log(response);
         })
     }
-    
+
     deleteNewsPost(thisid) {
         return axios.post(proxyurl + '/api/admin/deleteNews', {
             _id: thisid
@@ -144,30 +139,53 @@ class Admin extends Component{
                         <div className = "col-sm-6">
                             <img src="./Resources/Asset 2.svg" id = 'mainLogo'></img>
                         </div>
-                        <div className = "col-sm-6" id="adminCalLog">
+                        {/* <div className = "col-sm-6" id="adminCalLog">
                             <button className="btn" id="calBtn">Calendar</button>
-                            <button className="btn" id="logoutBtn">Logout</button>
-                        </div>
+                        </div> */}
+
+                      
                 </div>
                 <div className="spacingDiv"></div>
 
                 <h1>Admin Page</h1>
-                <div className = "row">
-                    <div className = "col-sm-5">
-                        <ul className="list-group" id = "AdminToolList">
-                            <li className="list-group-item"><button className = "btn">Edit Contact Info</button></li>
-                            <li className="list-group-item"><button className = "btn">Edit Research Publications</button></li>
-                            <li className="list-group-item"><button className = "btn">Post Videos</button></li>
-                            <li className="list-group-item"><button className = "btn">Edit Tools</button></li>
-                            <li className="list-group-item"><button className = "btn">View QI Meetings</button></li>
-                            <li className="list-group-item"><button className = "btn">Edit Sponsors</button></li>
-                        </ul>
+                <div>
+                  <HashRouter>
+                    <div>
+                      <div className = 'row'>
+                        <div className = 'col-sm-5 preLinks'>
+                          <ul className="verticalNav nav flex-column">
+                           
+                            <li><NavLink className="nav-item preNavItem preLink" to="/AddUser">Add User</NavLink></li>
+                            <li><NavLink className="nav-item preNavItem preLink" to="/BlogPost">Update News Page</NavLink></li>
+
+                            <li><NavLink className="nav-item preNavItem preLink" to="/ConfigureUsers">Configure Users</NavLink></li>
+                            <li><NavLink className="nav-item preNavItem preLink" to="/NewQi">QI Tools</NavLink></li>
+                            <li><NavLink className="nav-item preNavItem preLink" to="/Newcal">Calendar</NavLink></li>
+                            <li><NavLink className="nav-item preNavItem preLink" to="/Newtools">Connect-Home Tools</NavLink></li>
+                          </ul>
+                        </div>
+
+                        <div className = 'col-sm-7'>
+                         
+                          <Route path="/AddUser" component={AddUser}/>
+                          <Route path="/BlogPost" component={BlogPost}/>
+                          <Route path="/ConfigureUsers" component={ConfigureUsers}/>
+                          <Route path="/NewQi" component={Newqi}/>
+                          <Route path="/Newcal" component={Newcal}/>
+                          <Route path="/Newtools" component={Newtools}/>
+                        
+                        </div>
+<button type="button" className="btn" id="logOut" onClick={this.logout}>Logout</button>
+                      </div>
                     </div>
-                    <div className = "col-sm-7">
-                        <textarea placeholder = "Blog Here!" id = "blogText"></textarea>
-                        <h4 id="blogHeader"><button className="btn" id="blogBtn">Post Blog</button></h4>
-                    </div>
-                </div>
+                </HashRouter>
+            </div>
+
+            {/* <div id="logoutButton"> */}
+                      
+                      
+                        {/* </div> */}
+
             </div>
         );
     }

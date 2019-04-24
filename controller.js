@@ -20,6 +20,9 @@ try {
     const db = client.db(dbName);
     const users = require('./src/user_bk.js')
     const news = require('./src/news_bk.js')
+    const qi_tools = require('./src/qi_bk.js')
+    const cal = require('./src/Calendar_bk.js')
+    const tools = require('./src/Tools_bk.js')
     
     const express = require('express')
     const app = express()
@@ -49,12 +52,20 @@ try {
   });
     
     app.get('/api/admin/qi', async (req, res) => {
-        const collection = db.collection("qi_tools"); 
+        const collection = db.collection("qi"); 
         const qis = await collection.find().toArray();
         res.send(JSON.stringify(qis)) //Returns array of all tools
   });
+
+  
+
+  app.get('/api/admin/calendar', async (req, res) => {
+  const collection = db.collection("calendar");
+  const calendar = await collection.find().toArray();
+  res.send(JSON.stringify(calendar))
+});
     
-    //PUT USER TO STORE ARRAYS
+    //PUT USER TO UPDATE ARRAYS
     app.put('/api/admin/user', async (req, res) => {
     const body = req.body
     
@@ -65,6 +76,25 @@ try {
     } else {
         var myquery = { _id: mongodb.ObjectID(body._id) };
         var newvalues = { $set: { tools_auth: body.tools_auth, qi_auth: body.qi_auth } };
+      await db.collection("users").updateOne(myquery, newvalues, function(err, res) {
+        if (err) throw err;
+        console.log("1 document updated");
+    })
+        return res.status(200).json(body)
+    }
+  })
+    
+    //PUT USER TO UPDATE USER/PASS
+    app.put('/api/admin/userLog', async (req, res) => {
+    const body = req.body
+    
+    if (!req.is('json') || !users.userCredValid(body)) {
+      return res.status(400).end()
+    } else if (!(await users.findById(db, body._id))) {
+      return res.status(404).end()
+    } else {
+        var myquery = { _id: mongodb.ObjectID(body._id) };
+        var newvalues = { $set: { username: body.username, password: body.password } };
       await db.collection("users").updateOne(myquery, newvalues, function(err, res) {
         if (err) throw err;
         console.log("1 document updated");
@@ -100,6 +130,14 @@ try {
       return res.status(200).json(await news.insert(db, req.body))
     }
   })
+
+  app.post('/api/admin/calendar', async (req, res) => {
+      return res.status(200).json(await cal.insert(db,req.body))
+  })
+
+    app.post('/api/admin/tools', async (req, res) => {
+        return res.status(200).json(await tools.insert(db, req.body))
+})
     
      app.post('/api/admin/newuser', async (req, res) => {
         if (!req.is('json') || !users.isValid(req.body)) { 
@@ -108,6 +146,16 @@ try {
       return res.status(200).json(await users.insert(db, req.body))
     }
   })
+
+  app.post('/api/admin/qi', async (req, res) => {
+    //console.log(req.body);
+//     if (!req.is('json') || !news.isValid(req.body)) { 
+//   return res.status(400).end()
+// } else {
+  return res.status(200).json(await qi_tools.insert(db, req.body))
+//}
+})
+
 
 //Deleting blog posts (This is a post but it does DELETE!)    
     app.post('/api/admin/deleteNews', async(req, res) => {
