@@ -137,6 +137,19 @@ class Newqi extends Component {
    })
   
 }
+
+deleteTool(itemName) {
+  
+  console.log(allFilesArray)
+ for(let i = 0; i < allFilesArray.length; i++){
+   if(allFilesArray[i].name === itemName){
+     allFilesArray.splice(i, 1);
+   }
+ }
+  console.log(allFilesArray)
+ this.setState({allFiles: allFilesArray})
+}
+
   render() {
     return (
       <div>
@@ -163,7 +176,7 @@ class Newqi extends Component {
             <ul className="currentList">
             {this.state.allFiles.map(item => (
               <li id={item}>
-              <p>{item.name} <button>Delete this Tool</button></p>
+              <p>{item.name} <button id= {item.key} onClick = {this.deleteTool.bind(this, item.name)}>Delete this Tool</button></p>
               </li> 
             ))}
           </ul>
