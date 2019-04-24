@@ -188,6 +188,21 @@ try {
           }
       });    
   })
+
+  app.post('/api/admin/deleteTools', async(req, res) => {
+    const body = req.body
+    console.log(body);
+    await db.collection("tools").deleteOne({
+        _id: mongodb.ObjectID(body._id) 
+        }, function(err){
+            if (err) {
+                console.log(err)
+        }
+        else {
+            return res.status(200).json(body)
+        }
+    });    
+})
     
     app.listen(port, () => console.log(`Example app listening on port ${port}!`)) 
 }
