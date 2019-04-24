@@ -193,11 +193,7 @@ class PreLogin extends Component{
                           <img src="./Resources/Asset 2.svg" id = 'mainLogo'></img>
                       </div>
                       <div className = "col-sm-4">
-                          <div id="preInfoText">
-                              <p className="text-black-50">Information: "Lorem ipsum dolor sit amcitation ullamco laboris
-                              nisi uodo cepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                              deserunt mollit anim id est laborum."</p>
-                          </div>
+                         
                       </div>
                       {/* <LoginButton/> */}
                   </div>
@@ -223,7 +219,7 @@ class PreLogin extends Component{
                             id={`popover-positioned-${placement}`}
                             title={`Help`}
                           >
-                          <p>If additional help is needed to navigate the site, contact Mark Toles at #. </p>
+                          <p>If additional help is needed to navigate the site, contact Mark Toles. </p>
                           <p> - Select the Understanding Connect-Home, Services and Support, News, and About Us menu links to view more information about the Connect-Home experience.</p>
                           <p> - Contact Us page: fill in the required fields and press Submit to send your information to Connect-Home. </p>
                           </Popover>

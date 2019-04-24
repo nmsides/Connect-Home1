@@ -77,15 +77,18 @@ FileBase64.defaultProps = {
   multiple: false,
 };
 
-
+let allFilesArray = [];
 class Newqi extends Component {
   constructor() {
     super()
     this.state = {
-      files: []
+      files: [],
+      allFiles: []
     }
-   // this.getfiles() = this.getfiles().bind(this);
 
+   this.getAllFiles = this.getAllFiles.bind(this);
+    
+   
     if (process.env.REACT_APP_BACKEND_HOST) {
         proxyurl = process.env.REACT_APP_BACKEND_HOST; }
       else {
@@ -94,8 +97,27 @@ class Newqi extends Component {
   }
   getFiles(files){
     this.setState({ files: files })
+    console.log(this.state)
+  }
+
+  getAllFiles(){
+    return axios.get(proxyurl + '/api/admin/qi')
+    .then(response => {
+     this.response = response.data
+        for(let i = 0; i < response.data.length; i++){
+          allFilesArray[i] = {name: response.data[i].name, type: response.data[i].type, size: response.data[i].size , key: response.data[i].key, base64: response.data[i].base64}
+    }
+    //decodedBase64 = base64.base64Decode(a, b);
+    this.setState({allFiles: allFilesArray})
+    console.log(allFilesArray)
+    console.log(this.state.allFiles)
+})
   }
   
+  componentDidMount(){
+    this.getAllFiles();
+  }
+
   testqi() {
     return axios.post(proxyurl + "/api/admin/qi/", {
        name: file1,
@@ -108,7 +130,7 @@ class Newqi extends Component {
  
    .then(function (response) {
    console.log(response);
-   
+   window.alert("QI Tool Added!")
    })
    .catch(function (error) {
    console.log(error);
@@ -118,6 +140,7 @@ class Newqi extends Component {
   render() {
     return (
       <div>
+      <div className = "row">
         <div className="text-center mt-25">
           <FileBase64
             multiple={ true }
@@ -134,6 +157,17 @@ class Newqi extends Component {
           }) }
           <button className="load" onClick={this.testqi}>load files</button>
         </div>
+      </div>
+      <div className = "row">
+          <h2 className="currentListHeader">Current QI Tools:</h2>
+            <ul className="currentList">
+            {this.state.allFiles.map(item => (
+              <li id={item}>
+              <p>{item.name} <button>Delete this Tool</button></p>
+              </li> 
+            ))}
+          </ul>
+      </div>
       </div>
     )
   }

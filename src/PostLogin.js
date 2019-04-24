@@ -144,13 +144,13 @@ class PostLogin extends Component{
                                         id={`popover-positioned-${placement}`}
                                         title={`Help`}
                                     >
-                                    <p>If additional help is needed to navigate the site, contact Mark Toles at #. </p>
+                                    <p>If additional help is needed to navigate the site, contact Mark Toles. </p>
                                     <p> - Select the Overview, Calendar, and Contact menu links to view more information 
                                         about the Connect-Home experience. </p>
                                     <p> - The <strong>Connect-Home Transitional Care Tools</strong> page and the 
                                         <strong>Quality Improvement 
                                         Tools</strong> page display documents and tools specific to your portal account. 
-                                        Select ___ to display each document, and ___ to download. </p>
+                                        Select the dropdown to display each document, and click on the appropriate file name to view and download. </p>
                                     </Popover>
                                     }
                                 >
@@ -183,7 +183,7 @@ class PostLogin extends Component{
                             <Route path="/ContactInformation" component={ContactInformation}/>
 
                           </div>
-                          <button type="button" className="btn" id="logOut" onClick={this.logout}>Logout</button>
+                          <button type="button" className="btn" id="logOutPost" onClick={this.logout}>Logout</button>
                      </div>
 
                      </HashRouter>

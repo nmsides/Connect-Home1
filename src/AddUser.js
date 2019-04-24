@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import axios from 'axios';
 let proxyurl;
-
 class AddUser extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +14,7 @@ class AddUser extends Component {
       this.handleClick = this.handleClick.bind(this);
 
       }
-
+      
       handleClick(event) {
         var fN = document.getElementById("firstName").value;
         var email = document.getElementById("email").value;
@@ -41,11 +40,12 @@ class AddUser extends Component {
           console.log(response);
           //console.log("user's tools!: " + response.data.tools_auth);
           //user_tools = response.data.tools_auth;
-
+          window.alert("New User Created!");
           })
           .catch(function (error) {
           console.log(error);
           })
+         
       }
 
   render() {

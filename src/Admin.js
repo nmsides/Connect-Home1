@@ -13,6 +13,12 @@ import OldPosts from "./OldPosts";
 import Newqi from "./Newqi";
 import Newcal from "./Newcal";
 import Newtools from "./Newtools"
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Popover from 'react-bootstrap/Popover'
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar'
+import Button from 'react-bootstrap/Button'
+import Dropdown from 'react-bootstrap/Dropdown'
+import DropdownButton from 'react-bootstrap/DropdownButton'
 
 let proxyurl;
 
@@ -141,9 +147,34 @@ class Admin extends Component{
                         </div>
                         {/* <div className = "col-sm-6" id="adminCalLog">
                             <button className="btn" id="calBtn">Calendar</button>
-                        </div> */}
+                      </div> */}
+                      <div className = "col-sm-3" id="adminHelp"><ButtonToolbar>
+                                {['bottom'].map(placement => (
+                                <OverlayTrigger
+                                    trigger="click"
+                                    key={placement}
+                                    placement={placement}
+                                    overlay={
+                                    <Popover
+                                        id={`popover-positioned-${placement}`}
+                                        title={`Help`}
+                                    >
+                                   <p>- Add User page: input desired user credentials to create that user. </p> 
+                                   <p>- Update News page: provide title, date, and text to be displayed in the News tab.  Delete previous posts if desired.</p>
+                                    <p>- Configure Users page: select a user and choose which documents you would like that user to be able to view. View current users by username and password.</p>
+                                    <p>- QI Tools page: upload a document from your computer to be displayed in the QI Tools page. Click upload to update the site. (Go to the Configure Users page to allow access to this document.)</p>
+                                    <p>- Tools/Resources page:upload a document from your computer to be displayed in the QI Tools page. Click upload to update the site. (Go to the Configure Users page to allow access to this document.)</p>
+                                    <p>- Calendar page: upload a document from your computer to replace the current calendar on the Calendar page.</p>
 
-                      
+                                    </Popover>
+                                    }
+                                >
+                                    <Button variant="secondary" id = 'popButtonPost'>Need Help?</Button>
+                                </OverlayTrigger>
+                                  ))}
+                        </ButtonToolbar></div>
+                    <div className = "col-sm-3"><button type="button" className="btn" id="logOut" onClick={this.logout}>Logout</button></div>
+                    
                 </div>
                 <div className="spacingDiv"></div>
 
@@ -175,7 +206,7 @@ class Admin extends Component{
                           <Route path="/Newtools" component={Newtools}/>
                         
                         </div>
-<button type="button" className="btn" id="logOut" onClick={this.logout}>Logout</button>
+
                       </div>
                     </div>
                 </HashRouter>

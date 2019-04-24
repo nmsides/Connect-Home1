@@ -77,14 +77,18 @@ FileBase64.defaultProps = {
   multiple: false,
 };
 
-
+let allFilesArray = [];
 class Newtools extends Component {
   constructor() {
     super()
     this.state = {
-      files: []
+      files: [],
+      allFiles: []
     }
-   // this.getfiles() = this.getfiles().bind(this);
+
+   this.getAllFiles = this.getAllFiles.bind(this);
+   this.deleteTool = this.deleteTool.bind(this);
+ 
 
     if (process.env.REACT_APP_BACKEND_HOST) {
         proxyurl = process.env.REACT_APP_BACKEND_HOST; }
@@ -95,7 +99,25 @@ class Newtools extends Component {
   getFiles(files){
     this.setState({ files: files })
   }
+
+  getAllFiles(){
+    return axios.get(proxyurl + '/api/admin/tools')
+    .then(response => {
+     this.response = response.data
+        for(let i = 0; i < response.data.length; i++){
+          allFilesArray[i] = {name: response.data[i].name, type: response.data[i].type, size: response.data[i].size , key: response.data[i].key, base64: response.data[i].base64}
+    }
+    //decodedBase64 = base64.base64Decode(a, b);
+    this.setState({allFiles: allFilesArray})
+    console.log(allFilesArray)
+    console.log(this.state.allFiles)
+})
+  }
   
+  componentDidMount(){
+    this.getAllFiles();
+  }
+
   testqi() {
     return axios.post(proxyurl + "/api/admin/tools/", {
        name: file1,
@@ -108,6 +130,7 @@ class Newtools extends Component {
  
    .then(function (response) {
    console.log(response);
+   window.alert("Tool Added!")
    
    })
    .catch(function (error) {
@@ -115,9 +138,29 @@ class Newtools extends Component {
    })
   
 }
+
+ deleteTool(itemName) {
+  
+     console.log(allFilesArray)
+    for(let i = 0; i < allFilesArray.length; i++){
+      if(allFilesArray[i].name === itemName){
+        allFilesArray.splice(i, 1);
+      }
+    }
+     console.log(allFilesArray)
+    this.setState({allFiles: allFilesArray})
+}
+
+
+// deleteTool(){
+//   console.log(tool.key)
+// }
   render() {
+    
+    
     return (
       <div>
+        <div className = "row">
         <div className="text-center mt-25">
           <FileBase64
             multiple={ true }
@@ -133,8 +176,19 @@ class Newtools extends Component {
              return null
           }) }
           <button className="load" onClick={this.testqi}>load files</button>
-        </div>
+          </div>
+          </div>
+          <div className = "row" >
+          <h2 className="currentListHeader">Current Tools:</h2>
+            <ul className="currentList">
+            {this.state.allFiles.map(item => (
+              <li id={item.key}>
+              <p>{item.name} <button id= {item.key} onClick = {this.deleteTool.bind(this, item.name)}>Delete this Tool</button></p>
+              </li> 
+            ))}
+          </ul>
       </div>
+        </div>
     )
   }
 }

@@ -29,6 +29,7 @@ try {
     app.use(express.static('build'))
     const port = process.env.PORT || 5000
     const bodyParser = require('body-parser')
+    app.use(bodyParser({limit: '5mb'}));
     app.use(bodyParser.json())
 
     

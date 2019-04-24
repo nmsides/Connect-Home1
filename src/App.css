@@ -22,11 +22,36 @@ html{
 }
 
 #logOut{
-  width: 20%;
+  width: 80%;
   font-size: 2em;
-  /* margin-left: 1em; */
+  margin-top: 1em;
   color: #c24747;
-  border: thin #c24747;
+  border: solid thin #c24747;
+}
+
+#adminHelp{
+  width: 80%;
+  margin-top: 2em;
+}
+
+.currentListHeader{
+  margin-top: 2em;
+}
+
+.currentList{
+  margin-top: 5em;
+}
+
+#logOutPost{
+  width: 30%;
+  font-size: 2em;
+  margin-top: 1em;
+  color: #c24747;
+  border: solid thin #c24747;
+}
+#logOutPost:hover{
+  color: white;
+  background-color: #c24747;
 }
 
 #logOut:hover{
