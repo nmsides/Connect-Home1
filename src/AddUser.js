@@ -20,18 +20,22 @@ class AddUser extends Component {
         var fN = document.getElementById("firstName").value;
         var email = document.getElementById("email").value;
         var pwd = document.getElementById("pwd").value;
+        var goal = document.getElementById("goal").value; 
+        var parties = document.getElementById("parties").value;
 
 
-        this.createUser(fN, email, pwd, [], []);
+        this.createUser(fN, email, pwd, [], [], goal, parties);
       }
 
-      createUser(first, user, pass, tools, qi) {
+      createUser(first, user, pass, tools, qi, goal, parties) {
            return axios.post(proxyurl + "/api/admin/newuser", {
               name: first,
               username: user,
               password: pass,
               tools_auth: tools,
-              qi_auth: qi
+              qi_auth: qi, 
+              goal: goal, 
+              participants: parties
           })
           .then(function (response) {
           console.log(response);
@@ -54,6 +58,11 @@ class AddUser extends Component {
             <input type="email" className="form-control" id="email"/>
             <label>Password:</label>
             <input type="password" className="form-control" id="pwd"/>
+            <label>Project Goal:</label>
+            <input type="goal" className="form-control" id="goal"/>
+            <label>Collaborative Participants:</label>
+            <input type="parties" className="form-control" id="parties"/>
+        
         </div>
         <button type="submit" onClick = {this.handleClick} className="btn btn-default">Submit</button>
       </form>

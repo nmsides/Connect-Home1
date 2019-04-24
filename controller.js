@@ -65,7 +65,7 @@ try {
   res.send(JSON.stringify(calendar))
 });
     
-    //PUT USER TO STORE ARRAYS
+    //PUT USER TO UPDATE ARRAYS
     app.put('/api/admin/user', async (req, res) => {
     const body = req.body
     
@@ -131,23 +131,12 @@ try {
     }
   })
 
-  app.post('/api/admin/calendar',
-async (req,
-res) => {
+  app.post('/api/admin/calendar', async (req, res) => {
+      return res.status(200).json(await cal.insert(db,req.body))
+  })
 
-
-return res.status(200).json(await
-cal.insert(db,
-req.body))
-
-//}
-
-})
-
-app.post('/api/admin/tools', async (req, res) => {
-  
-return res.status(200).json(await tools.insert(db, req.body))
-
+    app.post('/api/admin/tools', async (req, res) => {
+        return res.status(200).json(await tools.insert(db, req.body))
 })
     
      app.post('/api/admin/newuser', async (req, res) => {

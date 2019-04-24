@@ -10,11 +10,15 @@ exports.isValid = (thing) =>
     thing.hasOwnProperty('password') &&
     thing.hasOwnProperty('tools_auth') &&
     thing.hasOwnProperty('qi_auth') &&
+    thing.hasOwnProperty('goal') &&
+    thing.hasOwnProperty('participants') &&
     typeof thing.name === 'string' &&
     typeof thing.username === 'string' &&
     typeof thing.password === 'string' &&
     typeof thing.tools_auth === 'object' &&
-    typeof thing.qi_auth === 'object'
+    typeof thing.qi_auth === 'object' &&
+    typeof thing.goal === 'string' &&
+    typeof thing.participants === 'string'
 
 exports.userValid = (thing) =>
     typeof thing === 'object' &&
