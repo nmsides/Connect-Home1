@@ -121,7 +121,7 @@ class Newtools extends Component {
   
   componentDidMount(){
     this.getAllFiles();
-    this.getUsers("IMP");
+    
   }
 
   testqi() {
@@ -164,6 +164,7 @@ class Newtools extends Component {
      console.log(allFilesArray)
     this.setState({allFiles: allFilesArray})
     this.getToolsid()
+    this.getUsers(itemName);
 }
 
 getToolsid(){
@@ -202,7 +203,7 @@ getUsers(name) {
     .then(response => {
         this.response = response.data;
         for(let i = 0; i < response.data.length; i++) {
-             usersArray[i] = {id: response.data[i]._id, username: response.data[i].username, tools_auth: response.data[i].tools_auth};   
+             usersArray[i] = {id: response.data[i]._id, qi_auth: response.data[i].qi_auth, tools_auth: response.data[i].tools_auth};   
         }
         console.log(usersArray)
         console.log(usersArray[0].tools_auth.includes(name))
@@ -227,18 +228,20 @@ getUsers(name) {
     console.log(usersArray)
     console.log(nameArray)
 
-   for(let i = 0; i < nameArray.length; i++){
-      this.deletetoolsUser(usersArray[i].id, usersArray[i].tools_auth)
+   for(let i = 0; i < usersArray.length; i++){
+      this.deletetoolsUser(usersArray[i].id, usersArray[i].tools_auth, usersArray[i].qi_auth)
   }
       
     });
     
   }
 
-  deletetoolsUser(id, auth){
+  deletetoolsUser(id, tools_auth, qi_auth){
     return axios.put(proxyurl + '/api/admin/user', {
                   _id: id,
-                  tools_auth: auth,
+                  tools_auth: tools_auth,
+                  qi_auth: qi_auth
+
               })
               .then(function(response) {
                   console.log(response);

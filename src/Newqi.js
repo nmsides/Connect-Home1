@@ -11,6 +11,8 @@ let file3;
 let file4;
 let dvar;
 let toolsid;
+let usersArray = [];
+let nameArray = [];
 
 class FileBase64 extends React.Component {
 
@@ -92,7 +94,8 @@ class Newqi extends Component {
    this.deleteTool = this.deleteTool.bind(this);
    this.deletetoolsbk = this.deletetoolsbk.bind(this);
    this.getToolsid = this.getToolsid.bind(this);
-    
+   this.getUsers = this.getUsers.bind(this);
+   this.deletetoolsUser = this.deletetoolsUser.bind(this);
    
     if (process.env.REACT_APP_BACKEND_HOST) {
         proxyurl = process.env.REACT_APP_BACKEND_HOST; }
@@ -102,7 +105,6 @@ class Newqi extends Component {
   }
   getFiles(files){
     this.setState({ files: files })
-    console.log(this.state)
   }
 
   getAllFiles(){
@@ -114,8 +116,6 @@ class Newqi extends Component {
     }
     //decodedBase64 = base64.base64Decode(a, b);
     this.setState({allFiles: allFilesArray})
-    console.log(allFilesArray)
-    console.log(this.state.allFiles)
 })
   }
   
@@ -161,6 +161,7 @@ deleteTool(itemName) {
   console.log(allFilesArray)
  this.setState({allFiles: allFilesArray})
  this.getToolsid()
+ this.getUsers(itemName);
 }
 
 getToolsid(){
@@ -192,6 +193,57 @@ deletetoolsbk(){
    
   
 }
+
+getUsers(name) {
+  console.log(name)
+    return axios.get(proxyurl + "/api/users")
+    .then(response => {
+        this.response = response.data;
+        for(let i = 0; i < response.data.length; i++) {
+             usersArray[i] = {id: response.data[i]._id, qi_auth: response.data[i].qi_auth, tools_auth: response.data[i].tools_auth};   
+        }
+        console.log(usersArray)
+        console.log(usersArray[0].qi_auth.includes(name))
+        for(let i = 0; i < usersArray.length; i++){
+            if (usersArray[i].qi_auth.includes(name)){
+              nameArray[i] = usersArray[i]
+              console.log(nameArray)
+            }
+  }
+ 
+ 
+  for(let i = 0; i < usersArray.length; i++){
+    usersArray[i].qi_auth.filter(function(item){
+      console.log(item)
+       if(item === name){
+         console.log("equal")
+         usersArray[i].qi_auth.splice(usersArray[i].qi_auth.indexOf(name), 1)
+        //  this.deletetoolsUser(usersArray[i].id, usersArray[i].tools_auth)
+       }
+    })}
+
+    console.log(usersArray)
+    console.log(nameArray)
+
+   for(let i = 0; i < usersArray.length; i++){
+      this.deletetoolsUser(usersArray[i].id, usersArray[i].qi_auth, usersArray[i].tools_auth)
+  }
+      
+    });
+    
+  }
+
+  deletetoolsUser(id, tools_auth, qi_auth){
+    return axios.put(proxyurl + '/api/admin/user', {
+                  _id: id,
+                  tools_auth: tools_auth,
+                  qi_auth: qi_auth
+
+              })
+              .then(function(response) {
+                  console.log(response);
+              })
+          }
 
   render() {
     return (
