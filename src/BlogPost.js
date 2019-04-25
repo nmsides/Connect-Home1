@@ -46,7 +46,6 @@ class BlogPost extends Component {
       handleClick1(event) {
         var checkboxes = document.getElementsByName("blog");
             var checkBoxesChecked = "";
-
             // loop over them all
             for (var i=0; i<checkboxes.length; i++) {
               // And stick the checked ones onto an array...
@@ -117,7 +116,7 @@ class BlogPost extends Component {
                   <input type="text" class="form-control" id="blogTitle"/>
                   <label for="date">Post Date:</label>
                   <input type="text" class="form-control" id="blogDate"/>
-                  <textarea placeholder = "Blog Here!" id = "blogText"></textarea>
+                  <textarea placeholder = "Enter News text here!" id = "blogText"></textarea>
               </div>
               <button type="submit" onClick = {this.handleClick} class="btn btn-default">Upload Post</button>
             </form>
