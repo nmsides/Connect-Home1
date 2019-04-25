@@ -9,6 +9,8 @@ let file1;
 let file2;
 let file3;
 let file4;
+let dvar;
+let toolsid;
 
 class FileBase64 extends React.Component {
 
@@ -87,6 +89,9 @@ class Newqi extends Component {
     }
 
    this.getAllFiles = this.getAllFiles.bind(this);
+   this.deleteTool = this.deleteTool.bind(this);
+   this.deletetoolsbk = this.deletetoolsbk.bind(this);
+   this.getToolsid = this.getToolsid.bind(this);
     
    
     if (process.env.REACT_APP_BACKEND_HOST) {
@@ -144,10 +149,42 @@ deleteTool(itemName) {
  for(let i = 0; i < allFilesArray.length; i++){
    if(allFilesArray[i].name === itemName){
      allFilesArray.splice(i, 1);
+     dvar = i;
    }
  }
   console.log(allFilesArray)
  this.setState({allFiles: allFilesArray})
+ this.getToolsid()
+}
+
+getToolsid(){
+
+  return axios.get(proxyurl + '/api/admin/qi')
+        .then(response => {
+          
+         this.response = response.data
+        toolsid = response.data[dvar]._id
+        this.deletetoolsbk()
+        
+    })
+  }
+deletetoolsbk(){
+  
+    return axios.post(proxyurl + '/api/admin/deleteQi', {
+      
+      _id: toolsid,
+      
+   })
+   .then(function (response) {
+   console.log(response);
+  
+   })
+   .catch(function (error) {
+   console.log(error);
+   })
+
+   
+  
 }
 
   render() {
