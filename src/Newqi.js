@@ -124,6 +124,12 @@ class Newqi extends Component {
   }
 
   testqi() {
+    for (let i = 0; i < allFilesArray.length; i++){
+      if (file1 === allFilesArray[i].name){
+        window.alert("File name already used")
+        return null
+      }
+    }
     return axios.post(proxyurl + "/api/admin/qi/", {
        name: file1,
        type: file2,
