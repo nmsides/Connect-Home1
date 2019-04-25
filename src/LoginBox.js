@@ -114,8 +114,8 @@ class LoginBox extends Component{
                  <div className="input-group" id = "logInput">
                      {/* <img src="stock-profile.jpg"/> */}
 
-                     <div><input type="text"  id='userNameInput' placeholder="Email" /></div><br></br>
-                     <div><input type="text"  placeholder="Password" id='passwordInput'/></div>
+                     <div><input type="text"  id='userNameInput' placeholder="Username" /></div><br></br>
+                     <div><input type="password"  placeholder="Password" id='passwordInput'/></div>
                      <button type="button" className="btn" id="loginBtn" onClick={this.checkUserName}>Login</button>
 
                      </div>
