@@ -121,7 +121,7 @@ class LoginBox extends Component{
                      </div>
                      <p className = 'text-black-50' id="loginBoxInfo">Provide your personal username and password provided by Connect-Home to access the client portal. 
                          If you need assistance logging in or have forgotten your username or password, please contact
-                          Mark Toles at #. 
+                          Mark Toles. 
                     </p>
                     {/* <this.successLog/> */}
                  </div>

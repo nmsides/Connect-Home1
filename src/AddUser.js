@@ -54,7 +54,7 @@ class AddUser extends Component {
         <div className="form-group">
             <label>Client Name:</label>
             <input type="text" className="form-control" id="firstName"/>
-            <label>User Name:</label>
+            <label>Username:</label>
             <input type="email" className="form-control" id="email"/>
             <label>Password:</label>
             <input type="password" className="form-control" id="pwd"/>
