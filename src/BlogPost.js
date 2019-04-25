@@ -131,7 +131,7 @@ class BlogPost extends Component {
               )
               )}
               </ul>
-              <button id = "blogsButton" type="button" onClick={this.handleClick1}>Delete Selected Posts</button>
+              <button id = "blogsButton" class="btn btn-default" type="button" onClick={this.handleClick1}>Delete Selected Posts</button>
           </div>
         );
       }

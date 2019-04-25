@@ -57,7 +57,7 @@ class AddUser extends Component {
             <label>Username:</label>
             <input type="email" className="form-control" id="email"/>
             <label>Password:</label>
-            <input type="password" className="form-control" id="pwd"/>
+            <input type="text" className="form-control" id="pwd"/>
             <label>Project Goal:</label>
             <input type="goal" className="form-control" id="goal"/>
             <label>Collaborative Participants:</label>

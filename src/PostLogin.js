@@ -101,13 +101,13 @@ class PostLogin extends Component{
       }
       renderQIList(){ 
        let val = varAuthArray.map(item => (
-            <Dropdown.Item><NavLink to="/QITools" id={this.newQICount()} onClick={this.handleQIClick.bind(this, QICount)}>{item}</NavLink></Dropdown.Item>
+            <Dropdown.Item><NavLink to="/QITools" className="toolDrop" id={this.newQICount()} onClick={this.handleQIClick.bind(this, QICount)}>{item}</NavLink></Dropdown.Item>
          ))
-        return <li><DropdownButton className="nav-item " id="dropdown-basic-button" title="QI Tools">{val}</DropdownButton ></li>
+        return <li><DropdownButton className="nav-item "  id="dropdown-basic-button" title="QI Tools">{val}</DropdownButton ></li>
       }
       renderToolsList(){
         let val = toolsArray.map(item => (
-            <Dropdown.Item><NavLink to="/ToolsAndResources" id={this.newToolsCount()} onClick={this.handleToolClick.bind(this, toolsCount)}>{item}</NavLink></Dropdown.Item>
+            <Dropdown.Item><NavLink to="/ToolsAndResources" className="toolDrop" id={this.newToolsCount()} onClick={this.handleToolClick.bind(this, toolsCount)}>{item}</NavLink></Dropdown.Item>
          ))
         return <li><DropdownButton className="nav-item " id="dropdown-basic-button" title="Tools/Resources">{val}</DropdownButton ></li>
       }
