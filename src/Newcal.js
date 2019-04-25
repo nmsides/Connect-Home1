@@ -159,6 +159,7 @@ postCal() {
   render() {
     return (
       <div>
+        <h3>Update Calendar</h3>
         <div className="text-center mt-25">
           <FileBase64
             multiple={ true }
@@ -173,7 +174,7 @@ postCal() {
              calfile4 = file.base64
              return null
           }) }
-          <button className="load" onClick={this.getcalid}>Update Calendar</button>
+          <button className="load" onClick={this.getcalid}>Update</button>
         </div>
       </div>
     )

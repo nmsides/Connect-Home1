@@ -110,7 +110,7 @@ class BlogPost extends Component {
           <div id="oldBlogsContainer">
 
 
-          <h1>Create News Post</h1>
+          <h3>Create News Post</h3>
             <form>
               <div class="form-group">
                   <label for="title">Post Title:</label>
@@ -119,9 +119,9 @@ class BlogPost extends Component {
                   <input type="text" class="form-control" id="blogDate"/>
                   <textarea placeholder = "Blog Here!" id = "blogText"></textarea>
               </div>
-              <button type="submit" onClick = {this.handleClick} class="btn btn-default">Submit</button>
+              <button type="submit" onClick = {this.handleClick} class="btn btn-default">Upload Post</button>
             </form>
-          <h1>Select Previous Blog to Remove</h1>
+          <h3>Select Previous News Post to Remove</h3>
             <ul>
               {this.state.news.map(item=>(
                 <div>

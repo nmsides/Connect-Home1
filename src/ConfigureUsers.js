@@ -188,16 +188,19 @@ class ConfigureUsers extends Component {
     
   render() {
     return(
+        
       <div id="toolsContainer">
+        <h3>Select User</h3>
         <ul>
           {this.state.users.map(item=>(
             <div>
                      <input type="radio" name="radioButton" id={item.id}/>
-                     <label>{item.username}</label>
+                     <label>{item.username + " (pw: " + item.password + ")"}</label>
                  </div>
           )
           )}
           </ul>
+        <h3>Select Connect-Home Tools/Resources for user</h3>
         <ul>
           {this.state.tools.map(item=> (
             <div>
@@ -208,7 +211,7 @@ class ConfigureUsers extends Component {
         )}
         </ul>
         
-        
+        <h3>Select QI Tools for user</h3>
         <ul>
           {this.state.qi.map(item=>(
             <div>
@@ -218,7 +221,7 @@ class ConfigureUsers extends Component {
           )
           )}
           </ul>
-          <button id = "toolsButton" type="button" onClick={this.handleClick}>PressMe</button>
+          <button id = "toolsButton" type="button" onClick={this.handleClick}>Update User Docs</button>
 
       </div>
     );

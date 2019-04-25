@@ -64,7 +64,7 @@ class AddUser extends Component {
             <input type="parties" className="form-control" id="parties"/>
         
         </div>
-        <button type="submit" onClick = {this.handleClick} className="btn btn-default">Submit</button>
+        <button type="submit" onClick = {this.handleClick} className="btn btn-default">Create User</button>
       </form>
     );
   }

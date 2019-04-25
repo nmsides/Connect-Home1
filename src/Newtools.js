@@ -198,6 +198,7 @@ deletetoolsbk(){
     
     return (
       <div>
+        <h3>Upload new Connect-Home Tool/Resource</h3>
         <div className = "row">
         <div className="text-center mt-25">
           <FileBase64
@@ -213,7 +214,7 @@ deletetoolsbk(){
              file4 = file.base64
              return null
           }) }
-          <button className="load" onClick={this.testqi}>load files</button>
+          <button className="load" onClick={this.testqi}>Upload file</button>
           </div>
           </div>
           <div className = "row" >

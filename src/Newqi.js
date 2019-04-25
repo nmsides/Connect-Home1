@@ -190,6 +190,7 @@ deletetoolsbk(){
   render() {
     return (
       <div>
+        <h3>Upload new Quality Improvement Tool</h3>
       <div className = "row">
         <div className="text-center mt-25">
           <FileBase64
@@ -205,11 +206,11 @@ deletetoolsbk(){
              file4 = file.base64
              return null
           }) }
-          <button className="load" onClick={this.testqi}>load files</button>
+          <button className="load" onClick={this.testqi}>Upload file</button>
         </div>
       </div>
       <div className = "row">
-          <h2 className="currentListHeader">Current QI Tools:</h2>
+          <h3 className="currentListHeader">Current QI Tools:</h3>
             <ul className="currentList">
             {this.state.allFiles.map(item => (
               <li id={item}>

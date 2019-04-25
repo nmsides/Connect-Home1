@@ -170,7 +170,7 @@ class PostLogin extends Component{
                         {this.renderToolsList()}
                         {/* <li><NavLink className="nav-item preNavItem preLink" to="/ToolsAndResources">ToolsAndResources</NavLink></li> */}
                         {this.renderQIList()}
-                        <li><NavLink className="nav-item preNavItem preLink" to="/ContactInformation">ContactInformation</NavLink></li>
+                        
                         
                       </ul>
                      
@@ -180,7 +180,6 @@ class PostLogin extends Component{
                             <Route path="/Calendar" component={Calendar}/>
                             <Route path="/ToolsAndResources" render={(props) => <ToolsAndResources {...this.state} item = {document.getElementById(this.state.toolsItem).id}/>}/>
                             <Route path="/QITools" render={(props) => <QITools {...this.state} item = {document.getElementById(this.state.QItem).id}/>}/>
-                            <Route path="/ContactInformation" component={ContactInformation}/>
 
                           </div>
                           <button type="button" className="btn" id="logOutPost" onClick={this.logout}>Logout</button>
