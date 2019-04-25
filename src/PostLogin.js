@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import Nav from 'react-bootstrap/Nav'
 import Overview from "./Overview";
-import ContactInformation from "./ContactInformation";
 import ToolsAndResources from "./ToolsAndResources"
 import QITools from "./QITools"
 import Calendar from "./Calendar"
@@ -176,7 +175,7 @@ class PostLogin extends Component{
                      
                     </div>
                          <div className = 'col-sm-8'>
-                            <Route exact path="/" component={Overview}/>
+                            <Route exact path="/" render={(props) => <Overview user = {this.props.user}/>}/>
                             <Route path="/Calendar" component={Calendar}/>
                             <Route path="/ToolsAndResources" render={(props) => <ToolsAndResources {...this.state} item = {document.getElementById(this.state.toolsItem).id}/>}/>
                             <Route path="/QITools" render={(props) => <QITools {...this.state} item = {document.getElementById(this.state.QItem).id}/>}/>

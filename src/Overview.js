@@ -35,6 +35,7 @@ class Overview extends Component {
     }
     
     componentDidMount() {
+      console.log(this.props.user)
         this.getUserInfo();
     }
     
