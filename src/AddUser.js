@@ -24,6 +24,11 @@ class AddUser extends Component {
 
 
         this.createUser(fN, email, pwd, [], [], goal, parties);
+        document.getElementById("firstName").value = ""
+        document.getElementById("email").value = ""
+        document.getElementById("pwd").value = ""
+        document.getElementById("goal").value = ""
+        document.getElementById("parties").value = ""
       }
 
       createUser(first, user, pass, tools, qi, goal, parties) {
