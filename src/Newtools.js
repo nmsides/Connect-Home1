@@ -95,7 +95,7 @@ class Newtools extends Component {
    this.deletetoolsbk = this.deletetoolsbk.bind(this);
    this.getToolsid = this.getToolsid.bind(this);
    this.getUsers = this.getUsers.bind(this);
- 
+   this.deletetoolsUser = this.deletetoolsUser.bind(this);
 
     if (process.env.REACT_APP_BACKEND_HOST) {
         proxyurl = process.env.REACT_APP_BACKEND_HOST; }
@@ -116,14 +116,12 @@ class Newtools extends Component {
     }
     //decodedBase64 = base64.base64Decode(a, b);
     this.setState({allFiles: allFilesArray})
-    console.log(allFilesArray)
-    console.log(this.state.allFiles)
 })
   }
   
   componentDidMount(){
     this.getAllFiles();
-    this.getUsers("testsize.pdf");
+    this.getUsers("IMP");
   }
 
   testqi() {
@@ -199,6 +197,7 @@ deletetoolsbk(){
 }
 
 getUsers(name) {
+  console.log(name)
     return axios.get(proxyurl + "/api/users")
     .then(response => {
         this.response = response.data;
@@ -209,24 +208,44 @@ getUsers(name) {
         console.log(usersArray[0].tools_auth.includes(name))
         for(let i = 0; i < usersArray.length; i++){
             if (usersArray[i].tools_auth.includes(name)){
-              nameArray[i] = usersArray[i].id
+              nameArray[i] = usersArray[i]
               console.log(nameArray)
             }
   }
-  for(let i = 0; i < nameArray.length; i++){
-      this.deletetoolUser(nameArray[i], name)
-  }
-  //this.deletetoolsUser(name)
+ 
+ 
+  for(let i = 0; i < usersArray.length; i++){
+    usersArray[i].tools_auth.filter(function(item){
+      console.log(item)
+       if(item === name){
+         console.log("equal")
+         usersArray[i].tools_auth.splice(usersArray[i].tools_auth.indexOf(name), 1)
+        //  this.deletetoolsUser(usersArray[i].id, usersArray[i].tools_auth)
+       }
+    })}
 
+    console.log(usersArray)
+    console.log(nameArray)
+
+   for(let i = 0; i < nameArray.length; i++){
+      this.deletetoolsUser(usersArray[i].id, usersArray[i].tools_auth)
+  }
+      
     });
     
   }
 
-  deletetoolsUser(id, name){
+  deletetoolsUser(id, auth){
+    return axios.put(proxyurl + '/api/admin/user', {
+                  _id: id,
+                  tools_auth: auth,
+              })
+              .then(function(response) {
+                  console.log(response);
+              })
+          }
 
-
-
-  }
+  
 
 
 
