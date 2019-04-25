@@ -11,6 +11,8 @@ let file3;
 let file4;
 let dvar;
 let toolsid;
+let usersArray = [];
+let nameArray = [];
 
 class FileBase64 extends React.Component {
 
@@ -92,6 +94,7 @@ class Newtools extends Component {
    this.deleteTool = this.deleteTool.bind(this);
    this.deletetoolsbk = this.deletetoolsbk.bind(this);
    this.getToolsid = this.getToolsid.bind(this);
+   this.getUsers = this.getUsers.bind(this);
  
 
     if (process.env.REACT_APP_BACKEND_HOST) {
@@ -120,6 +123,7 @@ class Newtools extends Component {
   
   componentDidMount(){
     this.getAllFiles();
+    this.getUsers("testsize.pdf");
   }
 
   testqi() {
@@ -193,6 +197,36 @@ deletetoolsbk(){
    
   
 }
+
+getUsers(name) {
+    return axios.get(proxyurl + "/api/users")
+    .then(response => {
+        this.response = response.data;
+        for(let i = 0; i < response.data.length; i++) {
+             usersArray[i] = {id: response.data[i]._id, username: response.data[i].username, tools_auth: response.data[i].tools_auth};   
+        }
+        console.log(usersArray)
+        console.log(usersArray[0].tools_auth.includes(name))
+        for(let i = 0; i < usersArray.length; i++){
+            if (usersArray[i].tools_auth.includes(name)){
+              nameArray[i] = usersArray[i].id
+              console.log(nameArray)
+            }
+  }
+  for(let i = 0; i < nameArray.length; i++){
+      this.deletetoolUser(nameArray[i], name)
+  }
+  //this.deletetoolsUser(name)
+
+    });
+    
+  }
+
+  deletetoolsUser(id, name){
+
+
+
+  }
 
 
 
