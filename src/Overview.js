@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import axios from 'axios';
 let proxyurl;
-let projgoal; 
-let party; 
+
 
 class Overview extends Component {
   constructor(props) {
@@ -13,6 +12,11 @@ class Overview extends Component {
       else {
         proxyurl = "http://localhost:5000";
       }
+      
+      this.state = {
+      goal: "",
+      party: "" 
+    }
 
       this.getUserInfo = this.getUserInfo.bind(this);
 
@@ -25,31 +29,29 @@ class Overview extends Component {
             this.response = response.data;
             for(let i = 0; i < response.data.length; i++){
                if(response.data[i]._id === this.props.user){
-                   projgoal = response.data[i].goal;
-                   party = response.data[i].participants; 
+                   let a = response.data[i].goal;
+                   let b = response.data[i].participants; 
+                   this.setState({goal: a, party: b})
                    break;
             }
 
             }
           })
+        
     }
     
     componentDidMount() {
       console.log(this.props.user)
-        this.getUserInfo();
+      this.getUserInfo();
     }
     
   render() {
     return (
       <div>
           <h2>Project Goal</h2>
-            <p>Project Goal Here</p>
+            <p>{this.state.goal}</p>
           <h2>Collaborative Participants</h2>
-            <ul>
-                <li>Participants</li>
-                <li>Participants</li>
-                <li>Participants</li>
-            </ul>
+            <p>{this.state.party}</p>
       </div>
     );
   }
