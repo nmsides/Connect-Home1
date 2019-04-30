@@ -114,7 +114,7 @@ class Newqi extends Component {
         for(let i = 0; i < response.data.length; i++){
           allFilesArray[i] = {name: response.data[i].name, type: response.data[i].type, size: response.data[i].size , key: response.data[i].key, base64: response.data[i].base64}
     }
-    //decodedBase64 = base64.base64Decode(a, b);
+
     this.setState({allFiles: allFilesArray})
 })
   }
@@ -218,12 +218,9 @@ getUsers(name) {
        if(item === name){
          console.log("equal")
          usersArray[i].qi_auth.splice(usersArray[i].qi_auth.indexOf(name), 1)
-        //  this.deletetoolsUser(usersArray[i].id, usersArray[i].tools_auth)
        }
     })}
 
-    console.log(usersArray)
-    console.log(nameArray)
 
    for(let i = 0; i < usersArray.length; i++){
       this.deletetoolsUser(usersArray[i].id, usersArray[i].qi_auth, usersArray[i].tools_auth)

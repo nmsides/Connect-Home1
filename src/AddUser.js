@@ -43,8 +43,6 @@ class AddUser extends Component {
           })
           .then(function (response) {
           console.log(response);
-          //console.log("user's tools!: " + response.data.tools_auth);
-          //user_tools = response.data.tools_auth;
           window.alert("New User Created!");
           })
           .catch(function (error) {

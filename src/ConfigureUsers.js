@@ -14,7 +14,7 @@ class ConfigureUsers extends Component {
       proxyurl = "http://localhost:5000";
     }
 
-    // this.handleClick = this.handleClick.bind(this);
+
     this.getTools = this.getTools.bind(this);
     this.getUsers = this.getUsers.bind(this);
     this.getCheckedBoxes = this.getCheckedBoxes.bind(this);
@@ -48,8 +48,6 @@ class ConfigureUsers extends Component {
         })
         .then(function (response) {
         console.log(response);
-        //console.log("user's tools!: " + response.data.tools_auth);
-        //user_tools = response.data.tools_auth;
 
         })
         .catch(function (error) {
@@ -121,16 +119,11 @@ class ConfigureUsers extends Component {
       getCheckedBoxes(chkboxName) {
             var checkboxes = document.getElementsByName(chkboxName);
             var checkBoxesChecked = [];
-            // loop over them all
             for (var i=0; i<checkboxes.length; i++) {
-              // And stick the checked ones onto an array...
               if (checkboxes[i].checked) {
                   checkBoxesChecked.push(checkboxes[i]);
               }
             }
-            // Return the array if it is non-empty, or null
-            console.log(checkBoxesChecked);
-            console.log("hello");
             return checkBoxesChecked.length > 0 ? checkBoxesChecked : null;
     }
 
@@ -138,9 +131,7 @@ class ConfigureUsers extends Component {
       var checkboxes = document.getElementsByName("tool");
             var checkBoxesChecked = [];
 
-            // loop over them all
             for (var i=0; i<checkboxes.length; i++) {
-              // And stick the checked ones onto an array...
               if (checkboxes[i].checked) {
                   checkBoxesChecked.push(checkboxes[i].id);
               }
@@ -151,7 +142,6 @@ class ConfigureUsers extends Component {
         var myUser = "";
         var userNamePrint = "";
         for (var i=0; i<radioButton.length; i++) {
-          // And stick the checked ones onto an array...
           if (radioButton[i].checked) {
               myUser = radioButton[i].id;
               userNamePrint = radioButton[i].username;
@@ -164,7 +154,6 @@ class ConfigureUsers extends Component {
         var qiTools = document.getElementsByName("qiButton");
         var qiToolsChecked = [];
         for (var i=0; i<qiTools.length; i++) {
-          // And stick the checked ones onto an array...
           if (qiTools[i].checked) {
               qiToolsChecked.push(qiTools[i].id);
           }

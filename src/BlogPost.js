@@ -46,14 +46,11 @@ class BlogPost extends Component {
       handleClick1(event) {
         var checkboxes = document.getElementsByName("blog");
             var checkBoxesChecked = "";
-            // loop over them all
             for (var i=0; i<checkboxes.length; i++) {
-              // And stick the checked ones onto an array...
               if (checkboxes[i].checked) {
                   checkBoxesChecked=(checkboxes[i].id);
               }
             }
-            console.log(checkBoxesChecked);
             return axios.post(proxyurl + '/api/admin/deleteNews', {
                           _id: checkBoxesChecked
                       })
@@ -83,12 +80,9 @@ class BlogPost extends Component {
             this.response = response.data;
             for(let i = 0; i < response.data.length; i++) {
                  //Getting news in order by most current
-                 console.log(response.data[i])
                 newsArray[i] = {title: response.data[i].title, body: response.data[i].body, id: response.data[i]._id, date: response.data[i].date};
-                //  this.setState(news[i][{title: response.data[i].title, body: response.data[i].body, id: response.data[i]._id, date: response.data[i].date}]  )
                 
             }
-            console.log(newsArray)
             this.setState({news: newsArray});
         });
         

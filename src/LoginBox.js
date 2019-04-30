@@ -3,7 +3,6 @@ import axios from 'axios';
 import "./App.css"
 
 
-//const proxyurl = "https://cors-anywhere.herokuapp.com/";
 let allUsers;
 let userNameInput;
 let successfulLogin;
@@ -11,9 +10,6 @@ let thisUser;
 let url;
 
 
-//Array.prototype.contains = function(element){
-//    return this.indexOf(element) > -1;
-//};
 
 class LoginBox extends Component{
     constructor(props){ //react standard
@@ -37,7 +33,6 @@ class LoginBox extends Component{
       }
 
       checkUserName(){
-        //let userNameInput = document.getElementById("userNameInput").value;
         this.getUserNames();
 
       }
@@ -45,7 +40,6 @@ class LoginBox extends Component{
       componentDidMount() {
         console.log(this.state.isLoggedIn)
         this.loadUsers();
-        this.getNews();
       }
 
       componentDidUpdate(){
@@ -59,7 +53,6 @@ class LoginBox extends Component{
               this.response = response.data;
               this.setState({all: this.response})
               let allUsers = this.state.all;
-              //console.log(allUsers)
               return this.response[0].username});
         }
 
@@ -94,18 +87,6 @@ class LoginBox extends Component{
             return this.response.data});
         }
 
-    //my news function
-    getNews() {
-        console.log('running');
-        return axios.get("http://localhost:5000/api/news")
-        .then(response => {
-            console.log('inside');
-            this.response = response.data;
-            for(let i = 0; i < response.data.length; i++) {
-                console.log(response.data[i]);
-            }
-        });
-    }
 
 // <Component username = {this.state.username} // or this.props.username
     render(){

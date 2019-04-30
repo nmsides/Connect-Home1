@@ -21,7 +21,6 @@ import Services from "./Services";
 import About from "./About";
 import Files from 'react-files'
 import axios from 'axios';
-// const base64 = require('base64topdf');
 
 let allUsers;
 let userNameInput;
@@ -29,8 +28,6 @@ let successfulLogin;
 let thisUser;
 let url;
 
-// let testFile;
-// let decodedBase64;
 
 
 class FilesDemo extends Component{
@@ -71,7 +68,6 @@ class PreLogin extends Component{
 
     constructor(props){
         super(props);
-        // this.props.onLogin = false;
 
 
 
@@ -93,25 +89,15 @@ class PreLogin extends Component{
       }
 
       this.getUserNames = this.getUserNames.bind(this);
-      // this.testLoadPDF = this.testLoadPDF.bind(this)
     }
 
 
 
     componentDidMount() {
-      console.log(this.state.isLoggedIn)
       this.loadUsers();
-      // this.testLoadPDF();
     }
 
-    // testLoadPDF(){
-    //   return axios.get(url + "/api/admin/qi")
-    //       .then(response => {
-    //         this.response = response.data;
-    //         let testFile = this.response[3].base64;
-    //         // decodedBase64 = base64.base64Decode(testFile, 'testPDF');
-    //         return this.response});
-    // }
+
 
    loadUsers() {
       return axios.get(url + "/api/users")
@@ -119,12 +105,10 @@ class PreLogin extends Component{
             this.response = response.data;
             this.setState({all: this.response})
             let allUsers = this.state.all;
-            //console.log(allUsers)
             return this.response[0].username});
       }
 
   getUserNames(){
-    console.log("entered get userNames");
           let userNameInput = document.getElementById("userNameInput").value;
           let passwordInput = document.getElementById("passwordInput").value;
 
@@ -134,23 +118,16 @@ class PreLogin extends Component{
 
             for(let i = 0; i < response.data.length; i++){
                if(response.data[i].username === userNameInput){
-                   console.log("username in list")
                    if(response.data[i].password === passwordInput){
-                     // somewhere in here need to verify that it is the admin who is logged in
-                       console.log("password correct");
                        let successfulLogin = true;
-                       // this.setState({isLoggedIn: true});
-                       // this.props.onAdminLogin();
 
                        thisUser = response.data[i]._id; //Added to then pass to new page
                        this.props.onLogin(thisUser, userNameInput, response.data[i].name);
                        if(userNameInput === "toles" && passwordInput === "tolespw"){
-                         console.log("is Admin")
                          this.props.onAdminLogin();
                        }
                        break; //listen to the state and then load new page
                    }else{
-                       console.log("password incorrect");
                        break;
                    }
                }else{
@@ -159,7 +136,6 @@ class PreLogin extends Component{
                }
             }
 
-            // store a variable from here and then get it in another page (props?)
             return this.response.data
         });
       }

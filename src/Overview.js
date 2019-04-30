@@ -23,7 +23,7 @@ class Overview extends Component {
       }
     
     
-    getUserInfo() { //RN, this.props.user is UNDEFINED. 
+    getUserInfo() { 
         return axios.get(proxyurl + "/api/users")
             .then(response => {
             this.response = response.data;
@@ -41,7 +41,6 @@ class Overview extends Component {
     }
     
     componentDidMount() {
-      console.log(this.props.user)
       this.getUserInfo();
     }
     

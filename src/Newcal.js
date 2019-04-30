@@ -107,7 +107,6 @@ getcalid(){
           
          this.response = response.data
         id = response.data[0]._id
-        console.log(id)
         this.deleteCal()
         
     })
@@ -145,7 +144,6 @@ postCal() {
      base64: calfile4,
  })
  .then(function (response) {
- console.log(response);
  window.alert("Calendar Has Been Updated")
  
  })

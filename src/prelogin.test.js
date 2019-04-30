@@ -49,9 +49,3 @@ it('renders contact nav', () => {
   const nav = <li><NavLink className="nav-item preNavItem preLink" to="/contact">Contact</NavLink></li>;
   expect(wrapper.contains(nav)).toEqual(true);
 });
-
-//it('renders welcome message', () => {
-//  const wrapper = shallow(<PreLogin />);
-//  const login = <li>Understanding Connect Home</li>;
-//  expect(wrapper.contains(login)).toEqual(true);
-//});

@@ -114,7 +114,6 @@ class Newtools extends Component {
         for(let i = 0; i < response.data.length; i++){
           allFilesArray[i] = {name: response.data[i].name, type: response.data[i].type, size: response.data[i].size , key: response.data[i].key, base64: response.data[i].base64}
     }
-    //decodedBase64 = base64.base64Decode(a, b);
     this.setState({allFiles: allFilesArray})
 })
   }
@@ -141,7 +140,6 @@ class Newtools extends Component {
    })
  
    .then(function (response) {
-   console.log(response);
    window.alert("Tool Added!")
    
    })
@@ -153,7 +151,6 @@ class Newtools extends Component {
 
  deleteTool(itemName) {
   
-     console.log(allFilesArray)
     for(let i = 0; i < allFilesArray.length; i++){
       if(allFilesArray[i].name === itemName){
         allFilesArray.splice(i, 1);
@@ -205,8 +202,6 @@ getUsers(name) {
         for(let i = 0; i < response.data.length; i++) {
              usersArray[i] = {id: response.data[i]._id, qi_auth: response.data[i].qi_auth, tools_auth: response.data[i].tools_auth};   
         }
-        console.log(usersArray)
-        console.log(usersArray[0].tools_auth.includes(name))
         for(let i = 0; i < usersArray.length; i++){
             if (usersArray[i].tools_auth.includes(name)){
               nameArray[i] = usersArray[i]
@@ -219,14 +214,11 @@ getUsers(name) {
     usersArray[i].tools_auth.filter(function(item){
       console.log(item)
        if(item === name){
-         console.log("equal")
          usersArray[i].tools_auth.splice(usersArray[i].tools_auth.indexOf(name), 1)
-        //  this.deletetoolsUser(usersArray[i].id, usersArray[i].tools_auth)
+
        }
     })}
 
-    console.log(usersArray)
-    console.log(nameArray)
 
    for(let i = 0; i < usersArray.length; i++){
       this.deletetoolsUser(usersArray[i].id, usersArray[i].tools_auth, usersArray[i].qi_auth)
@@ -249,12 +241,6 @@ getUsers(name) {
           }
 
   
-
-
-
-// deleteTool(){
-//   console.log(tool.key)
-// }
   render() {
     
     

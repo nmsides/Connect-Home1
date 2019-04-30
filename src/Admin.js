@@ -30,15 +30,12 @@ class Admin extends Component{
     if (process.env.REACT_APP_BACKEND_HOST) { proxyurl = process.env.REACT_APP_BACKEND_HOST; }
     else { proxyurl = "http://localhost:5000"; }
         
-        //this.updateUserConfig = this.updateUserConfig.bind(this);
+
 
     this.logout = this.logout.bind(this);
 
       }
     
-//    componentWillMount(){
-//        //this.updateUserConfig(my_id, "madisontest", "madisonpw");
-//      }
 
     createNews(news_title, news_body, news_date) {
         return axios.post(proxyurl + "/api/admin/news", {
@@ -72,69 +69,9 @@ class Admin extends Component{
         })
     }
 
-    getTools() { //This returns ALL tools name + keys
-        return axios.get(proxyurl + '/api/admin/tools')
-            .then(function(response) {
-                for(let i = 0; i < response.data.length; i++){
-                console.log(response.data[i].name + ' ' + response.data[i].key)
-            }
-
-        })
-    }
 
     logout() {
         this.props.onAdminLogout();
-    }
-
-    getQiTools() { //This returns ALL qi tools name + keys
-        return axios.get(proxyurl + '/api/admin/qi')
-            .then(function(response) {
-                for(let i = 0; i < response.data.length; i++){
-                console.log(response.data[i].name + ' ' + response.data[i].key)
-            }
-        })
-    }
-
-
-    updateArrays(id, tools, qis) {
-        return axios.put(proxyurl + '/api/admin/user', {
-            _id: id,
-            tools_auth: tools,
-            qi_auth: qis
-        })
-        .then(function(response) {
-            console.log(response);
-        })
-    }
-    
-    updateUserConfig(id, user, pass) {
-        return axios.put(proxyurl + '/api/admin/userLog', {
-            _id: id,
-            username: user,
-            password: pass
-        })
-        .then(function(response) {
-            console.log(response);
-        })
-    }
-
-    updateNewsPost(id, body) {
-        return axios.put(proxyurl + '/api/admin/updateNews', {
-            _id: id,
-            body: body
-        })
-        .then(function(response) {
-            console.log(response);
-        })
-    }
-
-    deleteNewsPost(thisid) {
-        return axios.post(proxyurl + '/api/admin/deleteNews', {
-            _id: thisid
-        })
-        .then(function(response) {
-            console.log(response);
-        })
     }
 
 

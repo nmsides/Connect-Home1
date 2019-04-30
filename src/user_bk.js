@@ -45,16 +45,13 @@ exports.findById = async (db, id) =>
 exports.findByUsername = async (db, username) =>
   await users(db).find({username: username}).toArray()
 
-//const addTimestamp = (tweet) => Object.assign({}, tweet, {timestamp: Date.now()})
 
 exports.insert = async (db, user) => {
-  //let newUser = addTimestamp(tweet)
   await users(db).insertOne(user)
   return user
 }
 
 exports.insert = async (db, user) => {
-  //let newUser = addTimestamp(tweet)
   await users(db).insertOne(user)
   return user
 }

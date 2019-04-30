@@ -15,14 +15,6 @@ class QITools extends Component {
     super(props);
 
     this.state = {
-      // qi: [{
-      //   name: null,
-      //  type: null,
-      //  size: null,
-      //  key: null,
-      //  base64: null,
-      // }],
-      // item: this.props.item
 
     }
 
@@ -32,16 +24,10 @@ this.log = this.log.bind(this);
 if (process.env.REACT_APP_BACKEND_HOST) { proxyurl = process.env.REACT_APP_BACKEND_HOST; }
 else { proxyurl = "http://localhost:5000"; }
     
-    //this.updateUserConfig = this.updateUserConfig.bind(this);
 
   }
 
-  log(){
-    // this.setState({qi:})
-    console.log(this.props.item)
-    console.log(this.state.qi)
-    
-  }
+  log(){}
 
   getTools() { //This returns ALL tools name + keys
     return axios.get(proxyurl + '/api/admin/qi')
@@ -50,7 +36,7 @@ else { proxyurl = "http://localhost:5000"; }
             for(let i = 0; i < response.data.length; i++){
               qiarray[i] = {name: response.data[i].name, type: response.data[i].type, size: response.data[i].size , key: response.data[i].key, base64: response.data[i].base64}
         }
-        //decodedBase64 = base64.base64Decode(a, b);
+
         this.setState({qi: qiarray})
         console.log(qiarray)
         console.log(this.props.item)

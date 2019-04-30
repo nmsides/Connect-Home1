@@ -54,9 +54,6 @@ class App extends Component {
     });
 
 
-    console.log("isLoggedIn: " + this.state.isLoggedIn);
-    console.log("isAdmin" + this.state.isAdmin);
-    console.log("userID: " + this.state.user);
       if(this.state.isLoggedIn == false && this.state.isAdmin == false) {
         return (
           // <PreLogin onLogin = {onLogin} isAdmin = {onAdminLogin}/>
